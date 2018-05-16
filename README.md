@@ -1,6 +1,6 @@
 # template-function 
 ---
-{ArchieScript/ReaScrit}(https://github.com/ArchieScript/ReaScrit)
+[ArchieScript/ReaScrit](https://github.com/ArchieScript/ReaScrit)
 ------------------------------------------------------------------------------------------------------------------
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 
