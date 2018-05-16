@@ -4,5 +4,5 @@
 
 SetMediaItemLeftTrim(value,item) --Установить левую часть элемента мультимедиа (обрезать,удленить элемент с лева)
 
-
+https://github.com/ArchieScript/template-function
 
