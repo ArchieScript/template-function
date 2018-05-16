@@ -18,3 +18,12 @@
             reaper.SetMediaItemTakeInfo_Value( take, 'D_STARTOFFS',offset + (len-value)*playrate )
         end
     end
+    
+    
+    
+    
+    
+    
+    
+    
+    
