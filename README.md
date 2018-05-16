@@ -5,5 +5,5 @@
 
 [SetMediaItemLeftTrim( value , item )](https://github.com/ArchieScript/template-function/blob/master/SetMediaItemLeftTrim(value%2Citem).lua)--Установить левую часть элемента мультимедиа(обрезать,удленить элемент с лева)
 
-[Save Restore selected tracks](https://github.com/ArchieScript/template-function/new/master)
+[Save Restore selected tracks](https://github.com/ArchieScript/template-function/blob/master/save%20restore%20selected%20tracks.lua)
 
