@@ -13,6 +13,10 @@
       end
     end
     ---
+    
+    
+    
+    
     local function RestoreSoloMuteStateAllTracks()
       for i = 1, #track do
         reaper.SetMediaTrackInfo_Value(track[i], 'B_MUTE', mute[i])
@@ -20,7 +24,7 @@
       end
     end 
 
-
+--============================================================
 
 
 
