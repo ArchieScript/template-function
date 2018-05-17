@@ -1,4 +1,4 @@
-# template-function 
+># template-function 
 ###### [ArchieScript/ReaScrit](https://github.com/ArchieScript/ReaScrit)
 ------------------------------------------------------------------------------------------------------------------
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
@@ -10,5 +10,5 @@
 
 ##### [SetMediaItemLeftTrim( value , item )](https://github.com/ArchieScript/template-function/blob/master/SetMediaItemLeftTrim(value%2Citem).lua)--Установить левую часть элемента мультимедиа(обрезать,удленить элемент с лева)
 
-##### [string.gmatch](https://github.com/ArchieScript/template-function/blob/master/string.gmatch) &nbsp9; _[подробнее](http://uopilot.tati.pro/index.php?title=String.gmatch_(Lua))_
+##### [string.gmatch](https://github.com/ArchieScript/template-function/blob/master/string.gmatch) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; _[подробнее](http://uopilot.tati.pro/index.php?title=String.gmatch_(Lua))_
 
