@@ -10,5 +10,5 @@
 
 ##### [SetMediaItemLeftTrim( value , item )](https://github.com/ArchieScript/template-function/blob/master/SetMediaItemLeftTrim(value%2Citem).lua)--Установить левую часть элемента мультимедиа(обрезать,удленить элемент с лева)
 
-##### [string.gmatch](https://github.com/ArchieScript/template-function/blob/master/string.gmatch) <li> [Описание](http://uopilot.tati.pro/index.php?title=String.gmatch_(Lua))
+##### [string.gmatch](https://github.com/ArchieScript/template-function/blob/master/string.gmatch)______ _[Описание](http://uopilot.tati.pro/index.php?title=String.gmatch_(Lua))
 
