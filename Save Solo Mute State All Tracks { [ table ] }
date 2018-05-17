@@ -3,7 +3,7 @@
    
    
    
-   local mute, track, solo = {}, {}, {} 
+    local mute, track, solo = {}, {}, {} 
 
     local function SaveSoloMuteStateAllTracks()
       for i = 1, reaper.CountTracks(0) do
