@@ -19,3 +19,12 @@
         reaper.SetMediaTrackInfo_Value(track[i], 'I_SOLO', solo[i]) 
       end
     end 
+
+
+
+
+
+
+
+
+
