@@ -26,7 +26,7 @@
 
 
 
-    function SaveSelTracks() 
+    function SaveSelTracksGuid() 
         sel_tracks = {} 
         for i = 1, reaper.CountSelectedTracks(0) do 
             track = reaper.GetSelectedTrack(0, i - 1)
@@ -36,7 +36,7 @@
     --- 
 
 
-    function RestoreSelTracks() 
+    function RestoreSelTracksGuid() 
         local tr = reaper.GetTrack(0,0) 
         reaper.SetOnlyTrackSelected(tr) 
         reaper.SetTrackSelected(tr, 0) 
@@ -50,7 +50,7 @@
     end 
 
 
-
+--============================================================
 
 
 
