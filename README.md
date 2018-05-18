@@ -10,6 +10,8 @@
 
 ##### [Save, (save guid); restore, (restore guid) selected tracks { [table] } ](https://github.com/ArchieScript/template-function/blob/master/save%20restore%20selected%20tracks%20%7B%7Dtablep%5B%5D.lua)
 
+##### [SetCollapseFolderMCP (MPL)](https://github.com/ArchieScript/template-function/blob/master/template-function/SetCollapseFolderMCP%20(MPL).lua)
+
 ##### [SetMediaItemLeftTrim( value , item )](https://github.com/ArchieScript/template-function/blob/master/SetMediaItemLeftTrim(value%2Citem).lua)--Установить левую часть элемента мультимедиа(обрезать,удленить элемент с лева)
 
 ##### [string.gmatch](https://github.com/ArchieScript/template-function/blob/master/string.gmatch) <li> &nbsp;&nbsp;&nbsp;&nbsp; _подробнее [здесь](http://uopilot.tati.pro/index.php?title=String.gmatch_(Lua))_
