@@ -4,7 +4,7 @@
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 
 
-##### [GetInstrumentVSTi](https://github.com/ArchieScript/template-function/blob/master/template-function/GetInstrumentVSTi.lua)--Получить VSTi инструмент
+##### [GetInstrumentVSTi](https://github.com/ArchieScript/template-function/blob/master/template-function/Get/GetInstrumentVSTi.lua)--Получить VSTi инструмент
 
 ##### [Save Solo Mute State All Tracks { [table] }](https://github.com/ArchieScript/template-function/blob/master/Save%20Solo%20Mute%20State%20All%20Tracks%20%7B%20%5B%20table%20%5D%20%7D)
 
