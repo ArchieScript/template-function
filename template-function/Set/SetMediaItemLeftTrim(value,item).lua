@@ -1,5 +1,9 @@
   
+         
   
+          Set Media Item Left Trim
+
+
   
   local function SetMediaItemLeftTrim(value,item)
         local Pos = reaper.GetMediaItemInfo_Value( item, 'D_POSITION' )
