@@ -4,5 +4,5 @@
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 
 
-##### [GetInstrumentVSTi](https://github.com/ArchieScript/template-function/blob/master/template-function/GetInstrumentVSTi.lua)--Получить VSTi инструмент
+##### [GetInstrumentVSTi](https://github.com/ArchieScript/template-function/blob/master/template-function/Get/GetInstrumentVSTi.lua)--Получить VSTi инструмент
 
