@@ -1,7 +1,7 @@
   
          
   
-          Set Media Item Left Trim
+         -- Set Media Item Left Trim
 
 
   
