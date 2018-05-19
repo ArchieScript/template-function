@@ -6,7 +6,7 @@
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 
 
-##### [GetInstrumentVSTi](https://github.com/ArchieScript/template-function/blob/master/template-function/Get/GetInstrumentVSTi.lua)  --    _Получить VSTi инструмент_
+##### [GetInstrumentVSTi](https://github.com/ArchieScript/template-function/blob/master/template-function/Get/GetInstrumentVSTi.lua)      --    _Получить VSTi инструмент_
 
 ##### [Save Solo Mute State All Tracks { [table] }](https://github.com/ArchieScript/template-function/blob/master/template-function/Save/Save%20Solo%20Mute%20State%20All%20Tracks%20%7B%20%5B%20table%20%5D%20%7D.lua)
 
@@ -16,7 +16,7 @@
 
 ##### [SetCollapseFolderMCP (MPL)](https://github.com/ArchieScript/template-function/blob/master/template-function/Set/SetCollapseFolderMCP%20(MPL).lua)
 
-##### [SetMediaItemLeftTrim( value , item )](https://github.com/ArchieScript/template-function/blob/master/template-function/Set/SetMediaItemLeftTrim(value%2Citem).lua)  --  _Установить левую часть элемента мультимедиа(обрезать,удленить элемент с лева)_
+##### [SetMediaItemLeftTrim( value , item )](https://github.com/ArchieScript/template-function/blob/master/template-function/Set/SetMediaItemLeftTrim(value%2Citem).lua)      --  _Установить левую часть элемента мультимедиа(обрезать,удленить элемент с лева)_
 
 ##### [string.gmatch](https://github.com/ArchieScript/template-function/blob/master/template-function/Lua/string.gmatchstring.gmatch.lua) <li> &nbsp;&nbsp;&nbsp;&nbsp; _подробнее [здесь](http://uopilot.tati.pro/index.php?title=String.gmatch_(Lua))_
 
