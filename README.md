@@ -13,6 +13,7 @@
 
 
 #
+#
 
 
 ##### [Save Solo Mute State All Tracks { [table] }](https://github.com/ArchieScript/template-function/blob/master/template-function/Save/Save%20Solo%20Mute%20State%20All%20Tracks%20%7B%20%5B%20table%20%5D%20%7D.lua)
@@ -22,15 +23,21 @@
 ##### [Save,Restore,selected tracks( guid { [table] } )](https://github.com/ArchieScript/template-function/blob/master/template-function/Save/Save%20restore%20selected%20tracks%20%7B%5Btablep%5D%7D.lua)
 
 #
+#
+#
 
 ##### [SetCollapseFolderMCP (MPL)](https://github.com/ArchieScript/template-function/blob/master/template-function/Set/SetCollapseFolderMCP%20(MPL).lua)
 
 ##### [SetMediaItemLeftTrim( value , item )](https://github.com/ArchieScript/template-function/blob/master/template-function/Set/SetMediaItemLeftTrim(value%2Citem).lua) &nbsp;&nbsp;--  _Установить левую часть элемента мультимедиа(обрезать,удленить элемент с лева)_
 
 #
+#
+#
 
 ##### [DeleteOnlyTrack(track)](https://github.com/ArchieScript/template-function/blob/master/template-function/Rest/DeleteOnlyTrack(track).lua ) -- При удалении последнего трека в папке не закидывает следующие треки в предыдущую папку 
 
+#
+#
 #
 
 ##### [string.gmatch](https://github.com/ArchieScript/template-function/blob/master/template-function/Lua/string.gmatchstring.gmatch.lua) <li> &nbsp;&nbsp;&nbsp;&nbsp; _подробнее [здесь](http://uopilot.tati.pro/index.php?title=String.gmatch_(Lua))_
