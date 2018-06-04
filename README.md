@@ -7,7 +7,7 @@
 
 
 
-
+>Get
 
 ##### [GetInstrumentVSTi](https://github.com/ArchieScript/template-function/blob/master/template-function/Get/GetInstrumentVSTi.lua)      &nbsp;&nbsp;-- _Получить VSTi инструмент_
 
