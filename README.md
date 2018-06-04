@@ -16,7 +16,7 @@
 #
 #
 
->Save
+>[Save](https://github.com/ArchieScript/template-function/tree/master/template-function/Save) 
 >
 >
 >##### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;                                                                             [Save Solo Mute State All Tracks { [table] }](https://github.com/ArchieScript/template-function/blob/master/template-function/Save/Save%20Solo%20Mute%20State%20All%20Tracks%20%7B%20%5B%20table%20%5D%20%7D.lua)
@@ -41,7 +41,7 @@
 
 #
 #
->Rest
+>[Rest](https://github.com/ArchieScript/template-function/tree/master/template-function/Rest)  
 >
 >##### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;                                                                             [DeleteOnlyTrack(track)](https://github.com/ArchieScript/template-function/blob/master/template-function/Rest/DeleteOnlyTrack(track).lua ) -- При удалении последнего трека в папке не закидывает следующие треки в предыдущую папку 
 >
@@ -50,7 +50,7 @@
 
 #
 #
->Lua
+>[Lua](https://github.com/ArchieScript/template-function/tree/master/template-function/Lua)
 >
 >##### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;                                                                             [string.gmatch](https://github.com/ArchieScript/template-function/blob/master/template-function/Lua/string.gmatchstring.gmatch.lua) <li> &nbsp;&nbsp;&nbsp;&nbsp; _подробнее [здесь](http://uopilot.tati.pro/index.php?title=String.gmatch_(Lua))_
 >
