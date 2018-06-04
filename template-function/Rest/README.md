@@ -6,6 +6,6 @@
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 
 
-##### [DeleteOnlyTrack(track)](ссылка ) -- При удалении последнего трека в папке не закидывает следующие треки в предыдущую папку 
+##### [DeleteOnlyTrack(track)](https://github.com/ArchieScript/template-function/blob/master/template-function/Rest/DeleteOnlyTrack(track).lua ) -- При удалении последнего трека в папке не закидывает следующие треки в предыдущую папку 
 
 
