@@ -34,7 +34,7 @@
 >
 >##### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;                                                                             [SetCollapseFolderMCP (MPL)](https://github.com/ArchieScript/template-function/blob/master/template-function/Set/SetCollapseFolderMCP%20(MPL).lua)
 >
->##### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;                                                                             [SetMediaItemLeftTrim( value , item )](https://github.com/ArchieScript/template-function/blob/master/template-function/Set/SetMediaItemLeftTrim(value%2Citem).lua) &nbsp;&nbsp;--  _Установить левую часть элемента мультимедиа(обрезать,удленить с &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;элемент  лева)_
+>##### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;                                                                             [SetMediaItemLeftTrim( value , item )](https://github.com/ArchieScript/template-function/blob/master/template-function/Set/SetMediaItemLeftTrim(value%2Citem).lua) &nbsp;&nbsp;--  _Установить левую часть элемента мультимедиа(обрезать,удленить с элемент  лева)_
 >
 
 
