@@ -2,14 +2,14 @@
 ###### [ArchieScript/ReaScrit](https://github.com/ArchieScript/ReaScrit)
 ------------------------------------------------------------------------------------------------------------------
 >###                                                                                                                                        [Get](https://github.com/ArchieScript/template-function/tree/master/template-function/Get)           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;      [Set](https://github.com/ArchieScript/template-function/tree/master/template-function/Set)           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;      [Save](https://github.com/ArchieScript/template-function/tree/master/template-function/Save)         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;      [Rest](https://github.com/ArchieScript/template-function/tree/master/template-function/Rest)         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;      [Lua](https://github.com/ArchieScript/template-function/tree/master/template-function/Lua)           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;                                                                                                                                                  
-### ---   
+---   
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 
 
 ##### [GetInstrumentVSTi](https://github.com/ArchieScript/template-function/blob/master/template-function/Get/GetInstrumentVSTi.lua)      &nbsp;&nbsp;-- _Получить VSTi инструмент_
 
 
----
+>
 
 
 ##### [Save Solo Mute State All Tracks { [table] }](https://github.com/ArchieScript/template-function/blob/master/template-function/Save/Save%20Solo%20Mute%20State%20All%20Tracks%20%7B%20%5B%20table%20%5D%20%7D.lua)
