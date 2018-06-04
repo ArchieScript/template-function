@@ -7,7 +7,7 @@
 
 
 
->Get
+>[Get](https://github.com/ArchieScript/template-function/tree/master/template-function/Get)
 >
 >##### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;                                                                            [GetInstrumentVSTi](https://github.com/ArchieScript/template-function/blob/master/template-function/Get/GetInstrumentVSTi.lua)                                      &nbsp;&nbsp;-- _Получить VSTi инструмент_
 >
@@ -30,7 +30,7 @@
 #
 #
 
->Set
+>[Set](https://github.com/ArchieScript/template-function/tree/master/template-function/Set)
 >
 >##### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;                                                                             [SetCollapseFolderMCP (MPL)](https://github.com/ArchieScript/template-function/blob/master/template-function/Set/SetCollapseFolderMCP%20(MPL).lua)
 >
