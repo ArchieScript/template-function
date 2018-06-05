@@ -1,9 +1,10 @@
 
 
         --[[---------------------------------------------
-        
+        Баги
         boolean reaper.ReorderSelectedTracks(integer beforeTrackIdx, integer makePrevFolder)
-        
+        Исправлены в функции ReorderAllSelTrack( TrackIdx )  см.ниже
+        ------
         Исправлены ошибки при работе с дочерними треками:
         Если выделеный трек-ребенок и если он один в папке то трек выбрасывало
         сейчас ничего не происходит
