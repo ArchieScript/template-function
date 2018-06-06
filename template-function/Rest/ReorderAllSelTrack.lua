@@ -76,12 +76,14 @@
                     end
                     if breakX == 1 then break end
                 end
+            else
+                makePrevFolder = 0
             end
         else
             numb = 0
         end
         reaper.ReorderSelectedTracks(numb, makePrevFolder)
-    end 
+    end
 
 
 
