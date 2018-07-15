@@ -36,8 +36,8 @@
 >
 >##### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;                                                                             [SetMediaItemLeftTrim( value , item )](https://github.com/ArchieScript/template-function/blob/master/template-function/Set/SetMediaItemLeftTrim(value%2Citem).lua) &nbsp;&nbsp;--_Установить левую часть элемента мультимедиа(обрезать,удленить с    лева)_
 >
->##### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
-       [SetSoloMuteAllTracks(valSolo,valMute)](https://github.com/ArchieScript/template-function/blob/master/template-function/Set/SetSoloMuteAllTracks.lua)-- включть,выключиить звук во всех треках
+>##### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;                                                                           [SetSoloMuteAllTracks(valSolo,valMute)](https://github.com/ArchieScript/template-function/blob/master/template-function/Set/SetSoloMuteAllTracks.lua)-- включть,выключиить звук во всех треках
+>
 
 
 
