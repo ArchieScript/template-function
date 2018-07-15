@@ -9,3 +9,5 @@
 ##### [SetCollapseFolderMCP (MPL)](https://github.com/ArchieScript/template-function/blob/master/template-function/Set/SetCollapseFolderMCP%20(MPL).lua) -- Свернуть развернуть дорожки в микшере
 
 ##### [SetMediaItemLeftTrim( value , item )](https://github.com/ArchieScript/template-function/blob/master/template-function/Set/SetMediaItemLeftTrim(value%2Citem).lua)--Установить левую часть элемента мультимедиа(обрезать,удленить элемент с лева)
+
+##### [SetSoloMuteAllTracks(valSolo,valMute)](https://github.com/ArchieScript/template-function/blob/master/template-function/Set/SetSoloMuteAllTracks.lua)-- включть,выключиить звук во всех треках
