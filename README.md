@@ -38,6 +38,8 @@
 >
 >##### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;                                                                           [SetSoloMuteAllTracks(valSolo,valMute)](https://github.com/ArchieScript/template-function/blob/master/template-function/Set/SetSoloMuteAllTracks.lua)-- включть,выключиить звук во всех треках
 >
+>##### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;                                                                            [SetToggleButtonOnOff(numb)](https://github.com/ArchieScript/template-function/blob/master/template-function/Set/SetToggleButtonOnOff.lua)-- Установить  Кнопку Переключателя Вкл Выкл
+>
 
 
 
