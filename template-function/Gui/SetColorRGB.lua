@@ -1,15 +1,17 @@
 
 
 
+   Установить  Цвет R.G.B.A.
+
+-- [ необязательный параметр ]
 
 
-
-   r,g,b - цвет, a - яркость от 0 до 1
+   r,g,b - цвет; a - яркость от 0 до 1 ; mode 0 выкл, 1 вкл (если под низом есть слой цвета и если  mode вкл, то цвета смешаются ) 
    
     
 
    
-    local function SetColorRGB(r,g,b,a)
+    local function SetColorRGB(r,g,b,a[mode])
         gfx.set(r/256,g/256,b/256,a) 
     end
 
