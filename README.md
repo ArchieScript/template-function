@@ -62,7 +62,8 @@
 #
 >[Gui](https://github.com/ArchieScript/template-function/tree/master/template-function/Gui) 
 >
->##### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;                                                                             [Funct](ccskrf ) -- описание
+>##### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;                                                                            [SetColorRGB(r,g,b,a)](https://github.com/ArchieScript/template-function/blob/master/template-function/Gui/SetColorRGB.lua)-- Установить  Цвет R.G.B.A. (RGB = Цвет; A = яркость) 
+>
 
 
 
