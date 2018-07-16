@@ -62,7 +62,7 @@
 #
 >[Gui](https://github.com/ArchieScript/template-function/tree/master/template-function/Gui) 
 >
->>##### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;                                                                             [Funct](ccskrf ) -- описание
+>##### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;                                                                             [Funct](ccskrf ) -- описание
 
 
 
