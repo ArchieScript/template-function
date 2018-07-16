@@ -54,8 +54,15 @@
 >##### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;                                                                            [CompareStrings(string,find_in_string )](https://github.com/ArchieScript/template-function/blob/master/template-function/Rest/CompareStrings.lua) -- Сравнить строки на совпадения
 >
 >##### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;                                                                            [If_Equals(EqualsToThat,...)](https://github.com/ArchieScript/template-function/blob/master/template-function/Rest/If_Equals.lua) -- функция для сокращения условий  
+>
 
 
+
+#
+#
+>[Gui](https://github.com/ArchieScript/template-function/tree/master/template-function/Gui) 
+>
+>>##### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;                                                                             [Funct](ccskrf ) -- описание
 
 
 
@@ -68,5 +75,5 @@
 
 
 
-
+ 
 ---
