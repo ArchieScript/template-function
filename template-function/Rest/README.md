@@ -17,6 +17,6 @@
 
 ##### [If_Equals(EqualsToThat,...)](https://github.com/ArchieScript/template-function/blob/master/template-function/Rest/If_Equals.lua) -- функция для сокращения условий  
 
-
+##### [msg('test',true false )](https://github.com/ArchieScript/template-function/blob/master/template-function/Rest/msg.lua) -- открыть консоль с сообщением
 
  
