@@ -21,7 +21,9 @@
 -----------
 
 
+
   -- что бы действие срабатывало при отжатии кнопки
+
 
         if gfx.mouse_cap&1 == 1  then  -- если левая кнопка нажата
             if Mouse_Is_Inside(18,12,89,15) and not mouse_btn_down then
@@ -31,7 +33,7 @@
             end
         else
             if mouse_btn_down == true and Mouse_Is_Inside(18,12,89,15) then
-            msg('test', false )
+
                 --function() -- когда отжата л.к.мыши --выполнить действие
                 mouse_btn_down = false
             else
