@@ -10,7 +10,7 @@
                                                                                                 --  118 выделенный
                                                                                                 --  115 жырный   
                               ---------------------------------------------------------------------------------------------------
-    требуется SetColorRGB     http://github.com/ArchieScript/template-function/blob/master/template-function/Gui/SetColorRGB.lua
+    требуется SetColorRGB     https://github.com/ArchieScript/template-function/blob/master/template-function/Gui/SetColorRGB.lua
                          
 
 
