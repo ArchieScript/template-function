@@ -12,7 +12,7 @@
 
 ##### [Save,Restore,selected tracks( guid { [table] } )](https://github.com/ArchieScript/template-function/blob/master/template-function/Save/Save%20restore%20selected%20tracks%20%7B%5Btablep%5D%7D.lua)
 
-##### [SaveRestoreSelEnvPoint(Env, SaveRest)](hhttps://github.com/ArchieScript/template-function/blob/master/template-function/Save/SaveRestoreSelEnvPoint.lua) -- Сохранить востановить выделенные точки автоматизации(работает со всеми точками автоэлемент(autoitem),огиб.на элеминте)
+##### [SaveRestoreSelEnvPoint(Env, SaveRest)](https://github.com/ArchieScript/template-function/blob/master/template-function/Save/SaveRestoreSelEnvPoint.lua) -- Сохранить востановить выделенные точки автоматизации(работает со всеми точками автоэлемент(autoitem),огиб.на элеминте)
 
 
 
