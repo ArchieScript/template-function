@@ -25,7 +25,7 @@
 >
 >##### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;                                                                             [Save,Restore,selected tracks( guid { [table] } )](https://github.com/ArchieScript/template-function/blob/master/template-function/Save/Save%20restore%20selected%20tracks%20%7B%5Btablep%5D%7D.lua)
 >
->##### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;                                                                            [SaveRestoreSelEnvPoint(Env, SaveRest)](https://github.com/ArchieScript/template-function/blob/master/template-function/Save/SaveRestoreSelEnvPoint.lua) -- Сохранить востановить выделенные точки автоматизации(работает со всеми точками)    
+>##### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;                                                                            [SaveRestoreSelEnvPoint(Env, SaveRest)](https://github.com/ArchieScript/template-function/blob/master/template-function/Save/SaveRestoreSelEnvPoint.lua) -- Сохранить востановить выделенные точки автоматизации
 >
 >
 
