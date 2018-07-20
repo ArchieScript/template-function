@@ -12,28 +12,29 @@
 
 
 
-   local selT = {} 
+   local selT 
    local function SaveRestoreSelEnvPoint(Env, SaveRest) 
        local t = nil
+       if SaveRest == 1 then selT = {} end
        local CountAutoItem = reaper.CountAutomationItems(Env)
-       for i1 = -1,CountAutoItem -1  do 
-           local CountPoint =  reaper.CountEnvelopePointsEx(Env,i1)
-           for i2 = 1,CountPoint do 
+       for i = -1,CountAutoItem -1  do 
+           local CountPoint =  reaper.CountEnvelopePointsEx(Env,i)
+           for i1 = 1,CountPoint do 
                if SaveRest == 1 then
                    if not tonumber(t)then t = 0 end t = t + 1
-                   local _,_,value,_,_,sel = reaper.GetEnvelopePointEx(Env,i1,i2-1)
+                   local _,_,value,_,_,sel = reaper.GetEnvelopePointEx(Env,i,i1-1)
                    selT[t-1] = sel                 
                else  
-                   if not tonumber(t)then t = -1 end t = t + 1
+                   if not tonumber(t)then t = (-1) end t = t + 1
                    for iT = 0, #selT  do
                        if iT == t then
-                           reaper.SetEnvelopePointEx(Env,i1,i2-1,nil,nil,nil,nil,selT[iT],nil)
+                           reaper.SetEnvelopePointEx(Env,i,i1-1,nil,nil,nil,nil,selT[iT],nil)
                        end
                    end  
                end      
           end    
        end 
-   end  
+   end 
    
    
    
