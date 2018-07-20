@@ -14,7 +14,7 @@
 
     local function SaveRestoreSelEnvPoint(Env, SaveRest) 
         local t
-        if SaveRest == 1 then selT = {};timT = {} end
+        if SaveRest == 1 then selT = {};timeT = {} end
         local CountAutoItem = reaper.CountAutomationItems(Env)
         for i = -1,CountAutoItem -1  do 
             local CountPoint =  reaper.CountEnvelopePointsEx(Env,i)
@@ -23,10 +23,10 @@
                 if SaveRest == 1 then
                     if not tonumber(t)then t = 0 end; t = t + 1
                     selT[t] = sel  
-                    timT[t] = time               
+                    timeT[t] = time               
                 else  
-                    for iT = 0, #timT do
-                        if time == timT[iT] then
+                    for iT = 0, #timeT do
+                        if time == timeT[iT] then
                             reaper.SetEnvelopePointEx(Env,i,i1-1,nil,nil,nil,nil,selT[iT],nil)
                         end
                     end  
