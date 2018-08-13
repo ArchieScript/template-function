@@ -8,5 +8,8 @@
 
 ##### [string.gmatch](https://github.com/ArchieScript/template-function/blob/master/template-function/Lua/string.gmatchstring.gmatch.lua) <li> &nbsp;&nbsp;&nbsp;&nbsp; _подробнее [здесь](http://uopilot.tati.pro/index.php?title=String.gmatch_(Lua))_
 
+##### [tonumber(string.format("%.1f", user_input_str))](https://github.com/ArchieScript/template-function/blob/master/template-function/Lua/tonumber-string.format-.1f-%20user_input_str.lua) &nbsp;&nbsp;&nbsp;&nbsp;
+
+
 
 
