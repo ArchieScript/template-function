@@ -15,7 +15,7 @@ Numb = tonumber(string.format("%.1f", user_Numb))
 -------------------------
 
 
-Numb = tonumber(string.format("%.2f", user_input_str))
+Numb = tonumber(string.format("%.2f", user_Numb))
 
 на выходе 15.66
 
