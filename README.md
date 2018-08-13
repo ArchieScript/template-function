@@ -78,7 +78,7 @@
 #
 >[Lua](https://github.com/ArchieScript/template-function/tree/master/template-function/Lua)
 >
->##### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;                                                                            [string.gmatch](https://github.com/ArchieScript/template-function/blob/master/template-function/Lua/string.gmatchstring.gmatch.lua) <li><li> &nbsp;&nbsp;&nbsp;&nbsp; _подробнее [здесь](http://uopilot.tati.pro/index.php?title=String.gmatch_(Lua))_ </li></li>
+>##### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;                                                                            [string.gmatch](https://github.com/ArchieScript/template-function/blob/master/template-function/Lua/string.gmatchstring.gmatch.lua) <&nbsp;&nbsp;&nbsp;&nbsp; li &nbsp;&nbsp;&nbsp;&nbsp;>&nbsp;&nbsp;&nbsp;&nbsp; _подробнее [здесь](http://uopilot.tati.pro/index.php?title=String.gmatch_(Lua))_ </li> 
 >
 >##### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;                                                                            [tonumber(string.format("%.1f", X))](https://github.com/ArchieScript/template-function/blob/master/template-function/Lua/tonumber-string.format-.1f-%20user_input_str.lua) &nbsp;&nbsp;&nbsp;&nbsp;--СОКРОТИТЬ ЧИСЛО ПОСЛЕ ЗАПЯТОЙ
 >
