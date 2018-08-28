@@ -15,6 +15,10 @@
 >##### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;                                                                            [GetScriptNameByID](https://github.com/ArchieScript/template-function/blob/master/template-function/Get/GetScriptNameByID.lua)--Получить имя скрипта по ID
 >
 >
+>##### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;                                                                            [GetIDByScriptName](https://github.com/ArchieScript/template-function/blob/master/template-function/Get/GetIDByScriptName.lua)--получить ID по имени скрипта
+>
+>
+>
 >
 #
 #
