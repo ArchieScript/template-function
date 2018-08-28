@@ -3,8 +3,9 @@
 
 
 
+          --Автор: MPL
 
-
+              --Получить имя скрипта по ID
 
 
 
@@ -15,4 +16,15 @@ function GetScriptNameByID(ID)
     return cont:match(ID:match('[%a%d]+')..'%s"(.-)".-\n')
 end
 
-scriptname = GetScriptNameByID('_RS5a9b832ada3f7ee194cb55a9e2e504626cd6a546')
+scriptname = GetScriptNameByID(id)
+
+
+
+
+
+
+
+
+
+
+
