@@ -20,7 +20,7 @@ function GetIDByScriptName(scriptname)
     for line in cont:gmatch('[^\r\n]+') do if line:match(scriptname) then return line:match('RS[%a%d]+') end end
 end
 
-ID = GetIDByScriptName( NameScript )
+ID = GetIDByScriptName( scriptname )
  
  
  
