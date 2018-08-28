@@ -12,6 +12,9 @@
 >##### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;                                                                            [GetInstrumentVSTi](https://github.com/ArchieScript/template-function/blob/master/template-function/Get/GetInstrumentVSTi.lua)                                      &nbsp;&nbsp;-- _Получить VSTi инструмент_
 >
 >
+>##### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;                                                                            [GetScriptNameByID](https://github.com/ArchieScript/template-function/blob/master/template-function/Get/GetScriptNameByID.lua)--Получить имя скрипта по ID
+>
+>
 >
 #
 #
