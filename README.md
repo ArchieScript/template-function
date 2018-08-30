@@ -68,9 +68,13 @@
 >
 >##### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;                                                                            [Module](https://github.com/ArchieScript/template-function/blob/master/template-function/Rest/Module.lua) --  Модули
 >
->##### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  
+>##### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;                                                                            [Run script by script](https://github.com/ArchieScript/template-function/blob/master/template-function/Rest/Run%20script%20by%20script.lua) -- Запустить скрипт скриптом  
 >
-
+>##### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+>
+>
+>
+>
 
 
 #
