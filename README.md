@@ -66,6 +66,10 @@
 >
 >##### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;                                                                            [msg('test',true false )](https://github.com/ArchieScript/template-function/blob/master/template-function/Rest/msg.lua) -- открыть консоль с сообщением
 >
+>##### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;                                                                            [Module](https://github.com/ArchieScript/template-function/blob/master/template-function/Rest/Module.lua) --  Модули
+>
+>##### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  
+>
 
 
 
