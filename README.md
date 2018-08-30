@@ -54,7 +54,7 @@
 
 #
 #
->[Rest](https://github.com/ArchieScript/template-function/tree/master/template-function/Rest)  
+>[Rest](https://github.com/ArchieScript/template-function/tree/master/template-function/Rest) Остальное
 >
 >##### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;                                                                             [DeleteOnlyTrack(track)](https://github.com/ArchieScript/template-function/blob/master/template-function/Rest/DeleteOnlyTrack(track).lua ) -- При удалении последнего трека в папке не закидывает следующие треки в предыдущую папку 
 >
