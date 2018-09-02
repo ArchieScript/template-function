@@ -12,14 +12,14 @@
     ---------------------------------------------------------------------- 
 
 
-    local Mod = {}
+    local Module = {}
 
-    function Mod.Action()
+    function Module.Action()
        bla bla bla
     end
 
 
-    return Mod
+    return Module
 
 
     --------------///////////////////////---------------------------------
@@ -39,7 +39,7 @@
     Module_Path = [[путь к папке где лежит модуль]] 
 
     package.path = package.path..";"..Module_Path.."./?.lua"
-    Mod = require "Mod"
+    Mod = require "Module"
     ------------------------http://k-pavel.ru/moduli-v-lua/
 
 
