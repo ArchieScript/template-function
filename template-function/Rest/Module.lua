@@ -32,6 +32,8 @@
      -- В скрипте прописываем путь к модулю --
     -------------------------------------------
 
+    
+
 
     --  filename = select(2,reaper.get_action_context())
     --  ScriptPath, ScriptName = filename:match("(.+)[\\](.+)")
