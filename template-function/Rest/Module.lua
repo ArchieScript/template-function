@@ -41,7 +41,7 @@
 
     Module_Path = [[путь к папке где лежит модуль]] 
 
-    package.path = package.path..";"..Module_Path.."./?.lua"
+    package.path = package.path..";"..Module_Path.."/?.lua"
     Mod = require "Module"
     ------------------------http://k-pavel.ru/moduli-v-lua/
 
