@@ -29,7 +29,7 @@
   --GUID
 
      
-        local guid
+    local guid
     function Save_Selected_Items()
         guid = {}
         for i = 1, reaper.CountSelectedMediaItems(0) do
