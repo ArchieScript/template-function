@@ -1,7 +1,7 @@
 
 
 
-
+      -- SetMIDIEditorGridSwing.lua
 
            -- Установить значение качания в редактори миди
            -- Set the swing value in the midi editor
