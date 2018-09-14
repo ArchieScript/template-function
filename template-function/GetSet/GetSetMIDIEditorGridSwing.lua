@@ -5,7 +5,9 @@
 
 
 
-      -- GetSetMIDIEditorGridSwing.lua
+    
+
+-- GetSetMIDIEditorGridSwing.lua
 
            -- Установить,получить значение качания в редактори миди
            -- Set, get swing value in MIDI editor
