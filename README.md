@@ -53,9 +53,20 @@
 >
 >##### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  
 >
+>
 
 #
 #
+
+>[GetSet](https://github.com/ArchieScript/template-function/tree/master/template-function/GetSet) 
+>
+>##### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;                                                                            [GetSetMIDIEditorGridSwing(isSet,MidiEditor,swingIn)](https://github.com/ArchieScript/template-function/blob/master/template-function/GetSet/GetSetMIDIEditorGridSwing.lua) &nbsp;&nbsp;-- Установить,получить значение качания(swing) в редактори миди
+>
+>
+
+#
+#
+
 >[Rest](https://github.com/ArchieScript/template-function/tree/master/template-function/Rest) / Остальное
 >
 >##### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;                                                                             [DeleteOnlyTrack(track)](https://github.com/ArchieScript/template-function/blob/master/template-function/Rest/DeleteOnlyTrack(track).lua ) -- При удалении последнего трека в папке не закидывает следующие треки в предыдущую папку 
