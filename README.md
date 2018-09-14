@@ -23,6 +23,8 @@
 #
 #
 
+
+
 >[Set](https://github.com/ArchieScript/template-function/tree/master/template-function/Set)
 >
 >##### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;                                                                             [SetCollapseFolderMCP (MPL)](https://github.com/ArchieScript/template-function/blob/master/template-function/Set/SetCollapseFolderMCP%20(MPL).lua)
@@ -42,6 +44,8 @@
 #
 #
 
+
+
 >[GetSet](https://github.com/ArchieScript/template-function/tree/master/template-function/GetSet) 
 >
 >##### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;                                                                            [GetSetMIDIEditorGridSwing(isSet,MidiEditor,swingIn)](https://github.com/ArchieScript/template-function/blob/master/template-function/GetSet/GetSetMIDIEditorGridSwing.lua) &nbsp;&nbsp;-- Установить,получить значение качания(swing) в редактори миди
@@ -50,6 +54,9 @@
 
 #
 #
+
+
+
 >[Save](https://github.com/ArchieScript/template-function/tree/master/template-function/Save) 
 >
 >
@@ -65,6 +72,9 @@
 
 #
 #
+
+
+
 
 >[Rest](https://github.com/ArchieScript/template-function/tree/master/template-function/Rest) / Остальное
 >
@@ -91,6 +101,9 @@
 
 #
 #
+
+
+
 >[Gui](https://github.com/ArchieScript/template-function/tree/master/template-function/Gui) 
 >
 >##### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;                                                                            [SetColorRGB(r,g,b,a)](https://github.com/ArchieScript/template-function/blob/master/template-function/Gui/SetColorRGB.lua)-- Установить  Цвет R.G.B.A. (RGB = Цвет; A = яркость) 
@@ -98,11 +111,13 @@
 >##### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;                                                                            [Mouse_Is_Inside(x, y, w, h)](https://github.com/ArchieScript/template-function/blob/master/template-function/Gui/Mouse_Is_Inside.lua)-- установить координаты мыши для кнопки
 >
 >##### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;                                                                            [FontTextColor(text)](https://github.com/ArchieScript/template-function/blob/master/template-function/Gui/FontTextColor.lua)-- Объемный текст с установленными шрифтами
-
-
-
+>
+>
 #
 #
+
+
+
 >[Lua](https://github.com/ArchieScript/template-function/tree/master/template-function/Lua)
 >
 >##### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;                                                                            [string.gmatch](https://github.com/ArchieScript/template-function/blob/master/template-function/Lua/string.gmatchstring.gmatch.lua) <li>&nbsp;&nbsp;&nbsp;&nbsp; _подробнее [здесь](http://uopilot.tati.pro/index.php?title=String.gmatch_(Lua))_ </li> 
