@@ -16,6 +16,6 @@
 ##### [SetToggleButtonOnOff(numb)](https://github.com/ArchieScript/template-function/blob/master/template-function/Set/SetToggleButtonOnOff.lua)-- Установить  Кнопку Переключателя Вкл Выкл
 
 
-##### [SetMIDIEditorGridSwing(MidiEditor,swingIn)](https://github.com/ArchieScript/template-function/blob/master/template-function/Set/SetMIDIEditorGridSwing.lua)-- Установить значение качания(Swing) в редактори миди
+
 
 
