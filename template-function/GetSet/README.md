@@ -9,19 +9,11 @@
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 
 
-##### [GetSetMIDIEditorGridSwing(isSet,MidiEditor,swingIn)](https://github.com/ArchieScript/template-function/blob/master/template-function/GetSet/GetSetMIDIEditorGridSwing.lua)--Установить,получить значение качания(swing) в редактори миди
+##### [GetSetMIDIEditorGridSwing(isSet,MidiEditor,swingIn)](https://github.com/ArchieScript/template-function/blob/master/template-function/GetSet/GetSetMIDIEditorGridSwing.lua)|--Установить,получить значение качания(swing) в редактори миди
 
  
 
  
 Название файла  | Содержание файла
 ----------------|----------------------
-[GetSetMIDIEditorGridSwing(isSet,MidiEditor,swingIn)](https://github.com/ArchieScript/template-function/blob/master/template-function/GetSet/GetSetMIDIEditorGridSwing.lua)     | Установить,получить значение качания(swing) в редактори миди
-reset.css       | Reset CSS от Эрика Мейера
-normalize.css   | Нормалайзер CSS от Nicolas Gallagher
-block.css       | Основные стили блоков системы
-addition.css    | Дополнительные стили
-fontawesome.css | Стили иконочного шрифта
-layout.css      | Основные стили, применительно к определённому сайту
-lightbox.css    | Стили лайтбокса, если таковой используется
-index.html      | Индексный файл для проверки вносимых изменений
+
