@@ -14,14 +14,10 @@
 ##### [GetSetMIDIEditorGridSwing(isSet,MidiEditor,swingIn)](https://github.com/ArchieScript/template-function/blob/master/template-function/GetSet/GetSetMIDIEditorGridSwing.lua)--Установить,получить значение качания(swing) в редактори миди
 
 
---------------
----------
--------
-------
+ 
 
  
- sdasdsdfsdf | sdasdsdfsdf | sdasdsdfsdf |  sdasdsdfsdf |  sdasdsdfsdf | sdasdsdfsdf | sdasdsdfsdf | sdasdsdfsdf
- ------------|-------------|-------------|--------------|--------------|------------ |--------------|------------
+
  
  
  
