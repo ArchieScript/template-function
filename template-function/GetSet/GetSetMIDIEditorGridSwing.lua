@@ -9,12 +9,12 @@
 
 -- GetSetMIDIEditorGridSwing.lua
 
-           -- Установить,получить значение качания в редактори миди
-           -- Set, get swing value in MIDI editor
+           -- Получить Установить значение качания в редактори миди
+           -- Get Set swing value in MIDI editor
            
            
-                                                      -- swingIn 0-1
-                                                      -- isSet  0-1 -- GetSet
+                                                      -- swingIn - (-1  1) -- 1 = 100; 0 = 0; -1 = -100;
+                                                      -- isSet   - ( 0  1) -- GetSet
 
 
 
