@@ -16,7 +16,7 @@
  
 Название файла  | Содержание файла
 ----------------|----------------------
-style.css       | Пустой файл каскадной таблицы стилей, в который производится сбока необходимых стилей
+[GetSetMIDIEditorGridSwing(isSet,MidiEditor,swingIn)](https://github.com/ArchieScript/template-function/blob/master/template-function/GetSet/GetSetMIDIEditorGridSwing.lua)     | Установить,получить значение качания(swing) в редактори миди
 reset.css       | Reset CSS от Эрика Мейера
 normalize.css   | Нормалайзер CSS от Nicolas Gallagher
 block.css       | Основные стили блоков системы
