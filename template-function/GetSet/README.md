@@ -18,8 +18,8 @@
  
 
  
- dfgdfg | sdsdfsdf | sdsdfs |  dsdfs |  dsfsf | dsfsdf   
- -------|----------|--------|--------|--------|-------
+ dfgdfg || sdsdfsdf | sdsdfs |  dsdfs |  dsfsf | dsfsdf   
+ -------||----------|--------|--------|--------|-------
  
  
  
