@@ -19,11 +19,12 @@
 
 
     local function GetSetMIDIEditorGridSwing(isSet,MidiEditor,swingIn)
-        local _,grid,swingOnOff,swing = reaper.GetSetProjectGrid(0,0)
         local take = reaper.MIDIEditor_GetTake(MidiEditor)
-        local MidiGrid,MidiSwing,noteLen = reaper.MIDI_GetGrid(take)
-        if tonumber(swingIn) and isSet == 1 then 
+        if tonumber(swingIn) and isSet == 1 then  
             reaper.PreventUIRefresh(951753) 
+            local _,grid,swingOnOff,swing = reaper.GetSetProjectGrid(0,0)
+            reaper.MIDIEditor_OnCommand( MidiEditor,41003)
+            local MidiGrid = select(1,reaper.MIDI_GetGrid(take))
             reaper.GetSetProjectGrid(0,1,nil,1,nil) 
             local ToggleDivOn = reaper.GetToggleCommandState(42010)
             if ToggleDivOn == 0 then 
@@ -39,6 +40,7 @@
             end
             reaper.PreventUIRefresh(-951753)
         end    
+        local MidiGrid,MidiSwing,noteLen = reaper.MIDI_GetGrid(take)
         return MidiSwing --,MidiGrid,noteLen  
     end
 
