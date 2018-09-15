@@ -23,7 +23,7 @@
         if tonumber(swingIn) and isSet == 1 then  
             reaper.PreventUIRefresh(951753) 
             local _,grid,swingOnOff,swing = reaper.GetSetProjectGrid(0,0)
-            reaper.MIDIEditor_OnCommand( MidiEditor,41003)
+            reaper.MIDIEditor_OnCommand( MidiEditor,41006)
             local MidiGrid = select(1,reaper.MIDI_GetGrid(take))
             reaper.GetSetProjectGrid(0,1,nil,1,nil) 
             local ToggleDivOn = reaper.GetToggleCommandState(42010)
