@@ -36,10 +36,11 @@
                 reaper.SetMIDIEditorGrid( 0, MidiGrid/4)
                 reaper.GetSetProjectGrid(0,1,grid,swingOnOff,swing)  
             else
-              reaper.GetSetProjectGrid(0,1,nil,swingOnOff,nil)
+                reaper.GetSetProjectGrid(0,1,nil,swingOnOff,nil)
             end
             reaper.PreventUIRefresh(-951753)
         end    
+        reaper.MIDIEditor_OnCommand( MidiEditor,41006)---
         local MidiGrid,MidiSwing,noteLen = reaper.MIDI_GetGrid(take)
         return MidiSwing --,MidiGrid,noteLen  
     end
