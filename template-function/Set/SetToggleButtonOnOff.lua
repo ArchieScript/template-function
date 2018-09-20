@@ -7,7 +7,7 @@
 
 
 
-local function GetSetToggleButtonOnOff()
+local function SetToggleButtonOnOff()
     local value,ScriptWay,sec,cmd,mod,res,val = reaper.get_action_context()
     local state = reaper.GetToggleCommandStateEx(sec, cmd) 
     reaper.SetToggleCommandState(sec, cmd, math.abs(state - 1))
