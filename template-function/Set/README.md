@@ -14,8 +14,6 @@
 
 ##### [SetMediaItemLeftTrim( value , item )](https://github.com/ArchieScript/template-function/blob/master/template-function/Set/SetMediaItemLeftTrim(value%2Citem).lua)--Установить левую часть элемента мультимедиа(обрезать,удленить элемент с лева)
 
-##### [SetSoloMuteAllTracks(valSolo,valMute)](https://github.com/ArchieScript/template-function/blob/master/template-function/Set/SetSoloMuteAllTracks.lua)-- включть,выключиить звук во всех треках
-
 
 ##### [SetToggleButtonOnOff(numb)](https://github.com/ArchieScript/template-function/blob/master/template-function/Set/SetToggleButtonOnOff.lua)-- Установить  Кнопку Переключателя Вкл Выкл
 
