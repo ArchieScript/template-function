@@ -37,7 +37,7 @@ local function gfxSaveScrin_buf(buf,w, h)
 end 
   
   
-local function gfxRestScrin_buf(buf,w, h)
+local function gfxRestScrin_buf(buf)
     gfx.dest = -1
     gfx.a = 1
     gfx.blit(buf,1,0,0,0,gfx.w,gfx.h,0,0,gfx.w,gfx.h,0,0)
