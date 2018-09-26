@@ -15,8 +15,6 @@
 
 ##### [FontTextColor(text)](https://github.com/ArchieScript/template-function/blob/master/template-function/Gui/FontTextColor.lua)-- Объемный текст с установленными шрифтами
 
-
-
-
+##### [gfx.blit()](https://github.com/ArchieScript/template-function/blob/master/template-function/Gui/Blit.lua)-- Сохронить Востановить отрисованное изображение
 
 
