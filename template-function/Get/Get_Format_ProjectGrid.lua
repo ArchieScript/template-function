@@ -26,7 +26,7 @@ local function Get_Format_ProjectGrid(divisionIn)
 end
 
 
-Get_Format_ProjectGrid(divisionIn)
+GridFormat = Get_Format_ProjectGrid(divisionIn)
 
 
 
