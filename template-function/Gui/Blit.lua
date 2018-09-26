@@ -29,15 +29,15 @@ gfx.blit(1, 1, 0, -- этим вытаскиваем первый буфер и 
 ---=======================================
 ---======================================
 
-local function gfxSaveScrin_buf(buf,h,w)    
+local function gfxSaveScrin_buf(buf,w, h)    
     gfx.dest = buf
     gfx.setimgdim(buf, -1, -1)  
-    gfx.setimgdim(buf, h, w)  
+    gfx.setimgdim(buf, w, h)  
     gfx.a = 1
 end 
   
   
-local function gfxRestScrin_buf(buf,h,w)
+local function gfxRestScrin_buf(buf,w, h)
     gfx.dest = -1
     gfx.a = 1
     gfx.blit(buf,1,0,0,0,gfx.w,gfx.h,0,0,gfx.w,gfx.h,0,0)
