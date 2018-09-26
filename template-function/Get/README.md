@@ -15,3 +15,5 @@
 ##### [GetScriptNameByID](https://github.com/ArchieScript/template-function/blob/master/template-function/Get/GetScriptNameByID.lua)--Получить имя скрипта по ID
 
 ##### [GetIDByScriptName](https://github.com/ArchieScript/template-function/blob/master/template-function/Get/GetIDByScriptName.lua)--получить ID по имени скрипта
+
+##### [Get_Format_ProjectGrid(divisionIn)](https://github.com/ArchieScript/template-function/blob/master/template-function/Get/Get_Format_ProjectGrid.lua)---- Форматирует значение сетки проекта в удобочитаемую форму
