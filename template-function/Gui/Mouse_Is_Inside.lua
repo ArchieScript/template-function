@@ -30,39 +30,41 @@
    -- ТРЕБУЕСЯ Mouse_Is_Inside(x, y, w, h)
 
 
-      -- нажата л.к.мыши в этих координатах вернет 0
-      -- отжата л.к.мыши в этих координатах вернет 1
-      -- за приделами этих координатах вернет -1
+
+      -- курсор в этих координатах л.к.мыши не нажата; вернет  0
+      -- нажата в этих координатах л.к.мыши;           вернет  1
+      -- отжата в этих координатах л.к.мыши;           вернет  2
+      -- за приделами этих координатах;                вернет -1
  
 
 
- 
-local function LeftMouseButton(x, y, w, h)
-    if Mouse_Is_Inside(x, y, w, h) then
-        if gfx.mouse_cap&1 == 0 then fake = 1 end
-        if gfx.mouse_cap&1 == 1 and fake == 1 then  
-            mouse_btn_down = 0;   
-        end
-        if mouse_btn_down == 1 then mouse_btn_down = -1 end
-        if gfx.mouse_cap&1 == 0 and fake == 1 and mouse_btn_down == 0 then
-            mouse_btn_down = 1
-        end
-    else
-        mouse_btn_down = -1
-        if gfx.mouse_cap&1 == 1 and fake == 1 then 
-            mouse_btn_down = 0;  --fake = true  
-        end
-        if gfx.mouse_cap&1 == 0 then fake = nil end
-    end   
-    return mouse_btn_down
-end 
+
+ local function LeftMouseButton(x, y, w, h)
+     if Mouse_Is_Inside(x, y, w, h) then;
+         if gfx.mouse_cap&1 == 0 then fake = 1 end;
+         if gfx.mouse_cap&1 == 0 and lamp ~= 0 then mouse_btn_down = 0 end;
+         if gfx.mouse_cap&1 == 1 and fake==1 then mouse_btn_down=1 lamp=0; end; 
+         if mouse_btn_down  == 2 then mouse_btn_down = -1 end;
+         if gfx.mouse_cap&1 == 0 and fake == 1 and mouse_btn_down == 1 then;
+             mouse_btn_down =  2 lamp = nil;
+         end;
+     else 
+         mouse_btn_down = -1 lamp=nil;
+         if gfx.mouse_cap&1 == 1 and fake == 1 then mouse_btn_down = 1 end;
+         if gfx.mouse_cap&1 == 0 then fake = nil end;
+     end  
+     return mouse_btn_down;
+ end 
+
 
 
  LeftMouse = LeftMouseButton(x, y, w, h)
  if LeftMouse == 0 then 
+     -- курсор в этих координатах л.к.мыши не нажата (например для подсветки)
+ elseif LeftMouse == 1 then
      --когда нажата л.к.мыши в этих координатах --зажечь кнопку;(или какое то действие) 
  elseif LeftMouse == 1 then
-     -- когда отжата л.к.мыши в этих координатах --выполнить действие
+     -- когда отжата(нажата и отжата) л.к.мыши в этих координатах --выполнить действие
  end
 
 --======================================================================
