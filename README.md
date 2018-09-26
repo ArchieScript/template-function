@@ -45,7 +45,7 @@
 >
 >##### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  
 >
->##### [gfx.blit()](https://github.com/ArchieScript/template-function/blob/master/template-function/Gui/Blit.lua)-- Сохронить Востановить отрисованное изображение
+
 >
 >
 
@@ -121,6 +121,9 @@
 >##### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;                                                                            [Mouse_Is_Inside(x, y, w, h)](https://github.com/ArchieScript/template-function/blob/master/template-function/Gui/Mouse_Is_Inside.lua)-- установить координаты мыши для кнопки
 >
 >##### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;                                                                            [FontTextColor(text)](https://github.com/ArchieScript/template-function/blob/master/template-function/Gui/FontTextColor.lua)-- Объемный текст с установленными шрифтами
+>
+>##### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;                                                                             [gfx.blit()](https://github.com/ArchieScript/template-function/blob/master/template-function/Gui/Blit.lua)-- Сохронить Востановить отрисованное изображение
+>
 >
 >
 #
