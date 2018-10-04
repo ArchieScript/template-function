@@ -35,30 +35,32 @@
       -- нажата в этих координатах л.к.мыши;           вернет  1
       -- отжата в этих координатах л.к.мыши;           вернет  2
       -- за приделами этих координатах;                вернет -1
- 
+      -- на каждой кнопке свой buf
 
 
 
-    local function LeftMouseButton(x, y, w, h)
+    local mouse_btn_down,fake,lamp = {},{},{}
+    local function LeftMouseButton(x, y, w, h,numbuf)
         if Mouse_Is_Inside(x, y, w, h) then;
-            if gfx.mouse_cap&1 == 0 then fake = 1 end;
-            if gfx.mouse_cap&1 == 0 and lamp ~= 0 then mouse_btn_down = 0 end;
-            if gfx.mouse_cap&1 == 1 and fake==1 then mouse_btn_down=1 lamp=0; end; 
-            if mouse_btn_down  == 2 then mouse_btn_down = -1 end;
-            if gfx.mouse_cap&1 == 0 and fake == 1 and mouse_btn_down == 1 then;
-                mouse_btn_down =  2 lamp = nil;
+            if gfx.mouse_cap&1 == 0 then fake[numbuf] = 1 end;
+            if gfx.mouse_cap&1 == 0 and lamp[numbuf] ~= 0 then mouse_btn_down[numbuf] = 0 end;
+            if gfx.mouse_cap&1 == 1 and fake[numbuf]==1 then mouse_btn_down[numbuf]=1 lamp[numbuf]=0; end; 
+            if mouse_btn_down[numbuf] == 2 then mouse_btn_down[numbuf] = -1 end;
+            if gfx.mouse_cap&1 == 0 and fake[numbuf] == 1 and mouse_btn_down[numbuf] == 1 then;
+                mouse_btn_down[numbuf] = 2 lamp[numbuf] = nil;
             end;
         else 
-            mouse_btn_down = -1 lamp=nil;
-            if gfx.mouse_cap&1 == 1 and fake == 1 then mouse_btn_down = 1 end;
-            if gfx.mouse_cap&1 == 0 then fake = nil end;
+            mouse_btn_down[numbuf] = -1 lamp[numbuf]=nil;
+            if gfx.mouse_cap&1 == 1 and fake[numbuf] == 1 then mouse_btn_down[numbuf] = 1 end;
+            if gfx.mouse_cap&1 == 0 then fake[numbuf] = nil end;
         end  
-        return mouse_btn_down;
-    end 
+        return mouse_btn_down[numbuf];
+    end
+    --=================================
 
 
 
-    LeftMouse = LeftMouseButton(x, y, w, h)
+    LeftMouse = LeftMouseButton(x, y, w, h,duf)
     if LeftMouse == 0 then 
         -- курсор в этих координатах л.к.мыши не нажата (например для подсветки)
     elseif LeftMouse == 1 then
