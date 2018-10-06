@@ -1,0 +1,20 @@
+
+
+
+  -- _,_, scr_x, scr_y = reaper.my_getViewport(0,0, 0, 0,0, 0,0,0, 1 )--monitor resolution  -- разрешение монитора
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
