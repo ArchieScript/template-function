@@ -1,4 +1,4 @@
-
+                      http://computercraft.ru/topic/1365-razdelit-stroku-na-simvoly-russkiy-tekst/?do=findComment&comment=19574
 
 
 
