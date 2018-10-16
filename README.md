@@ -31,6 +31,8 @@
 >##### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;                                                                             [Len(s)](https://github.com/ArchieScript/template-function/blob/master/template-function/Get/Len.lua) -- Получить длину строки (--  работает с кирилицей)
 >
 >
+>##### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;                                                                            [Sub(s,i,j)](https://github.com/ArchieScript/template-function/blob/master/template-function/Get/Sub.lua) -- Возвращает подстроку строки S, которая начинается с символа с инд i и заканчивается симв.с инд j(раб.с кирилицей)   
+>
 >
 #
 #
