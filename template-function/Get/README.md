@@ -20,4 +20,12 @@
 
 ##### [Len(s)](https://github.com/ArchieScript/template-function/blob/master/template-function/Get/Len.lua) -- Получить длину строки (--  работает с кирилицей )   
 
+##### [Sub(s,i,j)](https://github.com/ArchieScript/template-function/blob/master/template-function/Get/Sub.lua) -- Возвращает подстроку строки S, которая начинается с символа с индексом i и заканчивается символом с индексом j(работает с кирилицей)   
+
+
+
+
+
+
+
 
