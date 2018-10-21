@@ -95,8 +95,6 @@
 >
 >##### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;                                                                             [DeleteOnlyTrack(track)](https://github.com/ArchieScript/template-function/blob/master/template-function/Rest/DeleteOnlyTrack(track).lua ) -- При удалении последнего трека в папке не закидывает следующие треки в предыдущую папку 
 >
->##### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;                                                                            [reorderAllSelTrack( TrackIdx )](https://github.com/ArchieScript/template-function/blob/master/template-function/Rest/ReorderAllSelTrack.lua) -- Перемещает все выбранные треки непосредственно над дорожкой, указанной индексом 
->
 >##### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;                                                                            [CompareStrings(string,find_in_string )](https://github.com/ArchieScript/template-function/blob/master/template-function/Rest/CompareStrings.lua) -- Сравнить строки на совпадения
 >
 >##### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;                                                                            [If_Equals(EqualsToThat,...)](https://github.com/ArchieScript/template-function/blob/master/template-function/Rest/If_Equals.lua) -- функция для сокращения условий  
