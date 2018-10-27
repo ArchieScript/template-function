@@ -17,4 +17,6 @@
 
 ##### [gfx.blit()](https://github.com/ArchieScript/template-function/blob/master/template-function/Gui/Blit.lua)-- Сохронить Востановить отрисованное изображение
 
+##### [GetSetInputText(x,y,w,h,[Press_OK])](https://github.com/ArchieScript/template-function/blob/master/template-function/Gui/GetSetInputText.lua)-- Поле для ввода текста / Text box
+
 
