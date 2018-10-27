@@ -27,21 +27,26 @@ gfx.blit(1, 1, 0, -- этим вытаскиваем первый буфер и 
 
 
 ---=======================================
----======================================
+---=======================================
+---=======================================
+---=======================================
+-----------/ buf: 1 - 1023 /--------------
+------/Min buf 1/ -- /Max buf 1023 /------
 
-local function gfxSaveScrin_buf(buf,w, h)    
-    gfx.dest = buf
-    gfx.setimgdim(buf, -1, -1)  
-    gfx.setimgdim(buf, w, h)  
-    gfx.a = 1
-end 
-  
-  
-local function gfxRestScrin_buf(buf)
-    gfx.dest = -1
-    gfx.a = 1
-    gfx.blit(buf,1,0,0,0,gfx.w,gfx.h,0,0,gfx.w,gfx.h,0,0)
-end 
+
+    local function gfxSaveScrin_buf( buf,w,h);   
+        gfx.dest = buf;
+        gfx.setimgdim(buf, -1, -1);  
+        gfx.setimgdim(buf, w, h);  
+        gfx.a = 1;
+    end;
+    ---
+      
+    local function gfxRestScrin_buf(buf,x,y,w,h);
+        gfx.dest = -1;
+        gfx.a = 1;
+        gfx.blit(buf,1,0, x,y,w,h,x,y,w,h,0,0);
+    end;
 
 
 ---=======================================================
