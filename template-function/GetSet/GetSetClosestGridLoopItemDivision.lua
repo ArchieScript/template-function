@@ -17,6 +17,7 @@
                                           -- snapToitem = 3 переместится к ближайшему концу или ближайшей позиции элемента(что ближе)
                               --Если включено все, то переместится туда, что ближе
                  -- Вернет значения - на какое время был перемещён элемент  
+                                 -- - элемент
                                  -- - позицию ближайшего деления сетки 
                                  -- - позицию  курсора
                                  -- - ближайшую позицию выбора времени
@@ -34,6 +35,7 @@
                                           -- snapToitem = 3 will move to the nearest end or nearest position of the element (which is closer)
                               --If everything is included, it will move there, which is closer
               -- Returns values -- - for how long was the item moved
+                                -- - item
                                 -- - the position of the nearest grid division
                                 -- - cursor position
                                 -- - nearest timing position
@@ -99,7 +101,7 @@ local function GetSetClosestGridLoopItemDivision(Set,item,snapToGrid,snapToEditC
                    end;
                 end;
             end;
-        end; --snapToitem
+        end;
     end;
     
     local Move = math.min(distanceToGrid or 9^99,distanceToEditCur or 9^99,
@@ -116,7 +118,7 @@ local function GetSetClosestGridLoopItemDivision(Set,item,snapToGrid,snapToEditC
     if Set == 1 then;
         reaper.SetMediaItemInfo_Value(item, "D_POSITION",moveTo);
     end;
-    return (moveTo - posItem), PosGrid, EditCur, ClosLoop, POS_X, END_X;
+    return (moveTo - posItem),item, PosGrid, EditCur, ClosLoop, POS_X, END_X;
 end;
 
 
