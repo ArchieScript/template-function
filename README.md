@@ -45,7 +45,7 @@
 >
 >##### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;                                                                             [SetMediaItemLeftTrim( value , item )](https://github.com/ArchieScript/template-function/blob/master/template-function/Set/SetMediaItemLeftTrim(value%2Citem).lua) &nbsp;&nbsp;--_Установить левую часть элемента мультимедиа(обрезать,удленить с    лева)_
 >
-
+>
 >##### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;                                                                            [SetToggleButtonOnOff(numb)](https://github.com/ArchieScript/template-function/blob/master/template-function/Set/SetToggleButtonOnOff.lua)-- Установить  Кнопку Переключателя Вкл Выкл
 >
 >##### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  
@@ -66,8 +66,8 @@
 >##### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;                                                                            [GetSetMIDIEditorGridSwing(isSet,MidiEditor,swingIn)](https://github.com/ArchieScript/template-function/blob/master/template-function/GetSet/GetSetMIDIEditorGridSwing.lua) &nbsp;&nbsp;-- Установить,получить значение качания(swing) в редактори миди
 >
 >##### [GetSetClosestGridLoopItemDivision(Set,item,snapToGrid,snapToEditCur,snapToLoop,snapToitem)](https://github.com/ArchieScript/template-function/blob/master/template-function/GetSet/GetSetMIDIEditorGridSwing.lua)
-- Переместить элемент к ближайшему делению (сетки, курсору, выбору времени, к краю итема); 
-- Вернет значения - на какое время был перемещён элемент,позицию ближайшего деления сетки, позицию  курсора, ближайшую позицию выбора -  времени, ближайшую позицию элемента, ближайшую позицию конца элемента
+> - Переместить элемент к ближайшему делению (сетки, курсору, выбору времени, к краю итема); 
+> - Вернет значения - на какое время был перемещён элемент,позицию ближайшего деления сетки, позицию  курсора, ближайшую позицию выбора   времени, ближайшую позицию элемента, ближайшую позицию конца элемента
 >
 >
 >
