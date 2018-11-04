@@ -65,6 +65,11 @@
 >
 >##### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;                                                                            [GetSetMIDIEditorGridSwing(isSet,MidiEditor,swingIn)](https://github.com/ArchieScript/template-function/blob/master/template-function/GetSet/GetSetMIDIEditorGridSwing.lua) &nbsp;&nbsp;-- Установить,получить значение качания(swing) в редактори миди
 >
+>##### [GetSetClosestGridLoopItemDivision(Set,item,snapToGrid,snapToEditCur,snapToLoop,snapToitem)](https://github.com/ArchieScript/template-function/blob/master/template-function/GetSet/GetSetMIDIEditorGridSwing.lua)
+- Переместить элемент к ближайшему делению (сетки, курсору, выбору времени, к краю итема); 
+- Вернет значения - на какое время был перемещён элемент,позицию ближайшего деления сетки, позицию  курсора, ближайшую позицию выбора -  времени, ближайшую позицию элемента, ближайшую позицию конца элемента
+>
+>
 >
 
 #
