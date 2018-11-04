@@ -15,7 +15,7 @@
                                           -- snapToitem = 1 переместится к ближайшей позиции элемента
                                           -- snapToitem = 2 переместится к ближайшему концу элемента
                                           -- snapToitem = 3 переместится к ближайшему концу или ближайшей позиции элемента(что ближе)
-                              Если включено все, то переместится туда, что ближе
+                              --Если включено все, то переместится туда, что ближе
                  -- Вернет значения - на какое время был перемещён элемент  
                                  -- - позицию ближайшего деления сетки 
                                  -- - позицию  курсора
@@ -32,7 +32,7 @@
                                           -- snapToitem = 1 will move to the nearest element position
                                           -- snapToitem = 2 will move to the nearest end of the item
                                           -- snapToitem = 3 will move to the nearest end or nearest position of the element (which is closer)
-                              If everything is included, it will move there, which is closer
+                              --If everything is included, it will move there, which is closer
               -- Returns values -- - for how long was the item moved
                                 -- - the position of the nearest grid division
                                 -- - cursor position
