@@ -12,10 +12,19 @@
                                           -- snapToGrid = 1 переместится к ближайшему делению сетки
                                           -- snapToEditCur = 1 переместится к курсору
                                           -- snapToLoop = 1 переместится к ближайшему выбору времени
+                                           ---------
+                                           -- 0 откл, 1 вкл
                                           -- snapToitem = 1 переместится к ближайшей позиции элемента
                                           -- snapToitem = 2 переместится к ближайшему концу элемента
                                           -- snapToitem = 3 переместится к ближайшему концу или ближайшей позиции элемента(что ближе)
+                                          -------------
+                                          -- если "snapToitem" включён, то переместится к ближайшей позиции
+                                          -- MoveToSel = 0 только к невыделенным
+                                          -- MoveToSel = 1 только к выделенным
+                                          -- MoveToSel = 2 к любым
+                                          --------------
                               --Если включено все, то переместится туда, что ближе
+                              ----------------------------------------------------
                  -- Вернет значения - на какое время был перемещён элемент  
                                  -- - элемент
                                  -- - позицию ближайшего деления сетки 
@@ -26,14 +35,23 @@
                                  ---------------------------------------------------------------------------------------------
                                      
                 -- Move the item to the nearest division (grid,edit cursor, time selection, to edge of the item)
-                                          -- 0 откл, 1 вкл
+                                          -- 0 off, 1 on
                                           -- snapToGrid = 1 will move to the nearest grid division
                                           -- snapToEditCur = 1 move to cursor
                                           -- snapToLoop = 1 will move to the nearest time selection 
+                                          --------------
+                                          -- 0 off, 1 on
                                           -- snapToitem = 1 will move to the nearest element position
                                           -- snapToitem = 2 will move to the nearest end of the item
                                           -- snapToitem = 3 will move to the nearest end or nearest position of the element (which is closer)
-                              --If everything is included, it will move there, which is closer
+                                          -------------
+                                          -- if "snapToitem" enabled, then move to the nearest position
+                                          -- MoveToSel = 0 only unselected
+                                          -- MoveToSel = 1 only to selected
+                                          -- MoveToSel = 2 to any
+                                          --------------
+                           --If everything is included, it will move there, which is closer
+                           ----------------------------------------------------------------
               -- Returns values -- - for how long was the item moved
                                 -- - item
                                 -- - the position of the nearest grid division
@@ -46,7 +64,7 @@
                 
 
 
-local function GetSetClosestGridLoopItemDivision(Set,item,snapToGrid,snapToEditCur,snapToLoop,snapToitem);
+local function GetSetClosestGridLoopItemDivision(Set,item,snapToGrid,snapToEditCur,snapToLoop,snapToitem,MoveToSel);
     local distanceToGrid,distanceToEditCur,distanceToLoop,distanceToItemStr,distanceToItemEnd,
           POS_X,END_X,moveTo,distanceToLoopSta,distanceToLoopEnd,ClosLoop;
     local tr = reaper.GetMediaItem_Track(item);
@@ -74,36 +92,41 @@ local function GetSetClosestGridLoopItemDivision(Set,item,snapToGrid,snapToEditC
 
     if snapToitem > 0 and snapToitem <= 3 then;
         distanceToItemStr,distanceToItemEnd = 9^99,9^99;
-        for i =  reaper.CountMediaItems(0)-1,0,-1 do;
+        for i = reaper.CountMediaItems(0)-1,0,-1 do;
             local it = reaper.GetMediaItem(0,i);
+            local Sel = (reaper.IsMediaItemSelected(it)and 1 or 0);---
             local tr = reaper.GetMediaItem_Track(it);
             local Number = reaper.GetMediaTrackInfo_Value(tr, "IP_TRACKNUMBER");
 
-            if Number > (TrackNumb-10-1) and Number < (TrackNumb+10+1) then;-- 10 tracks
-                if it ~= item then;
-                    local POS = reaper.GetMediaItemInfo_Value(it, "D_POSITION");
-                    local End = (reaper.GetMediaItemInfo_Value(it, "D_LENGTH")+POS);
+            if MoveToSel < 0 or MoveToSel > 1 then; Sel = MoveToSel end;
+            if Sel == MoveToSel then;
 
-                    if snapToitem == 1 or snapToitem == 3 then;
-                        local distanceIt_Str = math.abs (posItem - POS);
-                        if distanceIt_Str <= distanceToItemStr then;
-                           distanceToItemStr = distanceIt_Str;
-                           POS_X = POS;
-                       end;
-                   end;
+                if Number > (TrackNumb-10-1) and Number < (TrackNumb+10+1) then;-- 10 tracks
+                    if it ~= item then;
+                        local POS = reaper.GetMediaItemInfo_Value(it, "D_POSITION");
+                        local End = (reaper.GetMediaItemInfo_Value(it, "D_LENGTH")+POS);
 
-                   if snapToitem == 2 or snapToitem == 3 then;
-                       local distanceIt_end = math.abs (posItem - End);
-                       if distanceIt_end <= distanceToItemEnd then;
-                           distanceToItemEnd = distanceIt_end;
-                           END_X = End;
+                        if snapToitem == 1 or snapToitem == 3 then;
+                            local distanceIt_Str = math.abs (posItem - POS);
+                            if distanceIt_Str <= distanceToItemStr then;
+                               distanceToItemStr = distanceIt_Str;
+                               POS_X = POS;
+                           end;
                        end;
-                   end;
+
+                       if snapToitem == 2 or snapToitem == 3 then;
+                           local distanceIt_end = math.abs (posItem - End);
+                           if distanceIt_end <= distanceToItemEnd then;
+                               distanceToItemEnd = distanceIt_end;
+                               END_X = End;
+                           end;
+                       end;
+                    end;
                 end;
             end;
         end;
     end;
-    
+
     local Move = math.min(distanceToGrid or 9^99,distanceToEditCur or 9^99,
                           distanceToLoop or 9^99,distanceToItemStr or 9^99,
                                                  distanceToItemEnd or 9^99);
