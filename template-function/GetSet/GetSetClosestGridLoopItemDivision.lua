@@ -64,85 +64,87 @@
                 
 
 
-local function GetSetClosestGridLoopItemDivision(Set,item,snapToGrid,snapToEditCur,snapToLoop,snapToitem,MoveToSel);
-    local distanceToGrid,distanceToEditCur,distanceToLoop,distanceToItemStr,distanceToItemEnd,
-          POS_X,END_X,moveTo,distanceToLoopSta,distanceToLoopEnd,ClosLoop;
-    local tr = reaper.GetMediaItem_Track(item);
-    local TrackNumb = (reaper.GetMediaTrackInfo_Value(tr, "IP_TRACKNUMBER"));
-    local posItem = reaper.GetMediaItemInfo_Value(item, "D_POSITION");
-    local PosGrid = reaper.SnapToGrid(0,posItem);
-    local Startloop,Endloop = reaper.GetSet_LoopTimeRange(0,0,0,0,0);
-    local EditCur = reaper.GetCursorPosition();
+    local function GetSetClosestGridLoopItemDivision(Set,item,snapToGrid,snapToEditCur,snapToLoop,snapToitem,MoveToSel );
+        local distanceToGrid,distanceToEditCur,distanceToLoop,distanceToItemStr,distanceToItemEnd,
+              POS_X,END_X,moveTo,distanceToLoopSta,distanceToLoopEnd,ClosLoop;
+        local tr = reaper.GetMediaItem_Track(item);
+        local TrackNumb = (reaper.GetMediaTrackInfo_Value(tr, "IP_TRACKNUMBER"));
+        local posItem = reaper.GetMediaItemInfo_Value(item, "D_POSITION");
+        local PosGrid = reaper.SnapToGrid(0,posItem);
+        local Startloop,Endloop = reaper.GetSet_LoopTimeRange(0,0,0,0,0);
+        local EditCur = reaper.GetCursorPosition();
 
-    if snapToGrid == 1 then;
-        distanceToGrid = math.abs(posItem - PosGrid);
-    end;
+        if snapToGrid == 1 then;
+            distanceToGrid = math.abs(posItem - PosGrid);
+        end;
 
-    if snapToEditCur == 1 then;
-        distanceToEditCur = math.abs (posItem - EditCur);
-    end;
+        if snapToEditCur == 1 then;
+            distanceToEditCur = math.abs (posItem - EditCur);
+        end;
 
-    if snapToLoop == 1 then;
-        distanceToLoopSta = math.abs (posItem - Startloop);
-        distanceToLoopEnd = math.abs (posItem - Endloop);
-        distanceToLoop = math.min(distanceToLoopSta,distanceToLoopEnd);
-        if distanceToLoop == distanceToLoopEnd then ClosLoop = Endloop end;
-        if distanceToLoop == distanceToLoopSta then ClosLoop = Startloop end;
-    end;
+        if snapToLoop == 1 then;
+            distanceToLoopSta = math.abs (posItem - Startloop);
+            distanceToLoopEnd = math.abs (posItem - Endloop);
+            distanceToLoop = math.min(distanceToLoopSta,distanceToLoopEnd);
+            if distanceToLoop == distanceToLoopEnd then ClosLoop = Endloop end;
+            if distanceToLoop == distanceToLoopSta then ClosLoop = Startloop end;
+        end;
 
-    if snapToitem > 0 and snapToitem <= 3 then;
-        distanceToItemStr,distanceToItemEnd = 9^99,9^99;
-        for i = reaper.CountMediaItems(0)-1,0,-1 do;
-            local it = reaper.GetMediaItem(0,i);
-            local Sel = (reaper.IsMediaItemSelected(it)and 1 or 0);---
-            local tr = reaper.GetMediaItem_Track(it);
-            local Number = reaper.GetMediaTrackInfo_Value(tr, "IP_TRACKNUMBER");
+        if snapToitem > 0 and snapToitem <= 3 then;
+            distanceToItemStr,distanceToItemEnd = 9^99,9^99;
+            for i = reaper.CountMediaItems(0)-1,0,-1 do;
+                local it = reaper.GetMediaItem(0,i);
+                local Sel = (reaper.IsMediaItemSelected(it)and 1 or 0);---
+                local tr = reaper.GetMediaItem_Track(it);
+                local Number = reaper.GetMediaTrackInfo_Value(tr, "IP_TRACKNUMBER");
 
-            if MoveToSel < 0 or MoveToSel > 1 then; Sel = MoveToSel end;
-            if Sel == MoveToSel then;
+                if not tonumber(MoveToSel) then MoveToSel = 2 end;
+                if MoveToSel < 0 or MoveToSel > 1 then Sel = MoveToSel end;
+                if Sel == MoveToSel then;
 
-                if Number > (TrackNumb-10-1) and Number < (TrackNumb+10+1) then;-- 10 tracks
-                    if it ~= item then;
-                        local POS = reaper.GetMediaItemInfo_Value(it, "D_POSITION");
-                        local End = (reaper.GetMediaItemInfo_Value(it, "D_LENGTH")+POS);
+                    if Number > (TrackNumb-10-1) and Number < (TrackNumb+10+1) then;-- 10 tracks
+                        if it ~= item then;
+                            local POS = reaper.GetMediaItemInfo_Value(it, "D_POSITION");
+                            local End = (reaper.GetMediaItemInfo_Value(it, "D_LENGTH")+POS);
 
-                        if snapToitem == 1 or snapToitem == 3 then;
-                            local distanceIt_Str = math.abs (posItem - POS);
-                            if distanceIt_Str <= distanceToItemStr then;
-                               distanceToItemStr = distanceIt_Str;
-                               POS_X = POS;
+                            if snapToitem == 1 or snapToitem == 3 then;
+                                local distanceIt_Str = math.abs (posItem - POS);
+                                if distanceIt_Str <= distanceToItemStr then;
+                                   distanceToItemStr = distanceIt_Str;
+                                   POS_X = POS;
+                               end;
                            end;
-                       end;
 
-                       if snapToitem == 2 or snapToitem == 3 then;
-                           local distanceIt_end = math.abs (posItem - End);
-                           if distanceIt_end <= distanceToItemEnd then;
-                               distanceToItemEnd = distanceIt_end;
-                               END_X = End;
+                           if snapToitem == 2 or snapToitem == 3 then;
+                               local distanceIt_end = math.abs (posItem - End);
+                               if distanceIt_end <= distanceToItemEnd then;
+                                   distanceToItemEnd = distanceIt_end;
+                                   END_X = End;
+                               end;
                            end;
-                       end;
+                        end;
                     end;
                 end;
             end;
         end;
+
+        local Move = math.min(distanceToGrid or 9^99,distanceToEditCur or 9^99,
+                              distanceToLoop or 9^99,distanceToItemStr or 9^99,
+                                                     distanceToItemEnd or 9^99);
+
+        if Move == distanceToGrid    then moveTo = PosGrid  end;
+        if Move == distanceToEditCur then moveTo = EditCur  end;
+        if Move == distanceToLoop    then moveTo = ClosLoop end;
+        if Move == distanceToItemStr then moveTo = POS_X    end;
+        if Move == distanceToItemEnd then moveTo = END_X    end;
+        if not moveTo then moveTo = posItem end;
+
+        if Set == 1 then;
+            reaper.SetMediaItemInfo_Value(item, "D_POSITION",moveTo);
+        end;
+        return (moveTo - posItem),item, PosGrid, EditCur, ClosLoop, POS_X, END_X;
     end;
-
-    local Move = math.min(distanceToGrid or 9^99,distanceToEditCur or 9^99,
-                          distanceToLoop or 9^99,distanceToItemStr or 9^99,
-                                                 distanceToItemEnd or 9^99);
-
-    if Move == distanceToGrid    then moveTo = PosGrid  end;
-    if Move == distanceToEditCur then moveTo = EditCur  end;
-    if Move == distanceToLoop    then moveTo = ClosLoop end;
-    if Move == distanceToItemStr then moveTo = POS_X    end;
-    if Move == distanceToItemEnd then moveTo = END_X    end;
-    if not moveTo then moveTo = posItem end;
-
-    if Set == 1 then;
-        reaper.SetMediaItemInfo_Value(item, "D_POSITION",moveTo);
-    end;
-    return (moveTo - posItem),item, PosGrid, EditCur, ClosLoop, POS_X, END_X;
-end;
+    ----------------------------------------------------------------------------
 
 
 
