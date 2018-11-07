@@ -22,15 +22,17 @@ end
 
 function SetToggleButtonOnOff(numb) -- 1 = On ; 0 = Off  
     local value,ScriptWay,sec,cmd,mod,res,val = reaper.get_action_context()
-    reaper.SetToggleCommandState( sec, cmd, numb ) 
+    reaper.SetToggleCommandState( sec, cmd, numb or 0) 
     reaper.RefreshToolbar2( sec, cmd )
 end
 
 
 
-
-
-
+--------------------------------------
+SetToggleButtonOnOff(1);
+func();
+reaper.atexit( SetToggleButtonOnOff )
+---------------------------------------
 
 
 
