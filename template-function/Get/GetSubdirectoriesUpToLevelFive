@@ -12,55 +12,21 @@
 
 
 
-local function GetSubdirectoriesUpToLevelFive(Path)   
-    local T = {} 
-    for i = 0, math.huge do
-       fol = reaper.EnumerateSubdirectories(Path,i)
-       if fol then
-           T[#T+1] = Path.."\\"..fol
-           ------------------------
-           for i2 = 0, math.huge do
-               fol2 = reaper.EnumerateSubdirectories(Path.."\\"..fol,i2)
-               if fol2 then
-                   T[#T+1] = Path.."\\"..fol.."\\"..fol2
-                   ------------------------
-                   for i3 = 0, math.huge do
-                       fol3 = reaper.EnumerateSubdirectories(Path.."\\"..fol.."\\"..fol2,i3)
-                       if fol3 then
-                           T[#T+1] = Path.."\\"..fol.."\\"..fol2.."\\"..fol3
-                           ------------------------
-                           for i4 = 0, math.huge do
-                               fol4 = reaper.EnumerateSubdirectories(Path.."\\"..fol.."\\"..fol2.."\\"..fol3,i4)
-                               if fol4 then
-                                   T[#T+1] = Path.."\\"..fol.."\\"..fol2.."\\"..fol3.."\\"..fol4
-                                   ------------------------
-                                   for i5 = 0, math.huge do
-                                       fol5 = reaper.EnumerateSubdirectories(Path.."\\"..fol.."\\"..fol2.."\\"..fol3.."\\"..fol4,i5)
-                                       if fol5 then
-                                           T[#T+1] = Path.."\\"..fol.."\\"..fol2.."\\"..fol3.."\\"..fol4.."\\"..fol5
-                                           ----------
-                                           ----------
-                                       end
-                                       if not fol5 then break end
-                                   end
-                                   ------------------------------
-                               end
-                               if not fol4 then break end
-                           end
-                           ------------------------------
-                       end
-                       if not fol3 then break end
-                   end
-                   ----------------------------------
-               end
-               if not fol2 then break end
-           end 
-           -------------------------  
-       end
-    if not fol then return T end
-    end
-    --------------------------
-end
+local function GetSubdirectoriesUpToLevelFive(Path);
+  local T = {} Enu = reaper.EnumerateSubdirectories;
+  for i=0,math.huge do;f1 = Enu(Path,i);if f1 then;T[#T+1]=Path.."\\"..f1;
+    for i2=0,math.huge do;f2=Enu(Path.."\\"..f1,i2)if f2 then T[#T+1]=Path.."\\"..f1.."\\"..f2;
+      for i3=0,math.huge do;f3=Enu(Path.."\\"..f1.."\\"..f2,i3)if f3 then T[#T+1]=Path.."\\"..f1.."\\"..f2.."\\"..f3;
+        for i4=0,math.huge do;f4 = Enu(Path.."\\"..f1.."\\"..f2.."\\"..f3,i4)if f4 then T[#T+1]=Path.."\\"..f1.."\\"..f2.."\\"..f3.."\\"..f4;
+          for i5=0,math.huge do;f5=Enu(Path.."\\"..f1.."\\"..f2.."\\"..f3.."\\"..f4,i5)if f5 then T[#T+1]=Path.."\\"..f1.."\\"..f2.."\\"..f3.."\\"..f4.."\\"..f5;
+            ----------
+            ----------
+          end;if not f5 then break end;end;
+        end;if not f4 then break end;end;
+      end;if not f3 then break end;end;
+    end;if not f2 then break end;end; 
+  end;if not f1 then return T end;end;
+end;
 
 DDD = fol
 Path = reaper.GetResourcePath() -- returns path where ini files are stored, other things are in subdirectories.
