@@ -22,7 +22,7 @@
 
 ##### [Sub(s,i,j)](https://github.com/ArchieScript/template-function/blob/master/template-function/Get/Sub.lua) -- Возвращает подстроку строки S, которая начинается с символа с инд i и заканчивается симв.с инд j(раб.с кирилицей)   
 
-##### [GetSubdirectoriesUpToLevelFive(Path)](https://github.com/ArchieScript/template-function/blob/master/template-function/Get/GetSubdirectoriesUpToLevelFive) -- Получить таблицу с подкаталогами До Пятого Уровня 
+##### [GetSubdirectoriesUpToLevelFive(Path)](https://github.com/ArchieScript/template-function/blob/master/template-function/Get/GetSubdirectoriesUpToLevelFive.lua) -- Получить таблицу с подкаталогами До Пятого Уровня 
 
 ##### []() -- 
 
