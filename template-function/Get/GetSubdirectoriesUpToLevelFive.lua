@@ -28,7 +28,7 @@ local function GetSubdirectoriesUpToLevelFive(Path);
   end;if not f1 then return T end;end;
 end;
 
-DDD = fol
+
 Path = reaper.GetResourcePath() -- returns path where ini files are stored, other things are in subdirectories.
 Bla = GetSubdirectoriesUpToLevelFive(Path)  
 
