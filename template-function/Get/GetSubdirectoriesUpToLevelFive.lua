@@ -44,7 +44,7 @@ end;
 
 
 local function GetSubdirectoriesUpToLevelFive(Path);
-  local T = {} Enu = reaper.EnumerateSubdirectories;s="\\";h=math.huge;
+  local T,Enu,s,h = {Path},reaper.EnumerateSubdirectories,"\\",math.huge; 
   for i=0,h do;f1 = Enu(Path,i);if f1 then;T[#T+1]=Path..s..f1;
     for i2=0,h do;f2=Enu(Path..s..f1,i2)if f2 then T[#T+1]=Path..s..f1..s..f2;
       for i3=0,h do;f3=Enu(Path..s..f1..s..f2,i3)if f3 then T[#T+1]=Path..s..f1..s..f2..s..f3;
