@@ -3,7 +3,7 @@
   
          -- Set Media Item Left Trim
 
-
+                                                      (баг)
   
   local function SetMediaItemLeftTrim(value,item)
         local Pos = reaper.GetMediaItemInfo_Value( item, 'D_POSITION' )
@@ -26,7 +26,7 @@
     
     
     
-    
+                                                          работает
     
     
     ------------SetMediaItemLeftTrim2------------------
