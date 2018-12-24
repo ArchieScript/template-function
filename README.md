@@ -16,7 +16,7 @@
 
 >[Get](https://github.com/ArchieScript/template-function/tree/master/template-function/Get)
 >
->>##### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;                                                                            [GetInstrumentVSTi](https://github.com/ArchieScript/template-function/blob/master/template-function/Get/GetInstrumentVSTi.lua)
+>>##### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;                                                                          [GetInstrumentVSTi](https://github.com/ArchieScript/template-function/blob/master/template-function/Get/GetInstrumentVSTi.lua)
 >>> Получить VSTi инструмент
 >
 >
