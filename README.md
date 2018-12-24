@@ -20,7 +20,7 @@
 >>> Получить VSTi инструмент
 >
 >
->##### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;                                                                            [GetScriptNameByID](https://github.com/ArchieScript/template-function/blob/master/template-function/Get/GetScriptNameByID.lua)
+>>##### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;                                                                         [GetScriptNameByID](https://github.com/ArchieScript/template-function/blob/master/template-function/Get/GetScriptNameByID.lua)
 >>> Получить имя скрипта по ID
 >
 >
