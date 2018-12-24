@@ -33,25 +33,29 @@
 >
 >>##### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;                                                                          [Get_Format_ProjectGrid(divisionIn)](https://github.com/ArchieScript/template-function/blob/master/template-function/Get/Get_Format_ProjectGrid.lua)
 >>> Форматирует значение сетки проекта в удобочитаемую форму
->---
+>#
 >
 >
 >>##### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;                                                                                            [Len(s)](https://github.com/ArchieScript/template-function/blob/master/template-function/Get/Len.lua)
 >>> Получить длину строки (работает с кирилицей)
->---
+>#
 >
 >
 >>##### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;                                                                                        [Sub(s,i,j)](https://github.com/ArchieScript/template-function/blob/master/template-function/Get/Sub.lua) 
 >>> Возвращает подстроку строки S, которая начинается с символа с инд i и заканчивается симв.с инд j (работает с кирилицей)   
->---
+>#
 >
 >
 >>##### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;                                                                          [GetSubdirectoriesUpToLevelFive(Path)](https://github.com/ArchieScript/template-function/blob/master/template-function/Get/GetSubdirectoriesUpToLevelFive.lua) 
 >>> Получить таблицу с подкаталогами До Пятого Уровня 
+>#
 >
 >
 >>##### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;                                          [GetSampleNumberPosValue(take,SkipNumberOfSamplesPerChannel,FeelVolumeOfItem)](https://github.com/ArchieScript/template-function/blob/master/template-function/Get/GetSampleNumberPosValue.lua) 
 >>> -- Переберает Все семплы в тэйке, Вернет кол-во сэмплов во всех каналах, кол-во сэмплов в одном канале, номер сэмпла со всех каналов, номер сэмпла с одного канала, минимальное значение сэмпла, максимальное значение сэмпла, время сэмпла
+>#
+>
+>
 #
 #
 
