@@ -66,6 +66,7 @@
                                                         i1-1       , -- starttime_sec
                                                         samplerate , -- numsamplesperchannel
                                                         buffer     ) -- reaper.array samplebuffer
+            -------------------------------------------------------------------------------------
             local ContinueCounting = (i1-1) * samplerate; -- Продолжить Подсчет
             -------------------------------------------------------------------
             for i2 = 1, samplerate*numchannels,numchannels*(SkipNumberOfSamplesPerChannel+1) do;
@@ -78,13 +79,13 @@
                     Sample_min_all_channels = math.min(Sample,Sample_min_all_channels);
                     Sample_max_all_channels = math.max(Sample,Sample_max_all_channels);
                 end;
-                ---
+                -----
                 ---/ Feel volume of item - Чувствительность к громкости элемента /---
                 if FeelVolumeOfItem == true then;
                     Sample_min_all_channels = Sample_min_all_channels*reaper.GetMediaItemInfo_Value(item, "D_VOL");
                     Sample_max_all_channels = Sample_max_all_channels*reaper.GetMediaItemInfo_Value(item, "D_VOL");
                 end;
-                ------
+                -----
                 Sample_min[#Sample_min+1] = Sample_min_all_channels;
                 Sample_max[#Sample_max+1] = Sample_max_all_channels;
                 ----------------------------------------------------
