@@ -89,7 +89,7 @@
                 NumberSamplesAllChan[#NumberSamplesAllChan+1] = (i2 + ContinueCounting);
                 NumberSamplesOneChan[#NumberSamplesOneChan+1] = math.floor(((i2 + ContinueCounting)/numchannels)+0.5);
                 ------------------------------------------------------------------------------------------------------
-                TimeSample[#TimeSample+1] = ((i2-1)/(numchannels+ContinueCounting))/samplerate/PlayRate_Reset+item_pos
+                TimeSample[#TimeSample+1] = ((i2-1)/numchannels+ContinueCounting)/samplerate/PlayRate_Reset+item_pos
                 ------------------------------------------------------------------------------------------------------
                 if #TimeSample*(SkipNumberOfSamplesPerChannel+1) >= CountSamples_OneChannel then breakX = 1 break end;
             end;
