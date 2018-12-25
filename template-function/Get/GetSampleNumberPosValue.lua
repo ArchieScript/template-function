@@ -55,6 +55,8 @@
         local Sample_max            = {};
         local TimeSample            = {};
         ---------------------------------
+        local breakX;
+        -------------
         for i1 = 1, item_len_idx do
             local buffer = reaper.new_array(samplerate*numchannels); -- 1 sec
             local Accessor_Samples = reaper.GetAudioAccessorSamples(
