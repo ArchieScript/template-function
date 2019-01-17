@@ -3,20 +3,22 @@
 
 
 
-          --Автор: MPL
-
-              --Получить имя скрипта по ID
 
 
 
-function GetScriptNameByID(ID)
-    local fp, cont = reaper.GetResourcePath()..'/reaper-kb.ini'
-    local f = io.open(fp, 'a+')
-    if not f then return else cont = f:read('a') f:close() end
-    return cont:match(ID:match('[%a%d]+')..'%s"(.-)".-\n')
-end
+              --Получить имя скрипта по ID скрипта
 
-scriptname = GetScriptNameByID(id)
+
+
+    function GetScriptNameByID(id);
+        local Path,text = reaper.GetResourcePath()..'/reaper-kb.ini';
+        local file = io.open(Path,'r');
+        if not file then return end;
+        text = file:read('a');file:close();
+        return text:match(id:match('[%a%d]+')..'%s"(.-)".-\n');
+    end
+
+    scriptname = GetScriptNameByID(id)
 
 
 
