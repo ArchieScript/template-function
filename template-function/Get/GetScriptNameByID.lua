@@ -24,7 +24,13 @@
 
 
 
-
+    function GetScriptNameByID(id);
+        local Path = reaper.GetResourcePath()..'/reaper-kb.ini';
+        local file = io.open(Path,'r');
+        if not file then return end;
+        local text = file:read('a');file:close();
+        return text:match(id:match('[^_](%S+)')..'%s"Custom:(.-)"');  
+    end; 
 
 
 
