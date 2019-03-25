@@ -143,8 +143,6 @@
 >
 >##### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;                                                                            [Run script by script](https://github.com/ArchieScript/template-function/blob/master/template-function/Rest/Run%20script%20by%20script.lua) -- Запустить скрипт скриптом  
 >
-
->
 >##### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;                                                                            [Create Folder](https://github.com/ArchieScript/template-function/blob/master/template-function/Rest/Create%20Folder.lua) -- Создать папку с помошью lua
 >
 >
