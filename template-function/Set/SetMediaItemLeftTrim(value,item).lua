@@ -6,10 +6,6 @@
 
     
     
-    
-                                                          работает
-    
-    
     ------------SetMediaItemLeftTrim2------------------
     local function SetMediaItemLeftTrim2(position,item)
         reaper.PreventUIRefresh(3864598);
