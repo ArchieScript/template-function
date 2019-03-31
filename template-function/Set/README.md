@@ -23,7 +23,6 @@
 >#
 >##### [SetMediaItemLeftTrim( value , item )](https://github.com/ArchieScript/template-function/blob/master/template-function/Set/SetMediaItemLeftTrim(value%2Citem).lua)--Установить левую часть элемента мультимедиа(обрезать,удленить элемент с лева)
 >#
->#
 >##### [SetToggleButtonOnOff(numb)](https://github.com/ArchieScript/template-function/blob/master/template-function/Set/SetToggleButtonOnOff.lua)-- Установить  Кнопку Переключателя Вкл Выкл
 >#
 >#
