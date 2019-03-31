@@ -9,8 +9,7 @@
 ---
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 
-
-##### [DeleteOnlyTrack(track)](https://github.com/ArchieScript/template-function/blob/master/template-function/Rest/DeleteOnlyTrack(track).lua ) -- При удалении последнего трека в папке не закидывает следующие треки в предыдущую папку 
+ 
 
 ##### [CompareStrings(string,find_in_string )](https://github.com/ArchieScript/template-function/blob/master/template-function/Rest/CompareStrings.lua) -- Сравнить строки на совпадения
 
