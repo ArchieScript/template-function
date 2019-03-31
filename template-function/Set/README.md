@@ -2,20 +2,29 @@
 
 
 >### [<<<](https://github.com/ArchieScript/template-function/blob/master/template-function/Get/README.md#archiescriptreascrit)                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;                                                                                                    [template-function](https://github.com/ArchieScript/template-function#archiescriptreascrit)                                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;                                                                                                    [>>>](https://github.com/ArchieScript/template-function/tree/master/template-function/GetSet#archiescriptreascrit)
--------------
--------------------------------------------
-
->### [Get](https://github.com/ArchieScript/template-function/tree/master/template-function/Get)         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;         Set                                                                                               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;        [GetSet](https://github.com/ArchieScript/template-function/tree/master/template-function/GetSet)   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;        [Save](https://github.com/ArchieScript/template-function/tree/master/template-function/Save)       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;        [Rest](https://github.com/ArchieScript/template-function/tree/master/template-function/Rest)       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;        [Gui](https://github.com/ArchieScript/template-function/tree/master/template-function/Gui)         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;        [Lua](https://github.com/ArchieScript/template-function/tree/master/template-function/Lua)         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;                                                                                                                                                                                                            
----
-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
-
-
-##### [SetCollapseFolderMCP (MPL)](https://github.com/ArchieScript/template-function/blob/master/template-function/Set/SetCollapseFolderMCP%20(MPL).lua) -- Свернуть развернуть дорожки в микшере
-
-##### [SetMediaItemLeftTrim( value , item )](https://github.com/ArchieScript/template-function/blob/master/template-function/Set/SetMediaItemLeftTrim(value%2Citem).lua)--Установить левую часть элемента мультимедиа(обрезать,удленить элемент с лева)
-
-
-##### [SetToggleButtonOnOff(numb)](https://github.com/ArchieScript/template-function/blob/master/template-function/Set/SetToggleButtonOnOff.lua)-- Установить  Кнопку Переключателя Вкл Выкл
+>-------------
+>
+>
+>>### [Get](https://github.com/ArchieScript/template-function/tree/master/template-function/Get)         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;         Set                                                                                               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;        [GetSet](https://github.com/ArchieScript/template-function/tree/master/template-function/GetSet)   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;        [Save](https://github.com/ArchieScript/template-function/tree/master/template-function/Save)       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;        [Rest](https://github.com/ArchieScript/template-function/tree/master/template-function/Rest)       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;        [Gui](https://github.com/ArchieScript/template-function/tree/master/template-function/Gui)         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;        [Lua](https://github.com/ArchieScript/template-function/tree/master/template-function/Lua)         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  >                                                                                                                                        >                                                                  
+>---------------
+>
+>
+>
+>
+>
+>
+>
+>
+>
+>
+>
+>
+>##### [SetCollapseFolderMCP (MPL)](https://github.com/ArchieScript/template-function/blob/master/template-function/Set/SetCollapseFolderMCP%20(MPL).lua) -- Свернуть развернуть дорожки в микшере
+>#
+>##### [SetMediaItemLeftTrim( value , item )](https://github.com/ArchieScript/template-function/blob/master/template-function/Set/SetMediaItemLeftTrim(value%2Citem).lua)--Установить левую часть элемента мультимедиа(обрезать,удленить элемент с лева)
+>#
+>#
+>##### [SetToggleButtonOnOff(numb)](https://github.com/ArchieScript/template-function/blob/master/template-function/Set/SetToggleButtonOnOff.lua)-- Установить  Кнопку Переключателя Вкл Выкл
 >#
 >#
 >#
