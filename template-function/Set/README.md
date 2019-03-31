@@ -16,7 +16,24 @@
 
 
 ##### [SetToggleButtonOnOff(numb)](https://github.com/ArchieScript/template-function/blob/master/template-function/Set/SetToggleButtonOnOff.lua)-- Установить  Кнопку Переключателя Вкл Выкл
-
+>#
+>#
+>#
+>#
+>#
+>#  
+>#
+>#
+>#
+>#
+>#
+>#
+>#
+>#
+>#
+>#
+>#
+>#
 
 
 
