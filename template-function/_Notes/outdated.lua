@@ -4,7 +4,7 @@
     
     
     
-    ExtState = reaper.GetExtState('['..({reaper.get_action_context()})[2]:match(".+[\\/](.+)")..']',"outdated")
+     ExtState = reaper.GetExtState('['..({reaper.get_action_context()})[2]:match(".+[\\/](.+)")..']',"outdated")
      
      if ExtState == "" then
          reaper.MB(
@@ -26,4 +26,4 @@
      ValueExt = (tonumber(ExtState)or 0)+1
      if ValueExt > 4 then ValueExt = "" end
      
-     reaper.SetExtState(({reaper.get_action_context()})[2]:match(".+[\\/](.+)")..']',"outdated",ValueExt,false)
+     reaper.SetExtState( '['..({reaper.get_action_context()})[2]:match(".+[\\/](.+)")..']',"outdated" ,ValueExt,false)
