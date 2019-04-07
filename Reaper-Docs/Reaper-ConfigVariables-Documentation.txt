@@ -6950,7 +6950,7 @@ vstbr32
 
 -----------------------------------------------------------------------
 
-
+original:
 https://github.com/Ultraschall/ultraschall-and-reaper-docs/blob/master/Docs/Reaper-ConfigVariables-Documentation.txt
 
 -----------------------------------------------------------------------
