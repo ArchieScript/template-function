@@ -452,18 +452,18 @@
     --220------- HelpWindow_WithOptionNotToShow(Text,Header,but,reset); -----------------
     function Arc_Module.HelpWindow_WithOptionNotToShow(Text,Header,but,reset);
         local ScriptName,MessageBox = ({reaper.get_action_context()})[2]:match(".+[\\/](.+)");
-        local TooltipWind = reaper.GetExtState(ScriptName..'_'..but, ScriptName.."HelpWindow_WithOptionNotToShow"..'_'..but);
+        local TooltipWind = reaper.GetExtState(ScriptName..'___'..but, "HelpWindow_WithOptionNotToShow"..'___'..but);
         if TooltipWind == "" then;
             MessageBox = reaper.ShowMessageBox(Text.."\n"..
             "--------------------------------------------------------------------------------------------\n\n"..
             "НЕ ПОКАЗЫВАТЬ ПОЛЬШЕ ЭТО ОКНО  -  ОК\n"..
             "DO NOT SHOW THIS WINDOW - OK",Header,1);
             if MessageBox == 1 then;
-                reaper.SetExtState(ScriptName..'_'..but, ScriptName.."HelpWindow_WithOptionNotToShow"..'_'..but,MessageBox,true);
+                reaper.SetExtState(ScriptName..'___'..but, "HelpWindow_WithOptionNotToShow"..'___'..but,MessageBox,true);
             end;
         end;
         if reset == true then;
-            reaper.DeleteExtState(ScriptName..'_'..but, ScriptName.."HelpWindow_WithOptionNotToShow"..'_'..but,true);
+            reaper.DeleteExtState(ScriptName..'___'..but, "HelpWindow_WithOptionNotToShow"..'___'..but,true);
         end;
         if MessageBox == 2 then MessageBox = 0 end;
         return MessageBox or -1;
@@ -482,7 +482,7 @@
     --------------- HelpWindowWhenReRunning(BottonText,but,reset); --------------------------
     function Arc_Module.HelpWindowWhenReRunning(BottonText,but,reset);-- (BottonText = 1 или 2)
         local ScriptName = ({reaper.get_action_context()})[2]:match(".+[\\/](.+)");
-        local TooltipWind = reaper.GetExtState(ScriptName..'_'..but, "HelpWindowWhenReRunning"..'_'..but);
+        local TooltipWind = reaper.GetExtState(ScriptName..'___'..but, "HelpWindowWhenReRunning"..'___'..but);
         if TooltipWind == "" then;
             ----------------------
             if BottonText  == 2 then;
@@ -512,12 +512,12 @@
             if MessageBox == 1 then;
                 local MB = reaper.MB("Rus:\n * Запомни !\n *   "..BottonText.."\n\nEng:\n * Remember !\n *   "..BottonText,"help.",1);--231
                 if MB == 1 then;
-                    reaper.SetExtState(ScriptName..'_'..but, "HelpWindowWhenReRunning"..'_'..but,MessageBox,true);
+                    reaper.SetExtState(ScriptName..'___'..but, "HelpWindowWhenReRunning"..'___'..but,MessageBox,true);
                 end;
             end;
         end;
         if reset == true then;
-            reaper.DeleteExtState(ScriptName..'_'..but, "HelpWindowWhenReRunning"..'_'..but,true);
+            reaper.DeleteExtState(ScriptName..'___'..but, "HelpWindowWhenReRunning"..'___'..but,true);
         end;
         return ScriptName;
     end;
