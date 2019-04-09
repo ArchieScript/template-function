@@ -84,7 +84,7 @@
   --  extension:  reaper_js_ReaScriptAPI
   
   
-  local function GetScrollTrack_js(track);
+    local function GetScrollTrack(track);
         if reaper.APIExists("JS_Window_FindChildByID")then;
             if type(track)~= "userdata" then error("GetScrollTrack (MediaTrack expected)",2)end; 
             local Numb = reaper.GetMediaTrackInfo_Value(track,"IP_TRACKNUMBER");
@@ -98,24 +98,30 @@
             local _, position = reaper.JS_Window_GetScrollInfo(trackview,"v");
             return (height or 0) - position;
         else;
+            reaper.ShowConsoleMsg("");
             reaper.ShowConsoleMsg("требуется расширение  - 'reaper_js_ReaScriptAPI'\n"..
-                                  "require extension is requi - reaper_js_ReaScriptAPI\n")
+                                  "require extension is requi - reaper_js_ReaScriptAPI\n");
+            return false;
         end;
     end;
      
     
     
-    local function SetScrollTrack_js(track, numbPix);
-        if type(track)~= "userdata" then error("SetScrollTrack (MediaTrack expected)",2)end;
-        local Numb = reaper.GetMediaTrackInfo_Value(track,"IP_TRACKNUMBER");
-        local height;
-        for i = 1,Numb-1 do;
-            local Track = reaper.GetTrack(0,i-1);
-            local wndh = reaper.GetMediaTrackInfo_Value(Track,"I_WNDH");
-            height = (height or 0)+wndh;
+    local function SetScrollTrack(track, numbPix);
+        if reaper.APIExists("JS_Window_FindChildByID")then;
+            if type(track)~= "userdata" then error("SetScrollTrack (MediaTrack expected)",2)end;
+            local Numb = reaper.GetMediaTrackInfo_Value(track,"IP_TRACKNUMBER");
+            local height;
+            for i = 1,Numb-1 do;
+                local Track = reaper.GetTrack(0,i-1);
+                local wndh = reaper.GetMediaTrackInfo_Value(Track,"I_WNDH");
+                height = (height or 0)+wndh;
+            end;
+            local trackview = reaper.JS_Window_FindChildByID(reaper.GetMainHwnd(),1000);
+            local _, position = reaper.JS_Window_GetScrollInfo(trackview,"v");
+            reaper.JS_Window_SetScrollPos(trackview,"v",(height or 0)-(numbPix or position));
+            return true;
         end;
-        local trackview = reaper.JS_Window_FindChildByID(reaper.GetMainHwnd(),1000);
-        local _, position = reaper.JS_Window_GetScrollInfo(trackview,"v");
-        reaper.JS_Window_SetScrollPos(trackview,"v",(height or 0)-(numbPix or position));
+        return false;
     end;
     ------------------------------------------------------------------------------------
