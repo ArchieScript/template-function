@@ -13,7 +13,7 @@
     
     
     --- / Header / -----------------
-    local header = string.match(text,".-\n%s-\n"):gsub('\n%s-\n',']]\n');
+    local header = string.match(text,".-\n%s-\n"):gsub('\n%s-\n',']]\n')..'\n';
     -------------------------------- 
     
     
