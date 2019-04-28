@@ -1,4 +1,7 @@
 -- Compress  /  Arc_Function_lua
+-- Version: 1.0
+-- Provides: [nomain].
+----------------------
     
     local 
     path,scr_file = reaper.GetResourcePath()..'/Scripts/Archie-ReaScripts/Functions/','Arc_Function_lua.lua';
