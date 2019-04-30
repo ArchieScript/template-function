@@ -69,6 +69,7 @@ local VersionMod = "v.2.3.8"
 
 
 
+    ----------- / VersionArc_Function_lua(version); / -----------------------------------
     function Arc_Module.VersionArc_Function_lua(version);
         if not VersionMod then VersionMod = "0" else VersionMod = tostring(VersionMod);end;
         VersionMod = tonumber((VersionMod:gsub("%D","")));
@@ -95,6 +96,8 @@ local VersionMod = "v.2.3.8"
         return true; 
     end;
     VersionArc_Function_lua = Arc_Module.VersionArc_Function_lua; 
+    --====End===============End===============End===============End===============End====
+
 
 
 
