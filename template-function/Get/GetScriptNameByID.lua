@@ -22,15 +22,14 @@
 
 
 
-
+----------------------------------------
+-- Готов:
 
     function GetScriptNameByID(id);
-        local Path = reaper.GetResourcePath()..'/reaper-kb.ini';
-        local file = io.open(Path,'r');
-        if not file then no_undo() return end;
-        local text = file:read('a');file:close();
-        return text:match(id:match('[^_](%S+)')..'%s"Custom:%s(.-)"');  
-    end;
+        local file = io.open(reaper.GetResourcePath()..'/reaper-kb.ini','r');
+        if file then;local text = file:read('a');file:close();
+            return text:match(id:match('[^_](%S+)')..'%s-"Custom:%s-.(.-)"')or-1;
+    end;end;
 
 
 
