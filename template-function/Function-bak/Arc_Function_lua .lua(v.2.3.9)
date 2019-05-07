@@ -562,6 +562,7 @@ local VersionMod = "v.2.3.9"
     -- but = хоть что 'strung' /  обычно "Arc_Function_lua" для навигации по ini;
     -- reset = true только для сброса, а так всегда false;
     -- BottonText = 2 "'NEW INSTANCE'" , BottonText = 1 "'TERMINATE INSTANCES'"; 
+    -- Всегда вернет имя скрипта
     --====End===============End===============End===============End===============End====
 
 
