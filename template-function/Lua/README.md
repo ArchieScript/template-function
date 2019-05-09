@@ -23,7 +23,7 @@
 >#
 >##### [tonumber(string.format("%.1f", X))](https://github.com/ArchieScript/template-function/blob/master/template-function/Lua/tonumber-string.format-.1f-%20user_input_str.lua) &nbsp;&nbsp;&nbsp;&nbsp;--СОКРОТИТЬ ЧИСЛО ПОСЛЕ ЗАПЯТОЙ
 >#
->#
+>##### [Table](https://github.com/ArchieScript/template-function/blob/master/template-function/Lua/Table.lua) &nbsp;&nbsp;&nbsp;&nbsp;--Манипуляции с таблицей
 >#
 >#
 >#
