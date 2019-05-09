@@ -82,7 +82,7 @@
     --[
     --- / функцию в одну строку / --------
     local txx;
-    for var in string.gmatch(text,"%S.-\n\n\n\n\n\n")do;
+    for var in string.gmatch(text.."\n\n\n\n\n\n","%S.-\n\n\n\n\n\n")do;
         if #var < 4000 then;
             var = var:gsub("\n"," ");
        end;
@@ -93,7 +93,7 @@
     -- ]]
     
     
-
+    
     --- / Удалить '\n' / -------------
     for i = 1,10 do;
         text = text:gsub("\n\n","\n");
