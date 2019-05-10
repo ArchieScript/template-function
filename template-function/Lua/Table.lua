@@ -25,15 +25,18 @@
  
  
     -------- / Сравнить две таблицы / --------
-    
-    function ComparedTwoTables(table1, table2) 
+    function ComparedTwoTables(table1, table2);
         if #table1 ~= #table2 then return false end;
-       
-        for key, val in pairs(table1) do
-            if table2[key] ~= val then
-                return false
-            end
-        end
-        return true
-    end
+        for key, val in pairs(table1) do;
+            if table2[key] ~= val then;
+                return false;
+            end;
+        end;
+        for key, val in pairs(table2) do;
+            if table1[key] ~= val then;
+                return false;
+            end;
+        end;
+        return true;
+    end;
     ------------------------------------------
