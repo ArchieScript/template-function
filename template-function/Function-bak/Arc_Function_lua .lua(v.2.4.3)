@@ -270,7 +270,15 @@ local VersionMod = "v.2.4.3"
         end;
         return true;
     end;
+    Arc_Module.SaveSoloMuteSelStateAllTracksGuidSlot_SWS = Arc_Module.SaveSoloMuteSelStateAllTracksGuidSlot;
+    SaveSoloMuteSelStateAllTracksGuidSlot_SWS = Arc_Module.SaveSoloMuteSelStateAllTracksGuidSlot;
     -------------------------------------------------------------------------
+    
+    
+    
+    
+    
+    
     function Arc_Module.RestoreSoloMuteSelStateAllTracksGuidSlot(Slot,clean);
         local t = _G['SavSolMutSelTrSlot_'..Slot];
         if t then;
@@ -287,8 +295,6 @@ local VersionMod = "v.2.4.3"
             end;
         end;    
     end;
-    Arc_Module.SaveSoloMuteSelStateAllTracksGuidSlot_SWS = Arc_Module.SaveSoloMuteSelStateAllTracksGuidSlot;
-    SaveSoloMuteSelStateAllTracksGuidSlot_SWS = Arc_Module.SaveSoloMuteSelStateAllTracksGuidSlot;
     Arc_Module.RestoreSoloMuteSelStateAllTracksGuidSlot_SWS = Arc_Module.RestoreSoloMuteSelStateAllTracksGuidSlot;
     RestoreSoloMuteSelStateAllTracksGuidSlot_SWS = Arc_Module.RestoreSoloMuteSelStateAllTracksGuidSlot;
     -- Save Restore Solo Mute Sel State All Tracks, Slots
@@ -769,7 +775,15 @@ local VersionMod = "v.2.4.3"
         end;
         return true;
     end;
-    ------------------------------------------------------
+    Arc_Module.Save_Selected_Items_GuidSlot_SWS=Arc_Module.Save_Selected_Items_GuidSlot;
+    Save_Selected_Items_GuidSlot_SWS=Arc_Module.Save_Selected_Items_GuidSlot;
+    -------------------------------------------------------------------------
+
+
+
+
+
+
     function Arc_Module.Restore_Selected_Items_GuidSlot(Slot,clean);
         t = _G["SaveSelItem_"..Slot];
         if t then;
@@ -787,8 +801,6 @@ local VersionMod = "v.2.4.3"
             reaper.UpdateArrange();
         end;
     end;
-    Arc_Module.Save_Selected_Items_GuidSlot_SWS=Arc_Module.Save_Selected_Items_GuidSlot;
-    Save_Selected_Items_GuidSlot_SWS=Arc_Module.Save_Selected_Items_GuidSlot;
     Arc_Module.Restore_Selected_Items_GuidSlot_SWS=Arc_Module.Restore_Selected_Items_GuidSlot;
     Restore_Selected_Items_GuidSlot_SWS=Arc_Module.Restore_Selected_Items_GuidSlot;
     --====End===============End===============End===============End===============End====
@@ -812,7 +824,15 @@ local VersionMod = "v.2.4.3"
         end;
         return true;
     end;
+    Arc_Module.SaveSoloMuteStateAllTracksGuidSlot_SWS=Arc_Module.SaveSoloMuteStateAllTracksGuidSlot;
+    SaveSoloMuteStateAllTracksGuidSlot_SWS=Arc_Module.SaveSoloMuteStateAllTracksGuidSlot;
     -----------------------------------------------------------------
+    
+    
+    
+    
+    
+    
     function Arc_Module.RestoreSoloMuteStateAllTracksGuidSlot(Slot,clean);
         local t = _G['SavSolMutTrSlot_'..Slot];
         if t then;
@@ -828,8 +848,6 @@ local VersionMod = "v.2.4.3"
             end;
         end;    
     end;
-    Arc_Module.SaveSoloMuteStateAllTracksGuidSlot_SWS=Arc_Module.SaveSoloMuteStateAllTracksGuidSlot;
-    SaveSoloMuteStateAllTracksGuidSlot_SWS=Arc_Module.SaveSoloMuteStateAllTracksGuidSlot;
     Arc_Module.RestoreSoloMuteStateAllTracksGuidSlot_SWS=Arc_Module.RestoreSoloMuteStateAllTracksGuidSlot;
     RestoreSoloMuteStateAllTracksGuidSlot_SWS=Arc_Module.RestoreSoloMuteStateAllTracksGuidSlot;
     -- Save Restore Solo Mute State All Tracks, Slots
@@ -856,9 +874,17 @@ local VersionMod = "v.2.4.3"
         end ;
         return true;
     end;
+    Arc_Module.SaveMuteStateAllItemsGuidSlot_SWS = Arc_Module.SaveMuteStateAllItemsGuidSlot;
+    SaveMuteStateAllItemsGuidSlot_SWS = Arc_Module.SaveMuteStateAllItemsGuidSlot;
     -- Save Mute State All Items, Slots
     -- Сохранить Состояние Отключения Звука На Всех Элементах Слоты
     -------------------------------------------------------------------------
+    
+    
+    
+    
+    
+    
     function Arc_Module.RestoreMuteStateAllItemsGuidSlot(Slot, clean);
         local T = _G["Save_GuidAndMuteSlot_"..Slot];
         if T then;
@@ -875,8 +901,6 @@ local VersionMod = "v.2.4.3"
             reaper.UpdateArrange();
         end
     end
-    Arc_Module.SaveMuteStateAllItemsGuidSlot_SWS = Arc_Module.SaveMuteStateAllItemsGuidSlot;
-    SaveMuteStateAllItemsGuidSlot_SWS = Arc_Module.SaveMuteStateAllItemsGuidSlot;
     Arc_Module.RestoreMuteStateAllItemsGuidSlot_SWS = Arc_Module.RestoreMuteStateAllItemsGuidSlot;
     RestoreMuteStateAllItemsGuidSlot_SWS = Arc_Module.RestoreMuteStateAllItemsGuidSlot;
     -- Restore Mute State All Items, Slots
@@ -1175,7 +1199,15 @@ local VersionMod = "v.2.4.3"
         end;
         return true;
     end;
+    Arc_Module.SaveSelTracksGuidSlot_SWS = Arc_Module.SaveSelTracksGuidSlot;
+    SaveSelTracksGuidSlot_SWS = Arc_Module.SaveSelTracksGuidSlot;
     ---------------------------------------------------------
+    
+    
+    
+    
+    
+    
     function Arc_Module.RestoreSelTracksGuidSlot(Slot,clean);
        local tr = reaper.GetTrack(0,0);
        reaper.SetOnlyTrackSelected(tr);
@@ -1195,8 +1227,6 @@ local VersionMod = "v.2.4.3"
            end;
        end;
     end;
-    Arc_Module.SaveSelTracksGuidSlot_SWS = Arc_Module.SaveSelTracksGuidSlot;
-    SaveSelTracksGuidSlot_SWS = Arc_Module.SaveSelTracksGuidSlot;
     Arc_Module.RestoreSelTracksGuidSlot_SWS = Arc_Module.RestoreSelTracksGuidSlot;
     RestoreSelTracksGuidSlot_SWS = Arc_Module.RestoreSelTracksGuidSlot;
     -- SaveSelTracksGuidSlot("Slot_1");
