@@ -15,7 +15,6 @@ local VersionMod = "v.2.4.4"
    *  REAPER_Lib
    *      v.108   + no_undo();
    *      v.108   + Action(id,...);
-   *      v.244   + numb = GetSetHeigthMCPTrack(track,numb,set);
    *      v.230   + boolean = TrackFx_Rename(Track,idx_Fx,Rename);
    *      v.229   + boolean = RemoveAllSendTr(track,category);
    *      v.229   + boolean = RemoveAllItemTr_Sel(track,rem_Idx);
@@ -54,6 +53,7 @@ local VersionMod = "v.2.4.4"
    *      v.103   + Get_Format_ProjectGrid(divisionIn);
    *      v.102   + CountTrackSelectedMediaItems(track);
    *      v.101   + GetTrackSelectedMediaItems(track,idx);
+   *      v.244   + numb = GetSetHeigthMCPTrack(track,numb,set);
    *  LUA_Lib
    *      v.218   + If_Equals(EqualsToThat,...);
    *      v.215   + ValueFromMaxRepsIn_Table(array, min_max);
@@ -142,38 +142,6 @@ local VersionMod = "v.2.4.4"
     end;
     Action = Arc_Module.Action;
     -- Выполняет действие, относящееся к разделу основное действие. 
-    --====End===============End===============End===============End===============End====
-
-
-
-
-
-
-    --- 244 ------------ GetSetHeigthMCPTrack -------------------------------------------
-    function Arc_Module.GetSetHeigthMCPTrack(track,numb,set);
-        local ret,err = pcall(reaper.GetTrackGUID,track);if not ret then error("GetSetHeigthMCPTrack - "..err,2)end;
-        if set~=0 and set~=1 then error("GetSetHeigthMCPTrack - expected 0 or 1 got "..(tonumber(set)or type(set)),2)end;
-        if set == 1 then;
-            if type(numb)~="number"then error("bad argument #2 to 'GetSetHeigthMCPTrack' (number expected, got "..type(numb)..")",2)end;
-        end;
-        ---
-        local retval,str = reaper.GetTrackStateChunk(track,"",false);
-        local heigth = string.match(str,"SHOWINMIX%s+%S-%s+(%S-)%s");
-        if set == 1 then;
-            if numb > 1 then numb = 1 end;
-            if numb < 0 then numb = 0 end;
-            local strSHOWINMIX = string.match(str,"SHOWINMIX.-\n");
-            local FirstHalfLine,SecondHalfLine = string.match(str,"(SHOWINMIX%s+%S-%s+)%S+(.-\n)");
-            local str2 = string.gsub(str,strSHOWINMIX,FirstHalfLine..numb..SecondHalfLine);
-            reaper.SetTrackStateChunk(track,str2,false);
-        else;
-            return tonumber(heigth);
-        end;
-    end;
-    GetSetHeigthMCPTrack = Arc_Module.GetSetHeigthMCPTrack;
-    -- Вернет высоту трека от 0 до 1;  0 самый высокий, 1 самый маленький.
-    -- numb - от 0 до 1;  0 самый высокий, 1 самый маленький.
-    -- set - set 1; get 0.
     --====End===============End===============End===============End===============End====
 
 
@@ -1499,6 +1467,37 @@ local VersionMod = "v.2.4.4"
     -- Получить в треке Выбранный Элемент
     --====End===============End===============End===============End===============End====
 
+
+
+
+
+
+    --- 244 ------------ GetSetHeigthMCPTrack -------------------------------------------
+    function Arc_Module.GetSetHeigthMCPTrack(track,numb,set);
+        local ret,err = pcall(reaper.GetTrackGUID,track);if not ret then error("GetSetHeigthMCPTrack - "..err,2)end;
+        if set~=0 and set~=1 then error("GetSetHeigthMCPTrack - expected 0 or 1 got "..(tonumber(set)or type(set)),2)end;
+        if set == 1 then;
+            if type(numb)~="number"then error("bad argument #2 to 'GetSetHeigthMCPTrack' (number expected, got "..type(numb)..")",2)end;
+        end;
+        ---
+        local retval,str = reaper.GetTrackStateChunk(track,"",false);
+        local heigth = string.match(str,"SHOWINMIX%s+%S-%s+(%S-)%s");
+        if set == 1 then;
+            if numb > 1 then numb = 1 end;
+            if numb < 0 then numb = 0 end;
+            local strSHOWINMIX = string.match(str,"SHOWINMIX.-\n");
+            local FirstHalfLine,SecondHalfLine = string.match(str,"(SHOWINMIX%s+%S-%s+)%S+(.-\n)");
+            local str2 = string.gsub(str,strSHOWINMIX,FirstHalfLine..numb..SecondHalfLine);
+            reaper.SetTrackStateChunk(track,str2,false);
+        else;
+            return tonumber(heigth);
+        end;
+    end;
+    GetSetHeigthMCPTrack = Arc_Module.GetSetHeigthMCPTrack;
+    -- Вернет высоту трека от 0 до 1;  0 самый высокий, 1 самый маленький.
+    -- numb - от 0 до 1;  0 самый высокий, 1 самый маленький.
+    -- set - set 1; get 0.
+    --====End===============End===============End===============End===============End====
 
 
 
