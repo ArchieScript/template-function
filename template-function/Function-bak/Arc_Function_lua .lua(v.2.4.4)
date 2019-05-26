@@ -150,7 +150,7 @@ local VersionMod = "v.2.4.4"
 
 
     --- 244 ------------ GetSetHeigthMCPTrack -------------------------------------------
-    function Arc.GetSetHeigthMCPTrack(track,numb,set);
+    function Arc_Module.GetSetHeigthMCPTrack(track,numb,set);
         local ret,err = pcall(reaper.GetTrackGUID,track);if not ret then error("GetSetHeigthMCPTrack - "..err,2)end;
         if set~=0 and set~=1 then error("GetSetHeigthMCPTrack - expected 0 or 1 got "..(tonumber(set)or type(set)),2)end;
         if set == 1 then;
@@ -170,7 +170,7 @@ local VersionMod = "v.2.4.4"
             return tonumber(heigth);
         end;
     end;
-    GetSetHeigthMCPTrack = Arc.GetSetHeigthMCPTrack;
+    GetSetHeigthMCPTrack = Arc_Module.GetSetHeigthMCPTrack;
     -- Вернет высоту трека от 0 до 1;  0 самый высокий, 1 самый маленький.
     -- numb - от 0 до 1;  0 самый высокий, 1 самый маленький.
     -- set - set 1; get 0.
