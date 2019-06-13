@@ -1,9 +1,9 @@
-local VersionMod = "v.2.4.5"
+local VersionMod = "v.2.4.6"
 --[[
    * Category:    Function
    * Description: Arc_Function_lua
    * Author:      Archie
-   * Version:     2.4.5
+   * Version:     2.4.6
    * AboutScript: Functions for use with some scripts Archie
    * О скрипте:   Функции для использования с некоторыми скриптами Archie
    * Provides:    [nomain].
@@ -55,12 +55,15 @@ local VersionMod = "v.2.4.5"
    *      v.101   + GetTrackSelectedMediaItems(track,idx);
    *      v.244   + numb = GetSetHeigthMCPTrack(track,numb,set);
    *      v.245   + openFileURL(pathUrl);
+   *      v.246   + GetIDByScriptName(scriptName);
+   *      v.246   + GetScriptNameByID(id);
    *  LUA_Lib
    *      v.218   + If_Equals(EqualsToThat,...);
    *      v.215   + ValueFromMaxRepsIn_Table(array, min_max);
    *      v.230   + randomOfVal(...);   
    *      v.230   + invert_number(X);
 --=======================================================]]
+
 
 
 
@@ -1526,7 +1529,7 @@ local VersionMod = "v.2.4.5"
     
     
     
-        --- 446 --------- / GetIDByScriptName / ---------------------------------------------
+    --- 446 --------- / GetIDByScriptName / ---------------------------------------------
     function Arc_Module.GetIDByScriptName(scriptName);
         if type(scriptName)~="string"then error("expects a 'string', got "..type(scriptName),2) end;
         local file = io.open(reaper.GetResourcePath()..'/reaper-kb.ini','r'); if not file then return -1 end;local
@@ -1538,7 +1541,6 @@ local VersionMod = "v.2.4.5"
     -- Получить Id по имени скрипта или кастом экшена
     -- В случае неудачи вернет -1
     --====End===============End===============End===============End===============End====
-    
     
     
     
