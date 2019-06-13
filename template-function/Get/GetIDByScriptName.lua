@@ -28,8 +28,8 @@ ID = GetIDByScriptName( scriptname )
         local file = io.open(reaper.GetResourcePath()..'/reaper-kb.ini','r'); if not file then return -1 end;local
         scrName = scriptName:gsub('Script:%s+',''):gsub("[%%%[%]%(%)%*%+%-%.%?%^%$]",function(s)return"%"..s;end);
         for var in file:lines()do;if var:match('"Custom:%s-'..scrName..'"')then;
-            return var:match(".-%s+.-%s+.-%s+(.-)%s"):gsub('"',""):gsub("'","");
-    end;end;return -1;end;      
+            return "_"..var:match(".-%s+.-%s+.-%s+(.-)%s"):gsub('"',""):gsub("'","");
+    end;end;return -1;end;     
     
 -----------------------------------------
  
