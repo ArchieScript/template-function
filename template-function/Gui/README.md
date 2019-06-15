@@ -28,7 +28,7 @@
 >#
 >##### [GetSetInputText(x,y,w,h,[Press_OK])](https://github.com/ArchieScript/template-function/blob/master/template-function/Gui/GetSetInputText.lua)-- Поле для ввода текста / Text box
 >#
->#
+>##### [TextByCenterAndResize(string,x,y,w,h);])](https://github.com/ArchieScript/template-function/blob/master/template-function/Gui/TextByCenterAndResize3.lua)-- Текст По Центру И Изменения Размера.
 >#
 >#
 >#
