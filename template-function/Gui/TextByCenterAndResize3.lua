@@ -39,3 +39,14 @@ flags - 98 - Жирный; 105 - Курсив; 117 - Подчеркивание;
 TextByCenterAndResize("string",50,50,50,50,0,nil);
 gfx.drawstr("string");
 --]]
+
+
+
+
+
+
+
+
+
+
+
