@@ -2,7 +2,10 @@
 
 
 
+
     
+    --  Базовый шаблон GUI с сохранением позиции, размера и дока. Правое меню.
+
     
     
     
@@ -44,16 +47,25 @@
     gfx.init("Show clock window",SizeW or 180,SizeH or 50,PositionDock,PosX or 150,PosY or 100);
     
     
-    
-    
-    
-    
-    
+  
+  
+    --body--
+  
+  
+
     
     
     ---------
     function loop();
         
+        local Toggle = reaper.GetToggleCommandStateEx(sectionID,cmdID);
+        if Toggle <= 0 then;
+            reaper.SetToggleCommandState(sectionID,cmdID,1);
+            reaper.DockWindowRefresh();
+        end;
+        ------------------------------
+        
+        --body--
         
         ------------------------------
         local Dock_ = gfx.dock(-1);
@@ -133,6 +145,9 @@
         end;
         ------------------------------
         
+        --body--
+        
+        ------------------------------
         
         
         if gfx.getchar() >= 0 then reaper.defer(loop);else;reaper.atexit(exit)return;end;
@@ -162,6 +177,8 @@
     
     
     loop();
+    
+    
     
     
     
