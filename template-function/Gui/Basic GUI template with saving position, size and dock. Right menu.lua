@@ -1,5 +1,6 @@
 
-
+Расширино правое меню / ...
+https://github.com/ArchieScript/template-function/blob/master/template-function/Gui/2_Basic%20GUI%20template%20with%20saving%20position%2C%20size%20and%20dock.%20Right%20menu.lua
 
 
 
