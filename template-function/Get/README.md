@@ -39,7 +39,7 @@
 >#
 >##### [GetSignatureTimeByTimeArc(proj,time,bpmConvert);](https://github.com/ArchieScript/template-function/blob/master/template-function/Get/GetSignatureTimeByTimeArc.lua) -- Получить Подпись Времени По Времени
 >#
->##### []() -- 
+>##### [CopyMoveMediaItem(item, time, COPY_MOVE);](https://github.com/ArchieScript/template-function/blob/master/template-function/Get/CopyMoveMediaItem.lua) --  Копировать или переместить элемент мультимедиа.
 >#
 >##### []() -- 
 >#
