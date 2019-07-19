@@ -1622,7 +1622,7 @@ local VersionMod = "v.2.4.8"
     
     
     
-    --- 218 ----------- If_Equals_OrEx(EqualsToThat,...); ------------------------------------
+    --- 248 ----------- If_Equals_OrEx(EqualsToThat,...); ------------------------------------
     function  Arc_Module.If_Equals_OrEx(EqualsToThat,...);
         local T = {};
         for _,v in pairs{...} do;
@@ -1647,8 +1647,8 @@ local VersionMod = "v.2.4.8"
     -- T1 = {"arg1", "arg2"}
     -- T2 = {"arg3", "arg4"}
     -- Ar = "Arg5"
-    -- Boolean = If_Equals_OrEx(WavMidVideo , T1,T2,Ar) -- Вернет true
-    -- Boolean = If_Equals_OrEx(WavMidVideo , T1, Ar)   -- Вернет false
+    -- Boolean = If_Equals_OrEx(EqualsToThat , T1,T2,Ar) -- Вернет true
+    -- Boolean = If_Equals_OrEx(EqualsToThat , T1, Ar)   -- Вернет false
     --====End===============End===============End===============End===============End====
     
     
