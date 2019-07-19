@@ -1609,6 +1609,7 @@ local VersionMod = "v.2.4.7"
         return false;
     end;
     If_Equals = Arc_Module.If_Equals;
+    Arc_Module.If_Equals_Or = Arc_Module.If_Equals;
     If_Equals_Or = Arc_Module.If_Equals;
     -- сократить условие
     --====End===============End===============End===============End===============End====
