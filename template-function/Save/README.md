@@ -29,7 +29,6 @@
 >#
 >##### [Save,Restore,selected tracks( guid { [table] } )](https://github.com/ArchieScript/template-function/blob/master/template-function/Save/Save%20restore%20selected%20tracks%20%7B%5Btablep%5D%7D.lua)
 >#                                                                                  
->#
 >##### [SaveRestoreMuteStateAllItemsSlot( )](https://github.com/ArchieScript/template-function/blob/master/template-function/Save/Save%20Solo%20Mute%20State%20All%20Items%2C%20Slot.lua)
 >#
 >#
