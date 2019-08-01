@@ -15,7 +15,7 @@
         local in_str = in_file:read("*a");
         in_file:close();
         ----
-        local x = file2;
+        local x,i = file2;
         while true do;
             i = (i or 0)+1;
             local check_file = io.open(file2,"r");
