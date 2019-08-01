@@ -25,6 +25,7 @@
 >#
 >##### [Table](https://github.com/ArchieScript/template-function/blob/master/template-function/Lua/Table.lua) &nbsp;&nbsp;&nbsp;&nbsp;--Манипуляции с таблицей
 >#
+>##### [copyFile](https://github.com/ArchieScript/template-function/blob/master/template-function/Lua/copyFile.lua) &nbsp;&nbsp;&nbsp;&nbsp;--Скопировать файл из директории в директорию / Тест только на windows
 >#
 >#
 >#  
