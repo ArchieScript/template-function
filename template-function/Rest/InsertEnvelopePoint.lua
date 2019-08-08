@@ -16,7 +16,7 @@
 -- time: От старта проекта даже у айтемов
 -- autoitem_idx, value,shape,tension,selected,noSortIn / http://www.extremraym.com/cloud/reascript-doc/#InsertEnvelopePointEx
 
-
+    -- Добавить точку автоматизации везде
     local function InsertEnvelopePointEx_Arc(Env,autoitem_idx,time,point_indent,noDuplicate,value,shape,tension,selected,noSortIn)
         
         local playrate,posItem;
@@ -46,11 +46,47 @@
             time = time-(posItem  or 0);
             time = time*(playrate or 1);
             reaper.InsertEnvelopePointEx(Env,autoitem_idx,time,value,shape,tension,selected,noSortIn)
+            return true;
         end;
+        point=nil; return false;
     end;
     
     
-    
+
+
+
+
+
+
+
+    -- Добавить точку автоматизации на тейк
+    -- time: от начала тейка, все остальное написано выше.
+    local function InsertEnvelopePointTake_Arc(Env,time,point_indent,noDuplicate,value,shape,tension,selected,noSortIn)
+        
+        local Take = reaper.Envelope_GetParentTake(Env);
+        if not Take then return false end;
+        local playrate = reaper.GetMediaItemTakeInfo_Value(Take,"D_PLAYRATE");
+           
+        if noDuplicate == true or noDuplicate == 1 then;
+            for i = 1, reaper.CountEnvelopePoints(Env) do;
+                local _,time0,_,_,_,_ = reaper.GetEnvelopePoint(Env,i-1);
+                time0 = time0/playrate; 
+                if time0 >= (time-(point_indent/2)) and time0 <= (time+(point_indent/2)) then;
+                    point = true; break;
+                end;
+            end;
+        end;  
+        if not point then;
+            time = time*(playrate or 1);
+            reaper.InsertEnvelopePoint(Env,time,value,shape,tension,selected,noSortIn);
+            return true;
+        end;
+        point=nil; return false;
+    end;
+
+
+
+
     
     
     
