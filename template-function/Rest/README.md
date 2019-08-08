@@ -28,6 +28,17 @@
 >#
 >##### [Run script by script](https://github.com/ArchieScript/template-function/blob/master/template-function/Rest/Run%20script%20by%20script.lua) -- Запустить скрипт скриптом
 >#
+>##### [InsertEnvelopePoin(---)](https://github.com/ArchieScript/template-function/blob/master/template-function/Rest/InsertEnvelopePoint.lua) -- Добавить точку автоматизации
+>#
+>##### []() --
+>#
+>##### []() --
+>#
+>##### []() --
+>#
+>##### []() --
+>#
+>##### []() --
 >#
 >#
 >#
