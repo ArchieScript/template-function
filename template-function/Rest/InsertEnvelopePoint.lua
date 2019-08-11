@@ -12,7 +12,7 @@
 --*     
 --noDuplicate: true или 1 не вставлять точку, если в этом времени уже есть точка (во время входит смещение  point_indent)  
 --point_indent: установить время в секундах в котором будут проверяться точки и если точки в этом промежутке есть, то точка не добавится, noDuplicate  должен быть true. 
---Пример: если point_indent  = 1, то 0.5 сек влево и 0.5 сек вправо будет проверяться. для обычной точки  point_indent  = 0, но лучше установить 0.0001
+--Пример: если point_indent  = 1, то 0.5 сек влево и 0.5 сек вправо будет проверяться. для обычной точки  point_indent  = 0, но лучше установить 0.000001(1e-006)
 -- time: От старта проекта(и у автоАйтемов). У медиа айтемов в зависимости от startTimeTakeProj.
 -- startTimeTakeProj: 1 или true - time отсчитывается от начала проекта иначе от начала тейка.
 -- autoitem_idx, value,shape,tension,selected,noSortIn / http://www.extremraym.com/cloud/reascript-doc/#InsertEnvelopePointEx
