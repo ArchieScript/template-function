@@ -11,14 +11,15 @@
 --noDuplicate: true или 1 не вставлять точку, если в этом времени уже есть точка (во время входит смещение  point_indent)  
 --point_indent: установить время в секундах в котором будут проверяться точки и если точки в этом промежутке есть, то точка не добавится, noDuplicate  должен быть true. 
 --Пример: если point_indent  = 1, то 0.5 сек влево и 0.5 сек вправо будет проверяться. для обычной точки  point_indent  = 0, но лучше установить 0.000001(1e-006)
--- time: От старта проекта(и у автоАйтемов). У медиа айтемов в зависимости от startTimeTakeProj.
--- startTimeTakeProj: 1 или true - time отсчитывается от начала проекта иначе от начала тейка.
+-- time: От старта проекта у всего или от take/autoItem, В зависимости от startTimeTakeProj.
+-- startTimeTakeProj: true - time отсчитывается от начала проекта иначе от начала элемента.
 -- autoitem_idx, value,shape,tension,selected,noSortIn / http://www.extremraym.com/cloud/reascript-doc/#InsertEnvelopePointEx
 
     -- InsertEnvelopePointEx_Arc();
     -- Добавить точку автоматизации везде
+    -- вернет true / false;
     local function InsertEnvelopePointEx_Arc(Env,autoitem_idx,time,point_indent,noDuplicate,value,shape,tension,selected,noSortIn,startTimeTakeProj)
-        
+        if type(startTimeTakeProj)~="boolean"then;error("#11 Expected Boolean received "..type(startTimeTakeProj),2)end;
         local playrate,posItem,lenItem;
         local Take = reaper.Envelope_GetParentTake(Env);
         if Take then;
@@ -26,9 +27,7 @@
             local item = reaper.GetMediaItemTake_Item(Take)
             posItem = reaper.GetMediaItemInfo_Value(item,"D_POSITION");
             lenItem = reaper.GetMediaItemInfo_Value(item,"D_LENGTH");
-            if startTimeTakeProj == 1 or startTimeTakeProj == true then;
-                time = time-posItem;
-            end;
+            if startTimeTakeProj == true then;time = time-posItem;end;
             --if posItem > time or posItem + lenItem < time then return false end; --Что бы точка не добавлялась за пределами айтема
         end;
         
@@ -36,6 +35,7 @@
         if autoitem_idx >= 0 and not Take then;
             local posAutoIt = reaper.GetSetAutomationItemInfo(Env,autoitem_idx,"D_POSITION",0,0);
             local lenAutoIt = reaper.GetSetAutomationItemInfo(Env,autoitem_idx,"D_LENGTH",0,0);
+            if not startTimeTakeProj then;time = time+posAutoIt;end;
             if (time < posAutoIt) or (time > posAutoIt+lenAutoIt) then return false end;
         end;
       
@@ -64,18 +64,17 @@
     -- **
     -- InsertEnvelopePointTake_Arc();
     -- Добавить точку автоматизации на тейк
-    -- startTimeTakeProj: 1 или true - time отсчитывается от начала проекта иначе от начала тейка, все остальное написано выше*.
+    -- startTimeTakeProj: true - time отсчитывается от начала проекта иначе от начала тейка, все остальное написано выше*.
     -- вернет true / false;
     local function InsertEnvelopePointTake_Arc(Env,time,point_indent,noDuplicate,value,shape,tension,selected,noSortIn,startTimeTakeProj);
+        if type(startTimeTakeProj)~="boolean"then;error("#10 Expected Boolean received "..type(startTimeTakeProj),2)end;
         local Take = reaper.Envelope_GetParentTake(Env);
         if not Take then return false end;
         local playrate = reaper.GetMediaItemTakeInfo_Value(Take,"D_PLAYRATE");
         local item = reaper.GetMediaItemTake_Item(Take);
         local posItem = reaper.GetMediaItemInfo_Value(item,"D_POSITION");
         local lenItem = reaper.GetMediaItemInfo_Value(item,"D_LENGTH");
-        if startTimeTakeProj == 1 or startTimeTakeProj == true then;
-            time = time-posItem;
-        end;
+        if startTimeTakeProj == true then;time = time-posItem;end;
         --if posItem > time or posItem + lenItem < time then return false end; --Что бы точка не добавлялась за пределами айтема
         
         if noDuplicate == true or noDuplicate == 1 then;
@@ -104,16 +103,17 @@
     --***
     -- InsertEnvelopePointTrack_Arc();
     -- Добавить точку автоматизации на трек
-    -- time: от начала проекта, у автоАйтемов тоже от начала проекта; все остальное написано выше*.
+    -- startTimeTakeProj: true - time отсчитывается от начала проекта иначе от начала тейка, все остальное написано выше*.
     -- вернет true / false;
-    local function InsertEnvelopePointTrack_Arc(Env,autoitem_idx,time,point_indent,noDuplicate,value,shape,tension,selected,noSortIn)
-        
+    local function InsertEnvelopePointTrack_Arc(Env,autoitem_idx,time,point_indent,noDuplicate,value,shape,tension,selected,noSortIn,startTimeTakeProj)
+        if type(startTimeTakeProj)~="boolean"then;error("#11 Expected Boolean received "..type(startTimeTakeProj),2)end;
         local Track = reaper.Envelope_GetParentTrack(Env);
         if not Track then return false end;
         
         if autoitem_idx >= 0 then;
             local posAutoIt = reaper.GetSetAutomationItemInfo(Env,autoitem_idx,"D_POSITION",0,0);
             local lenAutoIt = reaper.GetSetAutomationItemInfo(Env,autoitem_idx,"D_LENGTH",0,0);
+            if not startTimeTakeProj then;time = time+posAutoIt;end;
             if (time < posAutoIt) or (time > posAutoIt+lenAutoIt) then return false end;
         end;
         
@@ -132,7 +132,7 @@
             return true;
         end;
         point=nil; return false;
-    end;  
+    end;
     
     
    --==========================================================================================================================
