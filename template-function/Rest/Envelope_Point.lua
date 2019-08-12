@@ -1,8 +1,8 @@
         -- ENVELOPE_POINT
         
-        InsertEnvelopePointEx_Arc(...);     --40
-        InsertEnvelopePointTake_Arc(...);   --88
-        InsertEnvelopePointTrack_Arc(...);  --127
+        --InsertEnvelopePointEx_Arc(...);     --40
+        --InsertEnvelopePointTake_Arc(...);   --88
+        --InsertEnvelopePointTrack_Arc(...);  --127
         
         
         
