@@ -160,50 +160,79 @@
    --========================================================================================================================== 
 
 
+    --GetInfoEnvelopePointByTimeOrPrev
+    --Получить информацию Точки Конверта по времени или предыдущую от времени
 
+    local function GetInfoEnvelopePointByTimeOrPrev(Env,time,startTimeTakeProj);
+        --startTimeTakeProj = true - proj, false - take;
+        local Take = reaper.Envelope_GetParentTake(Env);local item;
+        if Take then;item = reaper.GetMediaItemTake_Item(Take);end;
+        local posItem  = tonumber(({pcall(reaper.GetMediaItemInfo_Value,    item,"D_POSITION")})[2])or 0;
+        local playrate = tonumber(({pcall(reaper.GetMediaItemTakeInfo_Value,Take,"D_PLAYRATE")})[2])or 1;
+        if not startTimeTakeProj or startTimeTakeProj == 0 then posItem = 0 end;
+        local idx = reaper.GetEnvelopePointByTime(Env,(time-posItem)*playrate); 
+        local retval,time,value,shape,tension,selected = reaper.GetEnvelopePoint(Env,idx);
+        return (time/playrate+posItem),(value),(shape),(tension),(selected);
+    end;
 
+   --==========================================================================================================================
+   --========================================================================================================================== 
 
+    --Получите эффективное значение огибающей в заданной временной позиции. 
 
+    local function GetEnvelopeValueByTime(Env,time,startTimeTakeProj);
+        --startTimeTakeProj = true - proj, false - take;
+        local Take = reaper.Envelope_GetParentTake(Env);local item;
+        if Take then;item = reaper.GetMediaItemTake_Item(Take);end;
+        local posItem  = tonumber(({pcall(reaper.GetMediaItemInfo_Value,    item,"D_POSITION")})[2])or 0;
+        local playrate = tonumber(({pcall(reaper.GetMediaItemTakeInfo_Value,Take,"D_PLAYRATE")})[2])or 1;
+        local samplerate = tonumber(reaper.format_timestr_pos(1,"",4));
+        if not startTimeTakeProj or startTimeTakeProj == 0 then posItem = 0 end;
+        local _,value = reaper.Envelope_Evaluate(Env,(time-posItem)*playrate,samplerate,1);
+        return(value);
+    end;
+    
+    
+    local function DeleteEnvelopePointRange_Arc(Env, time_start, time_end, startTimeTakeProj);
+        --startTimeTakeProj = true - proj, false - take;
+        local Take = reaper.Envelope_GetParentTake(Env);local item;
+        if Take then;item = reaper.GetMediaItemTake_Item(Take);end;
+        local posItem  = tonumber(({pcall(reaper.GetMediaItemInfo_Value,    item,"D_POSITION")})[2])or 0;
+        local playrate = tonumber(({pcall(reaper.GetMediaItemTakeInfo_Value,Take,"D_PLAYRATE")})[2])or 1;
+        if not startTimeTakeProj or startTimeTakeProj == 0 then posItem = 0 end;
+        return reaper.DeleteEnvelopePointRange(Env,(time_start-posItem)*playrate,(time_end-posItem)*playrate); 
+    end;
 
 
    --==========================================================================================================================
    --========================================================================================================================== 
 
 
-
-
-
-
-
-
-   --==========================================================================================================================
-   --========================================================================================================================== 
-
-
-
-
-
-
+    local function GetEnvelopePointInfo(Env,idx,startTimeTakeProj);
+        --startTimeTakeProj = true - proj, false - take;
+        local Take = reaper.Envelope_GetParentTake(Env);local item;
+        if Take then;item = reaper.GetMediaItemTake_Item(Take);end;
+        local posItem  = tonumber(({pcall(reaper.GetMediaItemInfo_Value,    item,"D_POSITION")})[2])or 0;
+        local playrate = tonumber(({pcall(reaper.GetMediaItemTakeInfo_Value,Take,"D_PLAYRATE")})[2])or 1;
+        if not startTimeTakeProj or startTimeTakeProj == 0 then posItem = 0 end;
+        local retval, time, value, shape, tension, selected = reaper.GetEnvelopePoint(Env,idx);
+        return retval, time/playrate+posItem, value, shape, tension, selected; 
+    end;
 
 
    --==========================================================================================================================
    --========================================================================================================================== 
 
 
-
-
-
-
-
-
-   --==========================================================================================================================
-   --========================================================================================================================== 
-
-
-
-
-
-
+    local function SetEnvelopePointInfo(Env,idx,time,value,shape,tension,selected,noSortIn, startTimeTakeProj);
+        --startTimeTakeProj = (time) true - proj, false - take;
+        local Take = reaper.Envelope_GetParentTake(Env);local item;
+        if Take then;item = reaper.GetMediaItemTake_Item(Take);end;
+        local posItem  = tonumber(({pcall(reaper.GetMediaItemInfo_Value,    item,"D_POSITION")})[2])or 0;
+        local playrate = tonumber(({pcall(reaper.GetMediaItemTakeInfo_Value,Take,"D_PLAYRATE")})[2])or 1;
+        if not startTimeTakeProj or startTimeTakeProj == 0 then posItem = 0 end;
+        return reaper.SetEnvelopePoint(Env,idx,(time-posItem)*playrate,value,shape,tension,selected,noSortIn);
+    end;
 
 
 
