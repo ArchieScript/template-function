@@ -32,7 +32,7 @@
 >#
 >##### [CopyMoveEnvelopeRangeByTime(ENV,ENV_NEW,time1,time2,timeNew1,Move);](https://github.com/ArchieScript/template-function/blob/master/template-function/Rest/CopyMoveEnvelopeRangeByTime.lua) -- Копировать / Переместить Диапазон Конверта По Времени в конверте или с конверта на конверт. 
 >#
->##### []() --
+>##### [DeleteEnvAutoItem(env,Auto_idx)](https://github.com/ArchieScript/template-function/blob/master/template-function/Rest/DeleteEnvAutoItem.lua) --Удалить Элемент автоматизации
 >#
 >##### []() --
 >#
