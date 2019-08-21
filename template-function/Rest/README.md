@@ -30,7 +30,7 @@
 >#
 >##### [InsertEnvelopePoin(---)](https://github.com/ArchieScript/template-function/blob/master/template-function/Rest/Envelope_Point.lua) -- Добавить точку автоматизации и .........
 >#
->##### []() --
+>##### [CopyMoveEnvelopeRangeByTime(ENV,ENV_NEW,time1,time2,timeNew1,Move);](https://github.com/ArchieScript/template-function/blob/master/template-function/Rest/CopyMoveEnvelopeRangeByTime.lua) -- Копировать / Переместить Диапазон Конверта По Времени в конверте или с конверта на конверт. 
 >#
 >##### []() --
 >#
