@@ -18,3 +18,12 @@
         reaper.SetEnvelopeStateChunk(env,str2,false);
     end;
     ------------------------------------------------------------
+
+
+
+
+
+
+
+
+
