@@ -47,7 +47,29 @@
 -----------------------------------------------------------
 
 
+-- Не реагирует на привязку сетки (вкл/выкл)
+-- Ищет только видимую сетку
+-- Arrange
 
+
+    local function GetPrevNextGridArrange(time,nextPrev);--< 0 Prev / >=0 Next
+        local ToggleSnap = reaper.GetToggleCommandStateEx(0,1157);
+        if ToggleSnap == 0 then;reaper.Main_OnCommand(1157,0);end;
+        for i = 1,math.huge do;
+            local val = reaper.SnapToGrid(0,time);
+            if nextPrev < 0 then;
+                if val <= time then;-- <
+                    if ToggleSnap == 0 then;reaper.Main_OnCommand(1157,0);end;return val;
+                end;
+                time = time-0.001;
+            else;
+                if val > time then; -- >=
+                    if ToggleSnap == 0 then;reaper.Main_OnCommand(1157,0);end;return val;
+                end;
+                time = time+0.001;
+            end;   
+        end;
+    end;
 
 
 
