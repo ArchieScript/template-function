@@ -9,6 +9,7 @@
 
 
     --/ Искать в таблице значение /--
+    --  Проверить существует ли значение в таблице
     
     function SearchTable(table, val);
         for k, v in pairs(table) do;
