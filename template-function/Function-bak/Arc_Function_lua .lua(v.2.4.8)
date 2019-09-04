@@ -1,9 +1,9 @@
-local VersionMod = "v.2.4.8"
+local VersionMod = "v.2.4.9"
 --[[
    * Category:    Function
    * Description: Arc_Function_lua
    * Author:      Archie
-   * Version:     2.4.8
+   * Version:     2.4.9
    * AboutScript: Functions for use with some scripts Archie
    * О скрипте:   Функции для использования с некоторыми скриптами Archie
    * Provides:    [nomain].
@@ -55,7 +55,7 @@ local VersionMod = "v.2.4.8"
    *      v.101   + GetTrackSelectedMediaItems(track,idx);
    *      v.244   + numb = GetSetHeigthMCPTrack(track,numb,set);
    *      v.245   + openFileURL(pathUrl);
-   *      v.246   + GetIDByScriptName(scriptName);
+   *      v.249   + GetIDByScriptName(scriptName,scriptPath); 
    *      v.246   + GetScriptNameByID(id);
    *  LUA_Lib
    *      v.247   + If_Equals_Or(EqualsToThat,...);
@@ -1536,16 +1536,31 @@ local VersionMod = "v.2.4.8"
     
     
     
-    --- 446 --------- / GetIDByScriptName / ---------------------------------------------
-    function Arc_Module.GetIDByScriptName(scriptName);
+    --- 249 --------- / GetIDByScriptName / ---------------------------------------------
+    function Arc_Module.GetIDByScriptName(scriptName,scriptPath); 
         if type(scriptName)~="string"then error("expects a 'string', got "..type(scriptName),2) end;
-        local file = io.open(reaper.GetResourcePath()..'/reaper-kb.ini','r'); if not file then return -1 end;local
-        scrName = scriptName:gsub('Script:%s+',''):gsub("[%%%[%]%(%)%*%+%-%.%?%^%$]",function(s)return"%"..s;end);
-        for var in file:lines()do;if var:match('"Custom:%s-'..scrName..'"')then;
-            return "_"..var:match(".-%s+.-%s+.-%s+(.-)%s"):gsub('"',""):gsub("'","");
-    end;end;return -1;end;
+        if type(scriptPath)~= "string" or #scriptPath:gsub('%s','')== 0 then scriptPath = nil end;
+        local file = io.open(reaper.GetResourcePath()..'/reaper-kb.ini','r');if not file then return -1 end;
+        local scrName = scriptName:gsub('Script:%s+','',1):gsub("%p",'%%%0');local DesiredID;
+        for var in file:lines()do;
+            if var:match('"Custom:%s-'..scrName..'"')then; 
+                if scriptPath then;
+                    if (var:gsub("[\\/]","")):match(((scriptPath:gsub("[\\/]","")):gsub(((reaper.GetResourcePath().."Scripts")
+                        :gsub("[\\/]",""):gsub("%p","%%%0")),"" )):gsub("%p","%%%0"))then; DesiredID = true;
+                    end;
+                else;
+                    DesiredID = true;
+                end;
+                if DesiredID then;
+                    return "_"..var:match(".-%s+.-%s+.-%s+(.-)%s"):gsub('"',""):gsub("'","");
+                end;   
+            end;
+        end;  
+       return -1;   
+    end;  
     GetIDByScriptName = Arc_Module.GetIDByScriptName;
     -- Получить Id по имени скрипта или кастом экшена
+    -- scriptPath: Необязательный параметр, на случай если присутствует несколько скриптов с одинаковым именем
     -- В случае неудачи вернет -1
     --====End===============End===============End===============End===============End====
     
@@ -1554,7 +1569,7 @@ local VersionMod = "v.2.4.8"
     
     
     
-    --- 446 --------- / GetScriptNameByID / ---------------------------------------------
+    --- 246 --------- / GetScriptNameByID / ---------------------------------------------
     function Arc_Module.GetScriptNameByID(id);
         if type(id)~="string"then error("expects a 'string', got "..type(id),2) end;
         local file = io.open(reaper.GetResourcePath()..'/reaper-kb.ini','r');
