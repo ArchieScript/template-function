@@ -1,11 +1,3 @@
-
-
-
-
-
-
-
-
     local 
     path,scr_file = reaper.GetResourcePath()..'/Scripts/Archie-ReaScripts/Functions/','Arc_Function_lua.lua';
     local
@@ -32,9 +24,17 @@
     
     --- / Удалить '\n' / -------------
     for var in string.gmatch(var2,".-\n")do;
-	   if var:match("^%s-\n")then;
-		  var = "";
-	   end;
+	   
+	   if not s then
+		 if var:match("^%s-\n")then x=(x or 0)+1 else x = 0 end; 
+	   end
+	   
+	   if x >=3 then
+		  s=true
+		  if var:match("^%s-\n")then;
+			 var = "";
+		  end;
+	   end;    
 	   header = (header or "")..var;
     end;
 	 
