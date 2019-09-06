@@ -1724,7 +1724,7 @@ local VersionMod = "v.2.5.2"
     invert_number = Arc_Module.invert_number;
     -- инвертировать число
     --====End===============End===============End===============End===============End====
-
+ 
 
 
     --================
