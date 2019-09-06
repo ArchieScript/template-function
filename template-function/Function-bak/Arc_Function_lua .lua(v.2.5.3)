@@ -58,6 +58,8 @@ local VersionMod = "v.2.5.3"
    *      v.249   + GetIDByScriptName(scriptName,scriptPath); 
    *      v.246   + GetScriptNameByID(id);
    *      v.251   + StartupScript(function_name,id);
+   *      v.253   + GetTrackAutoRecArm(Track);
+   *      v.253   + SetTrackAutoRecArm(Track,val);
    *  LUA_Lib
    *      v.247   + If_Equals_Or(EqualsToThat,...);
    *      v.248   + If_Equals_OrEx(EqualsToThat,...);
@@ -1576,19 +1578,19 @@ local VersionMod = "v.2.5.3"
     
     
     --- 253 -----------------------------------------------------------------------------
-    function Arc_Module.GetAutoRecArm(Track);
+    function Arc_Module.GetTrackAutoRecArm(Track);
         local retval, str = reaper.GetTrackStateChunk(Track,"",false);
         local str2 = tonumber(str:match("AUTO_RECARM%s-(%d+)"));
         if str2 ~= 1 then return 0 else return 1 end;
     end;
-    GetAutoRecArm = Arc_Module.GetAutoRecArm;
+    GetTrackAutoRecArm = Arc_Module.GetTrackAutoRecArm;
     -- Получить значение автозаписи
     --====End===============End===============End===============End===============End====
     
     
     
     --- 253 -----------------------------------------------------------------------------
-    function Arc_Module.SetAutoRecArm(Track,val);
+    function Arc_Module.SetTrackAutoRecArm(Track,val);
         if tonumber(val)and val >= 1 or val == true then val = 1 else val = 0 end;
         local retval, str = reaper.GetTrackStateChunk(Track,"",false);local str2;
         if str:match("AUTO_RECARM") then;
@@ -1598,7 +1600,7 @@ local VersionMod = "v.2.5.3"
         end;
         reaper.SetTrackStateChunk(Track,str2,false);
     end;
-    SetAutoRecArm = Arc_Module.SetAutoRecArm;
+    SetTrackAutoRecArm = Arc_Module.SetTrackAutoRecArm;
     -- Установите автозапись / 0-1 / true-false;
     --====End===============End===============End===============End===============End====
 
