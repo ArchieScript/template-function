@@ -1,9 +1,9 @@
-local VersionMod = "v.2.5.4"
+local VersionMod = "v.2.5.5"
 --[[
    * Category:    Function
    * Description: Arc_Function_lua
    * Author:      Archie
-   * Version:     2.5.4
+   * Version:     2.5.5
    * AboutScript: Functions for use with some scripts Archie
    * О скрипте:   Функции для использования с некоторыми скриптами Archie
    * Provides:    [nomain].
@@ -60,7 +60,7 @@ local VersionMod = "v.2.5.4"
    *      v.251   + StartupScript(function_name,id);
    *      v.253   + GetTrackAutoRecArm(Track);
    *      v.253   + SetTrackAutoRecArm(Track,val);
-   *      v.254   + SetHeightTrack_Env_TCP(Track,Height,minSize,resetSize,PercentageDefault);
+   *      v.255   + boolean, numb = SetHeightTrack_Env_TCP(Track,Height,minSize,resetSize,PercentageDefault);
    *  LUA_Lib
    *      v.247   + If_Equals_Or(EqualsToThat,...);
    *      v.248   + If_Equals_OrEx(EqualsToThat,...);
@@ -1607,7 +1607,7 @@ local VersionMod = "v.2.5.4"
     
     
     
-    --- 254 -----------------------------------------------------------------------------
+    --- 255 -----------------------------------------------------------------------------
     function Arc_Module.SetHeightTrack_Env_TCP(Track,Height,minSize,resetSize,PercentageDefault);
         if not tonumber(minSize) then minSize = 24 end;
         if not tonumber(PercentageDefault) then PercentageDefault = 0.75 end;
@@ -1655,7 +1655,10 @@ local VersionMod = "v.2.5.4"
             end; 
             heightSet = minSize;      
         end;
-        return reaper.SetMediaTrackInfo_Value(Track,"I_HEIGHTOVERRIDE",heightSet);
+        local retval = reaper.SetMediaTrackInfo_Value(Track,"I_HEIGHTOVERRIDE",heightSet);
+        reaper.TrackList_AdjustWindows(false);
+        local newHeigth = reaper.GetMediaTrackInfo_Value(Track,"I_WNDH");
+        return retval,newHeigth;
     end;
     SetHeightTrack_Env_TCP = Arc_Module.SetHeightTrack_Env_TCP;
     -- Height: Высота в пикселях которую нужно установить
@@ -1663,7 +1666,7 @@ local VersionMod = "v.2.5.4"
     -- resetSize: = 1 - при уменьшении env трека с пользовательской высотой, при достижении minSize сбросить в 0 (по умолчанию 0)
     -- PercentageDefault: Процент погибающей по умолчанию относительно трека TCP(по умолчанию 0.75)
     -- minSize,resetSize,PercentageDefault: Необязательные параметры
-    -- Вернет true в случае успеха
+    -- Вернет true в случае успеха и новый размер трека который удалось установить
     --====End===============End===============End===============End===============End====
 
 
