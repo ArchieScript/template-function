@@ -1611,7 +1611,8 @@ local VersionMod = "v.2.5.5"
     function Arc_Module.SetHeightTrack_Env_TCP(Track,Height,minSize,resetSize,PercentageDefault);
         if not tonumber(minSize) then minSize = 24 end;
         if not tonumber(PercentageDefault) then PercentageDefault = 0.75 end;
-        local CountTrEnv = reaper.CountTrackEnvelopes(Track);
+        local Pcall,CountTrEnv = pcall(reaper.CountTrackEnvelopes,Track);
+        if not Pcall then error(CountTrEnv,2)end;
         local TotalHeight,countEnv,countTrackCustomSize = 0,0,0;
         for i = 1,CountTrEnv do;
             local env = reaper.GetTrackEnvelope(Track,i-1);
