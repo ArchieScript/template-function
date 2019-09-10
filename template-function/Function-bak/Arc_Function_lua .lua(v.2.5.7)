@@ -1608,7 +1608,7 @@ local VersionMod = "v.2.5.8"
     
     
     --- 258 -----------------------------------------------------------------------------
-    function Arc_Module.SetHeightTrack_Env_TCP(Track,Height,minHeigth,resetHeigthEnv,PercentageDefault);
+    function Arc_Module.SetHeightTrack_Env_TCP(Track,Height,minHeigth,resetHeigthEnv,PercentageDefault); 
         if not tonumber(minHeigth) then minHeigth = 24 end;
         if not tonumber(PercentageDefault) then PercentageDefault = 0.75 end;
         local Pcall,CountTrEnv = pcall(reaper.CountTrackEnvelopes,Track);
