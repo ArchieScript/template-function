@@ -1,9 +1,9 @@
-local VersionMod = "v.2.5.7"
+local VersionMod = "v.2.5.8"
 --[[
    * Category:    Function
    * Description: Arc_Function_lua
    * Author:      Archie
-   * Version:     2.5.7
+   * Version:     2.5.8
    * AboutScript: Functions for use with some scripts Archie
    * О скрипте:   Функции для использования с некоторыми скриптами Archie
    * Provides:    [nomain].
@@ -60,7 +60,7 @@ local VersionMod = "v.2.5.7"
    *      v.251   + StartupScript(function_name,id);
    *      v.253   + GetTrackAutoRecArm(Track);
    *      v.253   + SetTrackAutoRecArm(Track,val);
-   *      v.255   + boolean, numb = SetHeightTrack_Env_TCP(Track,Height,minSize,resetSize,PercentageDefault);
+   *      v.258   + boolean, numb = SetHeightTrack_Env_TCP(Track,Height,minHeigth,resetHeigthEnv,PercentageDefault);
    *  LUA_Lib
    *      v.247   + If_Equals_Or(EqualsToThat,...);
    *      v.248   + If_Equals_OrEx(EqualsToThat,...);
@@ -1606,10 +1606,10 @@ local VersionMod = "v.2.5.7"
     --====End===============End===============End===============End===============End====
     
     
-    
-    --- 257 -----------------------------------------------------------------------------
-    function Arc_Module.SetHeightTrack_Env_TCP(Track,Height,minSize,resetSize,PercentageDefault);
-        if not tonumber(minSize) then minSize = 24 end;
+    resetSize 
+    --- 258 -----------------------------------------------------------------------------
+    function Arc_Module.SetHeightTrack_Env_TCP(Track,Height,minHeigth,resetHeigthEnv,PercentageDefault);
+        if not tonumber(minHeigth) then minHeigth = 24 end;
         if not tonumber(PercentageDefault) then PercentageDefault = 0.75 end;
         local Pcall,CountTrEnv = pcall(reaper.CountTrackEnvelopes,Track);
         if not Pcall then error(CountTrEnv,2)end;
@@ -1633,10 +1633,10 @@ local VersionMod = "v.2.5.7"
             end; 
         end;
         local heightSet = (Height - TotalHeight) / (1+(PercentageDefault*countEnv));
-        if heightSet < minSize and countTrackCustomSize == 0 then;
-            heightSet = minSize;
-        elseif heightSet < minSize and countTrackCustomSize > 0 then;
-            local reduceEnv = (minSize - heightSet) / countTrackCustomSize;
+        if heightSet < minHeigth and countTrackCustomSize == 0 then;
+            heightSet = minHeigth;
+        elseif heightSet < minHeigth and countTrackCustomSize > 0 then;
+            local reduceEnv = (minHeigth - heightSet) / countTrackCustomSize;
             for i = 1,CountTrEnv do;
                 local env = reaper.GetTrackEnvelope(Track, i-1);
                 local retval, str = reaper.GetEnvelopeStateChunk(env,"",false);
@@ -1646,24 +1646,24 @@ local VersionMod = "v.2.5.7"
                         local heightEnvTr = tonumber(str:match("LANEHEIGHT%s-(%d+)%s"))or 0;
                         if heightEnvTr > 0 then;
                             local newHeightEnvTr = heightEnvTr - reduceEnv;
-                            if resetSize == 1 then resetSize = 0 else resetSize = minSize end;
-                            if newHeightEnvTr <= minSize then newHeightEnvTr = resetSize end;
+                            if resetHeigthEnv == 1 then resetHeigthEnv = 0 else resetHeigthEnv = minHeigth end;
+                            if newHeightEnvTr <= minHeigth then newHeightEnvTr = resetHeigthEnv end;
                             str = str:gsub("LANEHEIGHT%s-%d+","LANEHEIGHT "..newHeightEnvTr);
                             reaper.SetEnvelopeStateChunk(env,str,false);  
                         end;
                     end;
                 end;
             end; 
-            heightSet = minSize;      
+            heightSet = minHeigth;      
         end;
         return reaper.SetMediaTrackInfo_Value(Track,"I_HEIGHTOVERRIDE",heightSet);
     end;
     SetHeightTrack_Env_TCP = Arc_Module.SetHeightTrack_Env_TCP;
     -- Height: Высота в пикселях которую нужно установить
-    -- minSize: минимальный размер трека(по умолчанию 24)
-    -- resetSize: = 1 - при уменьшении env трека с пользовательской высотой, при достижении minSize сбросить в 0 (по умолчанию 0 не сбрасывать)
+    -- minHeigth: минимальный размер трека(по умолчанию 24)
+    -- resetHeigthEnv: = 1 - при уменьшении env трека с пользовательской высотой, при достижении minHeigth сбросить в 0 (по умолчанию 0 не сбрасывать)
     -- PercentageDefault: Процент погибающей по умолчанию относительно трека TCP(по умолчанию 0.75)
-    -- minSize,resetSize,PercentageDefault: Необязательные параметры
+    -- minHeigth,resetHeigthEnv,PercentageDefault: Необязательные параметры
     -- Вернет true в случае успеха
     -- После изменения всех треков вызовите reaper.TrackList_AdjustWindows(false);
     --====End===============End===============End===============End===============End====
