@@ -1606,7 +1606,7 @@ local VersionMod = "v.2.5.8"
     --====End===============End===============End===============End===============End====
     
     
-    resetSize 
+    
     --- 258 -----------------------------------------------------------------------------
     function Arc_Module.SetHeightTrack_Env_TCP(Track,Height,minHeigth,resetHeigthEnv,PercentageDefault);
         if not tonumber(minHeigth) then minHeigth = 24 end;
