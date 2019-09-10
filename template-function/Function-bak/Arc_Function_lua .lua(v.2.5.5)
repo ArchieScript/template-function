@@ -1,9 +1,9 @@
-local VersionMod = "v.2.5.5"
+local VersionMod = "v.2.5.6"
 --[[
    * Category:    Function
    * Description: Arc_Function_lua
    * Author:      Archie
-   * Version:     2.5.5
+   * Version:     2.5.6
    * AboutScript: Functions for use with some scripts Archie
    * О скрипте:   Функции для использования с некоторыми скриптами Archie
    * Provides:    [nomain].
@@ -27,7 +27,7 @@ local VersionMod = "v.2.5.5"
    *      v.216   + Path,Name = GetPathAndNameSourceMediaFile_Take_SWS(take);
    *      v.242   + GetSetToggleButtonOnOff(numb,boolean set); numb:0 or 1;
    *      v.220   + _ = HelpWindow_WithOptionNotToShow(Text,Header,but,reset);
-   *      v.252   + HelpWindowWhenReRunning(BottonText,but,reset);
+   *      v.256   + HelpWindowWhenReRunning(BottonText,but,reset);
    *      v.119   + DeleteMediaItem(item);
    *      v.118   + GetSampleNumberPosValue(take,SkipNumberOfSamplesPerChannel,FeelVolumeOfItem);
    *      v.117   + SetMediaItemLeftTrim2(position,item);
@@ -473,10 +473,10 @@ local VersionMod = "v.2.5.5"
 
 
 
-    --- 252 ------------ HelpWindowWhenReRunning(BottonText,but,reset); ---------------------
+    --- 256 ------------ HelpWindowWhenReRunning(BottonText,but,reset); ---------------------
     function Arc_Module.HelpWindowWhenReRunning(BottonText,but,reset);-- (BottonText = 1 или 2)
         local BottonTextS,NotReadTextR,NotReadTextE::NotRead::local time = os.time();
-        local ScriptName = ({reaper.get_action_context()})[2];
+        local ScriptName = ({reaper.get_action_context()})[2]:match(".+[/\\](.+)"):upper();
         local TooltipWind = reaper.GetExtState(ScriptName,"HelpWindowWhenReRunning"..'_'..but);
         if TooltipWind == "" then;
             ----------------------
