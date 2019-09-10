@@ -1607,7 +1607,7 @@ local VersionMod = "v.2.5.6"
     
     
     
-    --- 255 -----------------------------------------------------------------------------
+    --- 257 -----------------------------------------------------------------------------
     function Arc_Module.SetHeightTrack_Env_TCP(Track,Height,minSize,resetSize,PercentageDefault);
         if not tonumber(minSize) then minSize = 24 end;
         if not tonumber(PercentageDefault) then PercentageDefault = 0.75 end;
@@ -1656,18 +1656,16 @@ local VersionMod = "v.2.5.6"
             end; 
             heightSet = minSize;      
         end;
-        local retval = reaper.SetMediaTrackInfo_Value(Track,"I_HEIGHTOVERRIDE",heightSet);
-        reaper.TrackList_AdjustWindows(false);
-        local newHeigth = reaper.GetMediaTrackInfo_Value(Track,"I_WNDH");
-        return retval,newHeigth;
+        return reaper.SetMediaTrackInfo_Value(Track,"I_HEIGHTOVERRIDE",heightSet);
     end;
     SetHeightTrack_Env_TCP = Arc_Module.SetHeightTrack_Env_TCP;
     -- Height: Высота в пикселях которую нужно установить
     -- minSize: минимальный размер трека(по умолчанию 24)
-    -- resetSize: = 1 - при уменьшении env трека с пользовательской высотой, при достижении minSize сбросить в 0 (по умолчанию 0)
+    -- resetSize: = 1 - при уменьшении env трека с пользовательской высотой, при достижении minSize сбросить в 0 (по умолчанию 0 не сбрасывать)
     -- PercentageDefault: Процент погибающей по умолчанию относительно трека TCP(по умолчанию 0.75)
     -- minSize,resetSize,PercentageDefault: Необязательные параметры
-    -- Вернет true в случае успеха и новый размер трека который удалось установить
+    -- Вернет true в случае успеха
+    -- После изменения всех треков вызовите reaper.TrackList_AdjustWindows(false);
     --====End===============End===============End===============End===============End====
 
 
