@@ -1614,7 +1614,7 @@ local VersionMod = "v.2.5.9"
         local Pcall,CountTrEnv = pcall(reaper.CountTrackEnvelopes,Track);
         if not Pcall then error(CountTrEnv,2)end;
         if reaper.GetMediaTrackInfo_Value(Track,"I_WNDH")== Height then return end;
-        local CustomH_EnvTr, TotalHeight, countEnv = {},0,0;
+        local CustomH_EnvTr, TotalHeight, countEnv,ret = {},0,0;
         for i = 1,CountTrEnv do;
             local env = reaper.GetTrackEnvelope(Track,i-1);
             local retval, str = reaper.GetEnvelopeStateChunk(env,"",false);
@@ -1668,6 +1668,7 @@ local VersionMod = "v.2.5.9"
         return ret;
     end;                
     SetHeightTrack_Env_TCP = Arc_Module.SetHeightTrack_Env_TCP;
+    -- Установить высоту трека совместно с огибающими
     -- Height: Высота в пикселях которую нужно установить
     -- minHeigth: минимальный размер трека(по умолчанию 24)
     -- resetHeigthEnv: = 1 - при уменьшении env трека с пользовательской высотой, при достижении minHeigth сбросить в 0 (по умолчанию 0 не сбрасывать)
@@ -1676,7 +1677,7 @@ local VersionMod = "v.2.5.9"
     -- Вернет true в случае успеха
     -- После изменения всех треков вызовите reaper.TrackList_AdjustWindows(false);
     -- Погрешность +- 5 пикселей из за округления "I_HEIGHTOVERRIDE" каждой огибающей со стандартным размером
-    -- Пример из 4 огибающих: 
+    -- Пример погрешности из 4 огибающих: 
     --    reaper.SetMediaTrackInfo_Value(Track,"I_HEIGHTOVERRIDE",41);
     --    val = reaper.GetMediaTrackInfo_Value(Track,"I_WNDH");--Вернет 161
     --    reaper.SetMediaTrackInfo_Value(Track,"I_HEIGHTOVERRIDE",42);
