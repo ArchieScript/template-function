@@ -1,9 +1,9 @@
-local VersionMod = "v.2.5.8"
+local VersionMod = "v.2.5.9"
 --[[
    * Category:    Function
    * Description: Arc_Function_lua
    * Author:      Archie
-   * Version:     2.5.8
+   * Version:     2.5.9
    * AboutScript: Functions for use with some scripts Archie
    * О скрипте:   Функции для использования с некоторыми скриптами Archie
    * Provides:    [nomain].
@@ -1607,19 +1607,20 @@ local VersionMod = "v.2.5.8"
     
     
     
-    --- 258 -----------------------------------------------------------------------------
+    --- 259 -----------------------------------------------------------------------------
     function Arc_Module.SetHeightTrack_Env_TCP(Track,Height,minHeigth,resetHeigthEnv,PercentageDefault); 
         if not tonumber(minHeigth) then minHeigth = 24 end;
         if not tonumber(PercentageDefault) then PercentageDefault = 0.75 end;
         local Pcall,CountTrEnv = pcall(reaper.CountTrackEnvelopes,Track);
         if not Pcall then error(CountTrEnv,2)end;
-        local TotalHeight,countEnv,countTrackCustomSize = 0,0,0;
+        if reaper.GetMediaTrackInfo_Value(Track,"I_WNDH")== Height then return end;
+        local CustomH_EnvTr, TotalHeight, countEnv = {},0,0;
         for i = 1,CountTrEnv do;
             local env = reaper.GetTrackEnvelope(Track,i-1);
             local retval, str = reaper.GetEnvelopeStateChunk(env,"",false);
             local visEnvTr,visInline = str:match("VIS%s-(%d+)%s-(%d+)");
             local visibleEnvTr = tonumber(visEnvTr);
-            local visibleInline = tonumber(visInline); --1-track/0-line
+            local visibleInline = tonumber(visInline); 
             local heightEnvTr = tonumber(str:match("LANEHEIGHT%s-(%d+)%s"));
             if visibleEnvTr == 1 then;
                 if visibleInline == 1 then;
@@ -1627,37 +1628,45 @@ local VersionMod = "v.2.5.8"
                         countEnv = countEnv + 1;
                     elseif tonumber(heightEnvTr) and heightEnvTr ~= 0 then;
                         TotalHeight = TotalHeight + heightEnvTr;
-                        countTrackCustomSize = countTrackCustomSize + 1;
+                        CustomH_EnvTr[#CustomH_EnvTr+1] = env;
                     end;
                 end;
             end; 
         end;
+        if ((Height-TotalHeight)-(countEnv*minHeigth)) < 30 then PercentageDefault = 1 end;--При малой высоте в сто %
         local heightSet = (Height - TotalHeight) / (1+(PercentageDefault*countEnv));
-        if heightSet < minHeigth and countTrackCustomSize == 0 then;
+        reaper.PreventUIRefresh(10);
+        if heightSet < minHeigth and #CustomH_EnvTr == 0 then;
+            heightSet = minHeigth; 
+        elseif heightSet < minHeigth and #CustomH_EnvTr > 0 then;
+            local reduceEnv = (TotalHeight-(Height-(minHeigth*(countEnv+1))))/#CustomH_EnvTr;
             heightSet = minHeigth;
-        elseif heightSet < minHeigth and countTrackCustomSize > 0 then;
-            local reduceEnv = (minHeigth - heightSet) / countTrackCustomSize;
-            for i = 1,CountTrEnv do;
-                local env = reaper.GetTrackEnvelope(Track, i-1);
-                local retval, str = reaper.GetEnvelopeStateChunk(env,"",false);
-                local visEnvTr,visInline = str:match("VIS%s-(%d+)%s-(%d+)");
-                if tonumber(visInline) == 1 then;
-                    if tonumber(visEnvTr) == 1 then;
-                        local heightEnvTr = tonumber(str:match("LANEHEIGHT%s-(%d+)%s"))or 0;
-                        if heightEnvTr > 0 then;
-                            local newHeightEnvTr = heightEnvTr - reduceEnv;
-                            if resetHeigthEnv == 1 then resetHeigthEnv = 0 else resetHeigthEnv = minHeigth end;
-                            if newHeightEnvTr <= minHeigth then newHeightEnvTr = resetHeigthEnv end;
-                            str = str:gsub("LANEHEIGHT%s-%d+","LANEHEIGHT "..newHeightEnvTr);
-                            reaper.SetEnvelopeStateChunk(env,str,false);  
-                        end;
+            local removeEnv,repeatEnvRecount,t;
+            repeat;
+                repeatEnvRecount = nil;
+                for i = #CustomH_EnvTr,1,-1 do;
+                    local retval,str = reaper.GetEnvelopeStateChunk(CustomH_EnvTr[i],"",false);
+                    local heightEnvTr = tonumber(str:match("LANEHEIGHT%s-(%d+)%s"))or 0;
+                    local newHeightEnvTr = heightEnvTr - reduceEnv;
+                    if newHeightEnvTr <= minHeigth then;
+                        repeatEnvRecount = (repeatEnvRecount or 0)+(minHeigth - newHeightEnvTr);
+                        if resetHeigthEnv == 1 then newHeightEnvTr = 0 else newHeightEnvTr = minHeigth end;
+                        removeEnv = true;
                     end;
-                end;
-            end; 
-            heightSet = minHeigth;      
+                    local str = str:gsub("LANEHEIGHT%s-%d+","LANEHEIGHT "..newHeightEnvTr);
+                    reaper.SetEnvelopeStateChunk(CustomH_EnvTr[i],str,false);
+                    if removeEnv then table.remove(CustomH_EnvTr,i)removeEnv = nil end;
+                end; 
+                if repeatEnvRecount then reduceEnv = repeatEnvRecount / #CustomH_EnvTr end;
+                t = (t or 0)+1 if t == 1e+6 then break end;
+            until not repeatEnvRecount;
         end;
-        return reaper.SetMediaTrackInfo_Value(Track,"I_HEIGHTOVERRIDE",heightSet);
-    end;
+        if reaper.GetMediaTrackInfo_Value(Track,"I_HEIGHTOVERRIDE") ~= heightSet then;
+            ret = reaper.SetMediaTrackInfo_Value(Track,"I_HEIGHTOVERRIDE",heightSet);
+        end;
+        reaper.PreventUIRefresh(-10);
+        return ret;
+    end;                
     SetHeightTrack_Env_TCP = Arc_Module.SetHeightTrack_Env_TCP;
     -- Height: Высота в пикселях которую нужно установить
     -- minHeigth: минимальный размер трека(по умолчанию 24)
@@ -1666,7 +1675,14 @@ local VersionMod = "v.2.5.8"
     -- minHeigth,resetHeigthEnv,PercentageDefault: Необязательные параметры
     -- Вернет true в случае успеха
     -- После изменения всех треков вызовите reaper.TrackList_AdjustWindows(false);
-    --====End===============End===============End===============End===============End====
+    -- Погрешность +- 5 пикселей из за округления "I_HEIGHTOVERRIDE" каждой огибающей со стандартным размером
+    -- Пример из 4 огибающих: 
+    --    reaper.SetMediaTrackInfo_Value(Track,"I_HEIGHTOVERRIDE",41);
+    --    val = reaper.GetMediaTrackInfo_Value(Track,"I_WNDH");--Вернет 161
+    --    reaper.SetMediaTrackInfo_Value(Track,"I_HEIGHTOVERRIDE",42);
+    --    val = reaper.GetMediaTrackInfo_Value(Track,"I_WNDH");--Вернет 166
+    -- Вот она погрешность в 5 пикселей
+    --====End===============End===============End===============End===============End====  
 
 
 
