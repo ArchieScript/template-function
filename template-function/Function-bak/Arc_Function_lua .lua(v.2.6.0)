@@ -1,9 +1,9 @@
-local VersionMod = "v.2.6.0"
+local VersionMod = "v.2.6.1"
 --[[
    * Category:    Function
    * Description: Arc_Function_lua
    * Author:      Archie
-   * Version:     2.6.0
+   * Version:     2.6.1
    * AboutScript: Functions for use with some scripts Archie
    * О скрипте:   Функции для использования с некоторыми скриптами Archie
    * Provides:    [nomain].
@@ -1453,11 +1453,11 @@ local VersionMod = "v.2.6.0"
 
 
 
-    --251-------- StartupScript() -------------------------------------------------------
+    --261-------- StartupScript() -------------------------------------------------------
      function Arc_Module.StartupScript(nameAction,id,nameFun,Clean);
         -----
         if type(nameAction)~="string"then;error("#1 expects 'string', got "..type(nameAction),2)end;
-        local nameAction = nameAction:gsub('[%s%p]',''):upper();
+        local nameAction = nameAction:gsub('[%s%p]','_'):gsub('__','_'):gsub('__','_'):upper();
         if #nameAction < 5 then;error("#1 expected a string 5 or more characters, got "..#nameAction,2)end;
         ----
         if Clean ~= "ALL" and Clean ~= "ONE" then;
@@ -1466,6 +1466,7 @@ local VersionMod = "v.2.6.0"
         ----
         local ScrName = ({reaper.get_action_context()})[2]:match(".+[/\\](.+)");
         if ScrName:match("^Archie_")or ScrName:match("^Arc_")and not nameFun then nameFun = "Archie"end;
+        --Для Меня нач скр Arc / Для Меня чистка(nameAction,id,nil,Clean)
         if type(nameFun)~="string"then;error("#3 expects 'string', got "..type(nameFun),2)end;
         local nameFun=nameFun:gsub('[%s%p]',''):gsub('.','_%0',1)--:upper();
         if #nameFun < 7 then;error("expected a string 6 or more characters, got "..#nameFun-1,2)end;
@@ -1571,10 +1572,10 @@ local VersionMod = "v.2.6.0"
     --        "ALL" удалить все что в функции nameFun (id при ALL равен пустой строкой "").(nameAction*)
     --  *nameAction при очистке может быть любой строкой(так как этот параметр не работает), но не менее 6 символов, для того что бы пропустила функция,.
     -- Пример:
-     --local scrPath,scrName = ({reaper.get_action_context()})[2]:match("(.+)[/\\](.+)")
-     --local ID = Arc.GetIDByScriptName(scrName,scrPath); 
-     --if ID == -1 or type(ID) ~= "string" then Arc.no_undo()return end;
-     --Arc.StartupScript(scrName,ID,"ArchieScript");
+    -- local scrPath,scrName = ({reaper.get_action_context()})[2]:match("(.+)[/\\](.+)")
+    -- local ID = Arc.GetIDByScriptName(scrName,scrPath); 
+    -- if ID == -1 or type(ID) ~= "string" then Arc.no_undo()return end;
+    -- Arc.StartupScript(scrName,ID,"ArchieScript");
     --====End===============End===============End===============End===============End====
     
     
