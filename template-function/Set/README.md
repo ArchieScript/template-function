@@ -27,6 +27,7 @@
 >#
 >##### [SetToggleButtonOnOff(numb)](https://github.com/ArchieScript/template-function/blob/master/template-function/Set/SetToggleButtonOnOff.lua)-- Установить  Кнопку Переключателя Вкл Выкл
 >#
+>##### [SetTerminateInstancesKB_ini](https://github.com/ArchieScript/template-function/blob/master/template-function/Set/SetTerminateInstancesKB_ini.lua)-- Установите - завершить все экземпляры или начать новый KB_ini
 >#
 >#
 >#
