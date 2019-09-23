@@ -1727,7 +1727,7 @@ local VersionMod = "v.2.6.4"
         if not file then return false; end;
         local text = file:read('a')..'\n'; file:close();
         -----
-        local nameFun2;
+        local nameFun2,StartF;
         for var in text:gmatch(".-\n") do;
             if StartF and var:match("^.-StartupScript"..nameFun.. "%s-%(.-%)")then;StartF = 2 end;
             if not StartF and var:match("^%s-function%s-StartupScript"..nameFun.."%s-%(.-%)")then;StartF = 1 end;
