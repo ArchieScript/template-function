@@ -1695,7 +1695,6 @@ local VersionMod = "v.2.6.5"
     -- Добавить скрипт в автозагрузку
     -- Если нужно дважды добавить один и тот же скрипт в автозагрузку, то делаем цикл в скрипте и добавляем этот скрипт
     -- Дважды один и тот же скрипт добавить в автозагрузку с помощью донной функции нельзя
-    --
     -- nameAction: Имя экшена или скрипта добавляемого в автозагрузку
     -- id: id экшена или скрипта добавляемого в автозагрузку
     -- nameFun: Имя с которым будет создана функция в автозагрузке, обычно это свой ник. Например: "ArchieScript" *#8
@@ -1703,7 +1702,7 @@ local VersionMod = "v.2.6.5"
     --        "ALL" удалить все что в функции nameFun (id при ALL равен пустой строкой "").(nameAction*)
     --  *nameAction при очистке может быть любой строкой(так как этот параметр не работает), но не менее 6 символов, для того что бы пропустила функция,.
     -- Пример:
-    -- local scrPath,scrName = ({reaper.get_action_context()})[2]:match("(.+)[/\\](.+)")
+    -- local scrPath,scrName = ({reaper.get_action_context()})[2]:match("(.+)[/\\](.+)");
     -- local ID = Arc.GetIDByScriptName(scrName,scrPath); 
     -- if ID == -1 or type(ID) ~= "string" then Arc.no_undo()return end;
     -- Arc.StartupScript(scrName,ID,"ArchieScript");
