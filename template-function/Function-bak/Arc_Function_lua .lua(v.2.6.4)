@@ -57,10 +57,11 @@ local VersionMod = "v.2.6.4"
    *      v.245   + openFileURL(pathUrl);
    *      v.249   + GetIDByScriptName(scriptName,scriptPath); 
    *      v.246   + GetScriptNameByID(id);
-   *      v.251   + StartupScript(function_name,id);
    *      v.253   + GetTrackAutoRecArm(Track);
    *      v.253   + SetTrackAutoRecArm(Track,val);
    *      v.259   + boolean, numb = SetHeightTrack_Env_TCP(Track,Height,minHeigth,resetHeigthEnv,PercentageDefault);
+   *      v.263   + SetStartupScript(nameAction,id,nameFun,Clean);
+   *      v.263   + boolean, boolean = GetStartupScript(id,nameFun);
    *  LUA_Lib
    *      v.247   + If_Equals_Or(EqualsToThat,...);
    *      v.248   + If_Equals_OrEx(EqualsToThat,...);
