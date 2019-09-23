@@ -1,9 +1,9 @@
-local VersionMod = "v.2.6.4"
+local VersionMod = "v.2.6.5"
 --[[
    * Category:    Function
    * Description: Arc_Function_lua
    * Author:      Archie
-   * Version:     2.6.4
+   * Version:     2.6.5
    * AboutScript: Functions for use with some scripts Archie
    * О скрипте:   Функции для использования с некоторыми скриптами Archie
    * Provides:    [nomain].
@@ -60,8 +60,8 @@ local VersionMod = "v.2.6.4"
    *      v.253   + GetTrackAutoRecArm(Track);
    *      v.253   + SetTrackAutoRecArm(Track,val);
    *      v.259   + boolean, numb = SetHeightTrack_Env_TCP(Track,Height,minHeigth,resetHeigthEnv,PercentageDefault);
-   *      v.263   + SetStartupScript(nameAction,id,nameFun,Clean);
-   *      v.263   + boolean, boolean = GetStartupScript(id,nameFun);
+   *      v.265   + SetStartupScript(nameAction,id,nameFun,Clean);
+   *      v.265   + boolean, boolean = GetStartupScript(id,nameFun);
    *  LUA_Lib
    *      v.247   + If_Equals_Or(EqualsToThat,...);
    *      v.248   + If_Equals_OrEx(EqualsToThat,...);
@@ -1566,8 +1566,8 @@ local VersionMod = "v.2.6.4"
     
     
     
-    --- 264 ----------- SetStartupScript() ------------------------------------------------
-    function Arc_Module.SetStartupScript(nameAction,id,nameFun,Clean);
+    --- 265 ----------- SetStartupScript() ------------------------------------------------
+     function Arc_Module.SetStartupScript(nameAction,id,nameFun,Clean);
         -----
         if type(nameAction)~="string"then;error("#1 expects 'string', got "..type(nameAction),2)end;
         local nameAction = nameAction:gsub('[%s%p]','_'):gsub('__','_'):gsub('__','_'):upper();
@@ -1599,7 +1599,7 @@ local VersionMod = "v.2.6.4"
             local CheckFun,var2;
             for var in text:gmatch(".-\n") do;
                 if var:match("^%s-function%s+StartupScript"..nameFun.."%s-%(.-%)")then;
-                    var = var..nameAction.."=reaper.Main_OnCommand(reaper.NamedCommandLookup('"..id.."'),0)\n";
+                    var = var..(" "):rep(4)..nameAction.."=reaper.Main_OnCommand(reaper.NamedCommandLookup('"..id.."'),0)\n";
                     CheckFun = true;
                 end;
                 table.insert(line_T,var);
@@ -1607,7 +1607,7 @@ local VersionMod = "v.2.6.4"
             -----
             if not CheckFun then;
                 var2 = text.."\n\nfunction StartupScript"..nameFun.."()\n"..
-                nameAction.."=reaper.Main_OnCommand(reaper.NamedCommandLookup('"..id.."'),0)\n"..
+                (" "):rep(4)..nameAction.."=reaper.Main_OnCommand(reaper.NamedCommandLookup('"..id.."'),0)\n"..
                 "end StartupScript"..nameFun.."()";
             else;
                 var2 = table.concat(line_T);
@@ -1623,21 +1623,23 @@ local VersionMod = "v.2.6.4"
             local text = file:read('a')..'\n'; file:close();
             ---
             local line_T = {};
-            local T = {}; local var2,X;
+            local T = {}; local var2,X,StartF;
             for var in text:gmatch(".-\n") do;
                 if StartF and var:match("^.-StartupScript"..nameFun.."%s-%(.-%)")then; StartF=nil T={} end;
                 if not StartF and var:match("^%s-function%s-StartupScript"..nameFun.."%s-%(.-%)")then; StartF = true end;
                 if StartF then;
                     if var:match("^%s-\n")then var = nil end;
-                    T[#T+1] = var:match("^.-NamedCommandLookup%('(.-)'.-\n");
-                    for i = 1,#T do;
-                        if T[i] == var:match("^.-NamedCommandLookup%('(.-)'.-\n")then;
-                            X=(X or 0)+1;
-                            if X > 1 then; var = nil; T[#T]=nil; break end;
-                        end;
-                    end; X = nil;
-                end; 
-                table.insert(line_T,var);
+                    if var then;
+                        T[#T+1] = var:match("^.-NamedCommandLookup%('(.-)'.-\n");
+                        for i = 1,#T do;
+                            if T[i] == var:match("^.-NamedCommandLookup%('(.-)'.-\n")then;
+                                X=(X or 0)+1;
+                                if X > 1 then; var = nil; T[#T]=nil; break end;
+                            end;
+                        end; X = nil;
+                    end;
+                end;
+                if var then table.insert(line_T,var)end;
             end;
             --- / Записываем в файл / ------
             local header = table.concat(line_T);
@@ -1652,7 +1654,7 @@ local VersionMod = "v.2.6.4"
             if not file then return end; local text = file:read('a')..'\n'; file:close();
             ----------
             local line_T = {};
-            local ChangesAre;
+            local ChangesAre,StartF;
             if Clean == "ALL" then;
                 for var in text:gmatch(".-\n") do;
                     if StartF and var:match("^.-StartupScript"..nameFun.. "%s-%(.-%)")then;StartF = 2 end;
@@ -1662,7 +1664,7 @@ local VersionMod = "v.2.6.4"
                         ChangesAre = true;
                         if StartF == 2 then StartF = nil end;
                     end;
-                    table.insert(line_T,var);
+                    if var then table.insert(line_T,var)end;
                 end;
                 ---- 
             elseif Clean == "ONE" then;
@@ -1673,7 +1675,7 @@ local VersionMod = "v.2.6.4"
                         if var:match("^.-NamedCommandLookup%('(.-)'.-\n") == id then var = nil ChangesAre = true; end;
                         if StartF == 2 then StartF = nil end;   
                     end;
-                    table.insert(line_T,var);
+                    if var then table.insert(line_T,var)end;
                 end;
                 ----  
             end;
@@ -1688,7 +1690,7 @@ local VersionMod = "v.2.6.4"
         --------------------------------
         --------------------------------
     end;
-    SetStartupScript = Arc_Module.SetStartupScript;
+    Arc_Module.SetStartupScript = Arc_Module.SetStartupScript;
     -- С данной функцией нужно быть предельно аккуратным
     -- Добавить скрипт в автозагрузку
     -- Если нужно дважды добавить один и тот же скрипт в автозагрузку, то делаем цикл в скрипте и добавляем этот скрипт
@@ -1709,7 +1711,7 @@ local VersionMod = "v.2.6.4"
     
     
     
-    --- 264 ----------------- GetStartupScript(id,nameFun) ------------------------------
+    --- 265 ----------------- GetStartupScript(id,nameFun) ------------------------------
     function Arc_Module.GetStartupScript(id,nameFun);
         -----
         if type(id)~="string" and type(id)~="number" then;
