@@ -132,43 +132,43 @@ local VersionMod = "v.2.6.6"
 
 
 
-    --- 230 / 266 ------- TracFx_Rename --------------------------------------------------
-    function Arc_Module.TrackFx_Rename(Track,idx_fx,newName);
-        local strT,found,slot = {};
-        local Pcall,FXGUID = pcall(reaper.TrackFX_GetFXGUID,Track,idx_fx);
-        if not Pcall or not FXGUID then return end;
-        local retval,str = reaper.GetTrackStateChunk(Track,"",false);
-        for l in (str.."\n"):gmatch(".-\n")do table.insert(strT,l)end;
-        for i = #strT,1,-1 do;
-            if strT[i]:match(FXGUID:gsub("%p","%%%0"))then found = true end;
-            if strT[i]:match("^<")and found and not strT[i]:match("JS_SER")then;
-                found = nil;
-                local nStr = {};
-                for S in strT[i]:gmatch("%S+")do;
-                    if not X then nStr[#nStr+1] = S else nStr[#nStr] = nStr[#nStr].." "..S end;
-                    if S:match('"') and not S:match('""')and not S:match('".-"') then;
-                        if not X then;X = true;else;X = nil;end;
-                    end;
-                end;
-                if strT[i]:match("^<%s-JS")then;
-                    slot = 3;
-                elseif strT[i]:match("^<%s-AU")then;
-                    slot = 4;
-                elseif strT[i]:match("^<%s-VST")then;
-                    slot = 5;
-                end;
-                if not slot then error("Failed to rename",2) end;
-                nStr[slot] = newName:gsub(newName,'"%0"');
-                strT[i] = table.concat(nStr," ");
-                break;
-            end;   
-        end;
-        reaper.SetTrackStateChunk(Track,table.concat(strT),false);
-    end;
-    TrackFx_Rename = Arc_Module.TrackFx_Rename;
-    -- Переименовать Fx в треке
-    -- Вернет false если Fx отсутствует, в противном случае true
-    --====End===============End===============End===============End===============End====
+   --- 230 / 266 ------- TracFx_Rename --------------------------------------------------
+   function Arc_Module.TrackFx_Rename(Track,idx_fx,newName);
+       local strT,found,slot = {};
+       local Pcall,FXGUID = pcall(reaper.TrackFX_GetFXGUID,Track,idx_fx);
+       if not Pcall or not FXGUID then return false end;
+       local retval,str = reaper.GetTrackStateChunk(Track,"",false);
+       for l in (str.."\n"):gmatch(".-\n")do table.insert(strT,l)end;
+       for i = #strT,1,-1 do;
+           if strT[i]:match(FXGUID:gsub("%p","%%%0"))then found = true end;
+           if strT[i]:match("^<")and found and not strT[i]:match("JS_SER")then;
+               found = nil;
+               local nStr = {};
+               for S in strT[i]:gmatch("%S+")do;
+                   if not X then nStr[#nStr+1] = S else nStr[#nStr] = nStr[#nStr].." "..S end;
+                   if S:match('"') and not S:match('""')and not S:match('".-"') then;
+                       if not X then;X = true;else;X = nil;end;
+                   end;
+               end;
+               if strT[i]:match("^<%s-JS")then;
+                   slot = 3;
+               elseif strT[i]:match("^<%s-AU")then;
+                   slot = 4;
+               elseif strT[i]:match("^<%s-VST")then;
+                   slot = 5;
+               end;
+               if not slot then error("Failed to rename",2) end;
+               nStr[slot] = newName:gsub(newName,'"%0"');
+               strT[i] = table.concat(nStr," ");
+               break;
+           end;   
+       end;
+       return reaper.SetTrackStateChunk(Track,table.concat(strT),false);
+   end;
+   TrackFx_Rename = Arc_Module.TrackFx_Rename;
+   -- Переименовать Fx в треке
+   -- Вернет true если переименовал, в противном случае false
+   --====End===============End===============End===============End===============End====
     
     
     
