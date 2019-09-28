@@ -7,15 +7,19 @@
 -- ENV - Конверт с которого переместить
 -- ENV_NEW - Конверт на который переместить  / ENV и ENV_NEW может быть один конверт.
 -- time1/time2 - Диапазон конверта от time1 до time2 который нужно переместить.
--- timeNew1 - Время, куда нужно переместить (начальная точка от Диапазона time1-time2)
+-- timeNew1 - Время, куда нужно переместить.
 -- Move: true переместить / false скопировать.
+-- Undo: false отключить undo, true обернуть в undo блок.
 
 
     -------------------------------------------------------------------------------------------
-    local function CopyMoveEnvelopePointsInRangeOfTime(ENV,ENV_NEW,time1,time2,timeNew1,Move);
+    local function CopyMoveEnvelopePointsInRangeOfTime(ENV,ENV_NEW,time1,time2,timeNew1,Move,Undo);
         reaper.GetEnvelopeName(ENV)reaper.GetEnvelopeName(ENV_NEW);
         if time2 <= time1 then return false end;
-        reaper.PreventUIRefresh(123456);reaper.Undo_BeginBlock();
+        reaper.PreventUIRefresh(123456);
+        if Undo == true or Undo == 1 then;
+            reaper.Undo_BeginBlock();
+        end;
         local timeNew2,newLength,DimmyTr,Goto_DimmyActive
         -----
         local T = {time1=time1,time2=time2,timeNew1=timeNew1,timeNew2=timeNew1+(time2-time1)};
@@ -134,14 +138,17 @@
             reaper.Envelope_SortPointsEx(ENV_NEW,i);
         end;
         if not GotoMOVEActive then;
-            if Move == true then ENV_NEW = ENV timeNew1 = nil GotoMOVEActive = true goto GotoMOVE end;
+            if Move == true or Move == 1 then ENV_NEW = ENV timeNew1 = nil GotoMOVEActive = true goto GotoMOVE end;
         end;
         ---
         GotoMOVEActive = nil;
         if not Goto_DimmyActive and DimmyTr then;Goto_DimmyActive = true goto Goto_Dimmy;
         elseif Goto_DimmyActive and DimmyTr then;reaper.DeleteTrack(reaper.GetTrack(0,0))end;
         ---
-        reaper.Undo_EndBlock("CopyMoveEnvelopePointsInRangeOfTime",0);reaper.PreventUIRefresh(-123456);
+        if Undo == true or Undo == 1 then;
+            reaper.Undo_EndBlock("CopyMoveEnvelopePointsInRangeOfTime",-1);
+        end;
+        reaper.PreventUIRefresh(-123456);
         return true
     end;
     -------------------------------------------------------------------------------------------
