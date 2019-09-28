@@ -172,7 +172,7 @@ local VersionMod = "v.2.6.6"
     
     
     
-    --- 266 ------------- TrackFX_GetFXNameOriginalSource --------------------------------
+    --- 266 ------------------------ TrackFX_GetFXNameEx --------------------------------
     function Arc_Module.TrackFX_GetFXNameEx(Track,idx_fx);
         local strT,found,Name,slot = {};
         local Pcall,FXGUID = pcall(reaper.TrackFX_GetFXGUID,Track,idx_fx);
