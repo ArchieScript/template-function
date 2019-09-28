@@ -1,9 +1,9 @@
-local VersionMod = "v.2.6.6"
+local VersionMod = "v.2.6.7"
 --[[
    * Category:    Function
    * Description: Arc_Function_lua
    * Author:      Archie
-   * Version:     2.6.6
+   * Version:     2.6.7
    * AboutScript: Functions for use with some scripts Archie
    * О скрипте:   Функции для использования с некоторыми скриптами Archie
    * Provides:    [nomain].
@@ -15,8 +15,8 @@ local VersionMod = "v.2.6.6"
    *  REAPER_Lib
    *      v.108   + no_undo();
    *      v.108   + Action(id,...);
-   *      v.266   + boolean = TrackFx_Rename(Track,idx_Fx,Rename);
-   *      v.266   + NameDefault,Name =  TrackFX_GetFXNameEx(Track,idx_fx);
+   *      v.267   + boolean = TrackFx_Rename(Track,idx_Fx,Rename);
+   *      v.267   + NameDefault,Name =  TrackFX_GetFXNameEx(Track,idx_fx);
    *      v.229   + boolean = RemoveAllSendTr(track,category);
    *      v.229   + boolean = RemoveAllItemTr_Sel(track,rem_Idx);
    *      v.227   + SelectAllTracks(numb);
@@ -132,11 +132,53 @@ local VersionMod = "v.2.6.6"
 
 
 
-   --- 230 / 266 ------- TracFx_Rename --------------------------------------------------
+   --- 230 / 267 ------- TracFx_Rename --------------------------------------------------
    function Arc_Module.TrackFx_Rename(Track,idx_fx,newName);
        local strT,found,slot = {};
        local Pcall,FXGUID = pcall(reaper.TrackFX_GetFXGUID,Track,idx_fx);
        if not Pcall or not FXGUID then return false end;
+       local retval,str = reaper.GetTrackStateChunk(Track,"",false);
+       for l in (str.."\n"):gmatch(".-\n")do table.insert(strT,l)end;
+       for i = #strT,1,-1 do;
+           if strT[i]:match(FXGUID:gsub("%p","%%%0"))then found = true end;
+           if strT[i]:match("^<")and found and not strT[i]:match("JS_SER")then;
+               found = nil;
+               --local 
+               nStr = {};
+               for S in strT[i]:gmatch("%S+")do;
+                   if not X then nStr[#nStr+1] = S else nStr[#nStr] = nStr[#nStr].." "..S end;
+                   if S:match('"') and not S:match('""')and not S:match('".-"') then;
+                       if not X then;X = true;else;X = nil;end;
+                   end;
+               end;
+               if strT[i]:match("^<%s-JS")then;
+                   slot = 3;
+               elseif strT[i]:match("^<%s-AU")then;
+                   slot = 4;
+               elseif strT[i]:match("^<%s-VST")then;
+                   slot = 5;
+               end;
+               if not slot then error("Failed to rename",2)end;
+               nStr[slot] = newName:gsub(newName:gsub("%p","%%%0"),'"%0"');
+               nStr[#nStr+1]="\n";
+               strT[i] = table.concat(nStr," ");
+               break;
+           end;
+       end;
+       return reaper.SetTrackStateChunk(Track,table.concat(strT),false);
+   end;
+   TrackFx_Rename = Arc_Module.TrackFx_Rename;
+   -- Переименовать Fx в треке
+   -- Вернет true если переименовал, в противном случае false
+   --====End===============End===============End===============End===============End====
+    
+    
+    
+   --- 267 ------------------------ TrackFX_GetFXNameEx --------------------------------
+   function Arc_Module.TrackFX_GetFXNameEx(Track,idx_fx);
+       local strT,found,Name,slot = {};
+       local Pcall,FXGUID = pcall(reaper.TrackFX_GetFXGUID,Track,idx_fx);
+       if not Pcall or not FXGUID then return end;
        local retval,str = reaper.GetTrackStateChunk(Track,"",false);
        for l in (str.."\n"):gmatch(".-\n")do table.insert(strT,l)end;
        for i = #strT,1,-1 do;
@@ -157,64 +199,25 @@ local VersionMod = "v.2.6.6"
                elseif strT[i]:match("^<%s-VST")then;
                    slot = 5;
                end;
-               if not slot then error("Failed to rename",2) end;
-               nStr[slot] = newName:gsub(newName,'"%0"');
-               strT[i] = table.concat(nStr," ");
-               break;
+               if slot then;
+                   Name = nStr[slot]:gsub('"','');
+                   nStr[slot] = '""';
+                   nStr[#nStr+1]="\n";
+                   strT[i] = table.concat(nStr," ");
+                   break;
+               end;
            end;   
        end;
-       return reaper.SetTrackStateChunk(Track,table.concat(strT),false);
+       reaper.SetTrackStateChunk(Track,table.concat(strT),false);
+       local ret,NameDefault = reaper.TrackFX_GetFXName(Track,idx_fx,"");
+       reaper.SetTrackStateChunk(Track,str,false);
+       return NameDefault,Name or "";
    end;
-   TrackFx_Rename = Arc_Module.TrackFx_Rename;
-   -- Переименовать Fx в треке
-   -- Вернет true если переименовал, в противном случае false
+   TrackFX_GetFXNameEx = Arc_Module.TrackFX_GetFXNameEx;
+   -- Получить Имя эффекта на треке
+   -- Вернет Имя по умолчанию и Имя переименованное
+   -- NameDefault,Name =  TrackFX_GetFXNameEx(Track,0);
    --====End===============End===============End===============End===============End====
-    
-    
-    
-    --- 266 ------------------------ TrackFX_GetFXNameEx --------------------------------
-    function Arc_Module.TrackFX_GetFXNameEx(Track,idx_fx);
-        local strT,found,Name,slot = {};
-        local Pcall,FXGUID = pcall(reaper.TrackFX_GetFXGUID,Track,idx_fx);
-        if not Pcall or not FXGUID then return end;
-        local retval,str = reaper.GetTrackStateChunk(Track,"",false);
-        for l in (str.."\n"):gmatch(".-\n")do table.insert(strT,l)end;
-        for i = #strT,1,-1 do;
-            if strT[i]:match(FXGUID:gsub("%p","%%%0"))then found = true end;
-            if strT[i]:match("^<")and found and not strT[i]:match("JS_SER")then;
-                found = nil;
-                local nStr = {};
-                for S in strT[i]:gmatch("%S+")do;
-                    if not X then nStr[#nStr+1] = S else nStr[#nStr] = nStr[#nStr].." "..S end;
-                    if S:match('"') and not S:match('""')and not S:match('".-"') then;
-                        if not X then;X = true;else;X = nil;end;
-                    end;
-                end;
-                if strT[i]:match("^<%s-JS")then;
-                    slot = 3;
-                elseif strT[i]:match("^<%s-AU")then;
-                    slot = 4;
-                elseif strT[i]:match("^<%s-VST")then;
-                    slot = 5;
-                end;
-                if slot then;
-                    Name = nStr[slot]:gsub('"','');
-                    nStr[slot] = '""';
-                    strT[i] = table.concat(nStr," ");
-                    break;
-                end;
-            end;   
-        end;
-        reaper.SetTrackStateChunk(Track,table.concat(strT),false);
-        local ret,NameDefault = reaper.TrackFX_GetFXName(Track,idx_fx,"");
-        reaper.SetTrackStateChunk(Track,str,false);
-        return NameDefault,Name or "";
-    end;
-    TrackFX_GetFXNameEx = Arc_Module.TrackFX_GetFXNameEx;
-    -- Получить Имя эффекта на треке
-    -- Вернет Имя по умолчанию и Имя переименованное
-    -- NameDefault,Name =  TrackFX_GetFXNameEx(Track,0);
-    --====End===============End===============End===============End===============End====
     
 
 
