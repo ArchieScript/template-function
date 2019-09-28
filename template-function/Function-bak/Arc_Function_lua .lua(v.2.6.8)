@@ -1,9 +1,9 @@
-local VersionMod = "v.2.6.7"
+local VersionMod = "v.2.6.8"
 --[[
    * Category:    Function
    * Description: Arc_Function_lua
    * Author:      Archie
-   * Version:     2.6.7
+   * Version:     2.6.8
    * AboutScript: Functions for use with some scripts Archie
    * О скрипте:   Функции для использования с некоторыми скриптами Archie
    * Provides:    [nomain].
@@ -15,8 +15,8 @@ local VersionMod = "v.2.6.7"
    *  REAPER_Lib
    *      v.108   + no_undo();
    *      v.108   + Action(id,...);
-   *      v.267   + boolean = TrackFx_Rename(Track,idx_Fx,Rename);
-   *      v.267   + NameDefault,Name =  TrackFX_GetFXNameEx(Track,idx_fx);
+   *      v.268   + boolean = TrackFx_Rename(Track,idx_Fx,Rename);
+   *      v.268   + NameDefault,Name =  TrackFX_GetFXNameEx(Track,idx_fx);
    *      v.229   + boolean = RemoveAllSendTr(track,category);
    *      v.229   + boolean = RemoveAllItemTr_Sel(track,rem_Idx);
    *      v.227   + SelectAllTracks(numb);
@@ -143,8 +143,7 @@ local VersionMod = "v.2.6.7"
            if strT[i]:match(FXGUID:gsub("%p","%%%0"))then found = true end;
            if strT[i]:match("^<")and found and not strT[i]:match("JS_SER")then;
                found = nil;
-               --local 
-               nStr = {};
+               local nStr = {};
                for S in strT[i]:gmatch("%S+")do;
                    if not X then nStr[#nStr+1] = S else nStr[#nStr] = nStr[#nStr].." "..S end;
                    if S:match('"') and not S:match('""')and not S:match('".-"') then;
