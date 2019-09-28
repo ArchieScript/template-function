@@ -43,8 +43,6 @@
 >#
 >##### [GetPreviousGrid(time) / GetNextGrid(time);](https://github.com/ArchieScript/template-function/blob/master/template-function/Get/Get_%23%23%23_Grid.lua) -- Получить ближайшее предыдущее/следующее видимое деление сетки
 >#
->##### [TrackFX_GetFXNameOriginalSource(Track,idx_Fx);](https://github.com/ArchieScript/template-function/blob/master/template-function/Get/TrackFX_GetFXNameOriginalSource.lua) -- Получить Имя эффекта на треке / Вернет Имя по умолчанию и Имя переименованное или по умолчанию 
->#
 >##### []() --  
 >#
 >##### []() --  
