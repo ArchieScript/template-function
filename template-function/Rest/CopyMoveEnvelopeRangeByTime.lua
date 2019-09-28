@@ -12,7 +12,7 @@
 
 
     -------------------------------------------------------------------------------------------
-    local function CopyMoveEnvelopeRangeByTime(ENV,ENV_NEW,time1,time2,timeNew1,Move);
+    local function CopyMoveEnvelopePointsInRangeOfTime(ENV,ENV_NEW,time1,time2,timeNew1,Move);
         reaper.GetEnvelopeName(ENV)reaper.GetEnvelopeName(ENV_NEW);
         if time2 <= time1 then return false end;
         reaper.PreventUIRefresh(123456);reaper.Undo_BeginBlock();
