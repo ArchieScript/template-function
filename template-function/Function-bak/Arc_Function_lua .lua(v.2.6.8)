@@ -132,7 +132,7 @@ local VersionMod = "v.2.6.8"
 
 
 
-   --- 230 / 267 ------- TracFx_Rename --------------------------------------------------
+   --- 230 / 268 ------- TracFx_Rename --------------------------------------------------
    function Arc_Module.TrackFx_Rename(Track,idx_fx,newName);
        local strT,found,slot = {};
        local Pcall,FXGUID = pcall(reaper.TrackFX_GetFXGUID,Track,idx_fx);
@@ -173,7 +173,7 @@ local VersionMod = "v.2.6.8"
     
     
     
-   --- 267 ------------------------ TrackFX_GetFXNameEx --------------------------------
+   --- 268 ------------------------ TrackFX_GetFXNameEx --------------------------------
    function Arc_Module.TrackFX_GetFXNameEx(Track,idx_fx);
        local strT,found,Name,slot = {};
        local Pcall,FXGUID = pcall(reaper.TrackFX_GetFXGUID,Track,idx_fx);
