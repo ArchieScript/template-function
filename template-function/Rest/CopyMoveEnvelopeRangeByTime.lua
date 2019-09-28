@@ -141,7 +141,7 @@
         if not Goto_DimmyActive and DimmyTr then;Goto_DimmyActive = true goto Goto_Dimmy;
         elseif Goto_DimmyActive and DimmyTr then;reaper.DeleteTrack(reaper.GetTrack(0,0))end;
         ---
-        reaper.Undo_EndBlock("CopyMoveEnvelopeRangeByTime",0);reaper.PreventUIRefresh(-123456);
+        reaper.Undo_EndBlock("CopyMoveEnvelopePointsInRangeOfTime",0);reaper.PreventUIRefresh(-123456);
         return true
     end;
     -------------------------------------------------------------------------------------------
