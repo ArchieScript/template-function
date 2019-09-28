@@ -88,11 +88,12 @@
                     if posIt >= m(timeNew1) and posIt + lengt <= m(timeNew2) then;
                         reaper.GetSetAutomationItemInfo(ENV_NEW,ii,"D_POSITION",99^99,1);
                         local retval,str = reaper.GetEnvelopeStateChunk(ENV_NEW,"",false);
-                        str2 = nil;
+                        str2T = {};
                         for var in str:gmatch(".-\n") do;
                             if(tonumber(var:match("POOLEDENVINST%s+%S+%s+(.-)%s.+\n"))or-1) > 99^98 then var="" end;
-                            str2=(str2 or "")..var;
+                            str2T[#str2T+1] = var;
                         end;
+                        str2 = table.concat(str2T);
                         reaper.SetEnvelopeStateChunk(ENV_NEW,str2,false);
                         goto Res;
                     end;
@@ -152,10 +153,3 @@
         return true
     end;
     -------------------------------------------------------------------------------------------
-    
-    
-    
-    
-    
-    
-    
