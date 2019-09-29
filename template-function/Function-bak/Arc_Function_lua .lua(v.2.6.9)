@@ -1,9 +1,9 @@
-local VersionMod = "v.2.6.9"
+local VersionMod = "v.2.7.0"
 --[[
    * Category:    Function
    * Description: Arc_Function_lua
    * Author:      Archie
-   * Version:     2.6.9
+   * Version:     2.7.0
    * AboutScript: Functions for use with some scripts Archie
    * О скрипте:   Функции для использования с некоторыми скриптами Archie
    * Provides:    [nomain].
@@ -66,7 +66,7 @@ local VersionMod = "v.2.6.9"
    *      v.269   + DeleteEnvelopeRangeEx(env,time1,time2,Undo);
    *      v.269   + Convert_Env_ValueInValueAndInPercent_SWS(envelope,valPoint,PerVal);
    *      v.269   + CopyMove_EnvTr_PointsInRangeOfTime_SWS(ENV,ENV_NEW,time1,time2,timeNew1,Move,Undo);
-   *      v.269   + CopyMoveItem_WithEnvelope_SWS(Item,New_track,NewPosition,Move,EnvPointMove,noAct,Undo);
+   *      v.270   + CopyMoveItem_WithEnvelope_SWS(Item,New_track,NewPosition,Move,EnvPointMove,noAct,Undo);
    *  LUA_Lib
    *      v.247   + If_Equals_Or(EqualsToThat,...);
    *      v.248   + If_Equals_OrEx(EqualsToThat,...);
@@ -2091,7 +2091,7 @@ local VersionMod = "v.2.6.9"
     
     
         --- 269 ------------------- CopyMoveItem_WithEnvelope_SWS ---------------------------
-    function Arc_Module.CopyMoveItem_WithEnvelope_SWS(Item,New_track,NewPosition,Move,EnvPointMove,noAct,Undo);
+    function Arc_Module.CopyMoveItem_WithEnvelope_SWS(Item,New_track,NewPosition,Move,EnvPointMove,noAct,newAct,Undo);
         -------------------------------------------------------------------------------------------
         local function CopyMove_EnvTr_PointsInRangeOfTime_SWS(ENV,ENV_NEW,time1,time2,timeNew1,Move,Undo);
             local function Convert_Env_ValueInValueAndInPercent_SWS(envelope,valPoint,PerVal);
@@ -2403,8 +2403,10 @@ local VersionMod = "v.2.6.9"
                         if ACT == 1 then;
                             CopyMove_EnvTr_PointsInRangeOfTime_SWS(env,New_env,pos,len+pos,NewPosition,Move,false);
                             local _, str = reaper.GetEnvelopeStateChunk(New_env,"",false);
-                            local strN = str:gsub("ACT%s-%d+", "ACT 1");
-                            local strN = strN:gsub("VIS%s-%d+","VIS 1");
+                            if newAct == 1 then;
+                                local str = str:gsub("ACT%s-%d+", "ACT 1");
+                            end;
+                            local str = str:gsub("VIS%s-%d+","VIS 1");
                             reaper.SetEnvelopeStateChunk(New_env,strN,false);
                         end;
                     else;
@@ -2435,6 +2437,8 @@ local VersionMod = "v.2.6.9"
     -- EnvPointMove: = 1 или = true копировать / переместить взависимости от (Options: Envelope points move with media items 40070)
     -- noAct: = 0 Не копировать неактивную (bypass) автоматизацию
     -- noAct: = 1 копировать неактивную (bypass) автоматизацию
+    -- newAct: = 0 Не снимать bypass на новом треки автоматизации, если он  установлен bypass-е
+    -- newAct: = 1 Снять bypass (сделать автоматизацию активной), если она в 
     -- Undo: false отключить undo, true обернуть в undo блок.
     -- При успехе вернет true в противном случае false
     -- Маштабирование огибающей учтено (Scaling Mode)
