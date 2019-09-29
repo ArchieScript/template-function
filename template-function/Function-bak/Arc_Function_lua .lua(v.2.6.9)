@@ -2091,7 +2091,7 @@ local VersionMod = "v.2.7.0"
     
     
         --- 269 ------------------- CopyMoveItem_WithEnvelope_SWS ---------------------------
-    function Arc_Module.CopyMoveItem_WithEnvelope_SWS(Item,New_track,NewPosition,Move,EnvPointMove,noAct,newAct,Undo);
+    function Arc_Module.CopyMoveItem_WithEnvelope_SWS(Item,New_track,NewPosition,Move,EnvPointMove,noAct,newAct,newVis,Undo);
         -------------------------------------------------------------------------------------------
         local function CopyMove_EnvTr_PointsInRangeOfTime_SWS(ENV,ENV_NEW,time1,time2,timeNew1,Move,Undo);
             local function Convert_Env_ValueInValueAndInPercent_SWS(envelope,valPoint,PerVal);
@@ -2402,12 +2402,16 @@ local VersionMod = "v.2.7.0"
                         if noAct == 1 then ACT = 1 end;
                         if ACT == 1 then;
                             CopyMove_EnvTr_PointsInRangeOfTime_SWS(env,New_env,pos,len+pos,NewPosition,Move,false);
-                            local _, str = reaper.GetEnvelopeStateChunk(New_env,"",false);
-                            if newAct == 1 then;
-                                local str = str:gsub("ACT%s-%d+", "ACT 1");
+                            if newAct == 1 or newVis == 1 then;
+                                local _, str = reaper.GetEnvelopeStateChunk(New_env,"",false);
+                                if newAct == 1 then;
+                                    str = str:gsub("ACT%s-%d+", "ACT 1");
+                                end;
+                                if newVis == 1 then;
+                                    str = str:gsub("VIS%s-%d+","VIS 1");
+                                end;
+                                reaper.SetEnvelopeStateChunk(New_env,str,false);
                             end;
-                            local str = str:gsub("VIS%s-%d+","VIS 1");
-                            reaper.SetEnvelopeStateChunk(New_env,strN,false);
                         end;
                     else;
                         if Move == true or Move == 1 then;
@@ -2439,6 +2443,8 @@ local VersionMod = "v.2.7.0"
     -- noAct: = 1 копировать неактивную (bypass) автоматизацию
     -- newAct: = 0 Не снимать bypass на новом треки автоматизации, если он  установлен.
     -- newAct: = 1 Снять bypass (сделать автоматизацию активной), если она в bypass-е
+    -- newVis: = 0 Не делать автоматизацию видимой, если она скрыта.
+    -- newVis: = 1 Сделать автоматизацию видимой, если она скрыта
     -- Undo: false отключить undo, true обернуть в undo блок.
     -- При успехе вернет true в противном случае false
     -- Маштабирование огибающей учтено (Scaling Mode)
