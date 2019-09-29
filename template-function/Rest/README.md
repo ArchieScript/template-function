@@ -30,7 +30,6 @@
 >#
 >##### [InsertEnvelopePoin(---)](https://github.com/ArchieScript/template-function/blob/master/template-function/Rest/Envelope_Point.lua) -- Добавить точку автоматизации и .........
 >#
->#
 >##### [DeleteEnvAutoItem(env,Auto_idx)](https://github.com/ArchieScript/template-function/blob/master/template-function/Rest/DeleteEnvAutoItem.lua) --Удалить Элемент автоматизации
 >#
 >##### [GlueSelectedItemsIntervalsLessThan(interval);](https://github.com/ArchieScript/template-function/blob/master/template-function/Rest/GlueSelectedItemsIntervalsLessThan.lua) -- Клей Выбранных предметов с интервалами менее или равному ...(interval);
