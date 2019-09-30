@@ -1897,7 +1897,7 @@ local VersionMod = "v.2.7.2"
     
     
     
-    --- 272 ----------- CopyMove_EnvTr_PointsInRangeOfTime_SWS --------------------------
+    --- 273 ----------- CopyMove_EnvTr_PointsInRangeOfTime_SWS --------------------------
     function Arc_Module.CopyMove_EnvTr_PointsInRangeOfTime_SWS(ENV,ENV_NEW,time1,time2,timeNew1,Move,Undo);
         local function Convert_Env_ValueInValueAndInPercent_SWS(envelope,valPoint,PerVal);
             reaper.BR_EnvFree(reaper.BR_EnvAlloc(envelope,true),true);
@@ -2073,8 +2073,8 @@ local VersionMod = "v.2.7.2"
         elseif Goto_DimmyActive and DimmyTr then;reaper.DeleteTrack(reaper.GetTrack(0,0))end;
         ---
         local function ClearEnvelopeInTimeInterval(env,time1,time2,interval);
-            local leftPoint  = reaper.GetEnvelopePointByTimeEx(ENV_NEW,-1,time1-0.00001);
-            local RightPoint = reaper.GetEnvelopePointByTimeEx(ENV_NEW,-1,time2+0.00001);
+            local leftPoint  = reaper.GetEnvelopePointByTimeEx(env,-1,time1-0.00001);
+            local RightPoint = reaper.GetEnvelopePointByTimeEx(env,-1,time2+0.00001);
             local timeEnd,check;
             for i = RightPoint,leftPoint,-1 do;
                 local timeR = ({reaper.GetEnvelopePoint(env,i-0)})[2];
@@ -2086,7 +2086,7 @@ local VersionMod = "v.2.7.2"
                         check = true;
                     end;
                     reaper.SetEnvelopePoint(env,i-1,timeEnd,0,0,0,0,true);
-                    reaper.DeleteEnvelopePointRange(env,timeEnd-0.01,timeR+0.01);
+                    reaper.DeleteEnvelopePointRange(env,timeEnd-0.001,timeEnd+0.001);
                 end;
             end;
             if check then reaper.Envelope_SortPoints(env)end;
@@ -2115,7 +2115,7 @@ local VersionMod = "v.2.7.2"
     
     
     
-    --- 272 ------------------- CopyMoveItem_WithEnvelope_SWS ---------------------------
+    --- 273 ------------------- CopyMoveItem_WithEnvelope_SWS ---------------------------
     function Arc_Module.CopyMoveItem_WithEnvelope_SWS(Item,New_track,NewPosition,Move,EnvPointMove,noAct,newAct,newVis,Undo);
         -------------------------------------------------------------------------------------------
         local function CopyMove_EnvTr_PointsInRangeOfTime_SWS(ENV,ENV_NEW,time1,time2,timeNew1,Move,Undo);
@@ -2293,8 +2293,8 @@ local VersionMod = "v.2.7.2"
             elseif Goto_DimmyActive and DimmyTr then;reaper.DeleteTrack(reaper.GetTrack(0,0))end;
             ---
             local function ClearEnvelopeInTimeInterval(env,time1,time2,interval);
-                local leftPoint  = reaper.GetEnvelopePointByTimeEx(ENV_NEW,-1,time1-0.00001);
-                local RightPoint = reaper.GetEnvelopePointByTimeEx(ENV_NEW,-1,time2+0.00001);
+                local leftPoint  = reaper.GetEnvelopePointByTimeEx(env,-1,time1-0.00001);
+                local RightPoint = reaper.GetEnvelopePointByTimeEx(env,-1,time2+0.00001);
                 local timeEnd,check;
                 for i = RightPoint,leftPoint,-1 do;
                     local timeR = ({reaper.GetEnvelopePoint(env,i-0)})[2];
@@ -2306,7 +2306,7 @@ local VersionMod = "v.2.7.2"
                             check = true;
                         end;
                         reaper.SetEnvelopePoint(env,i-1,timeEnd,0,0,0,0,true);
-                        reaper.DeleteEnvelopePointRange(env,timeEnd-0.01,timeR+0.01);
+                        reaper.DeleteEnvelopePointRange(env,timeEnd-0.001,timeEnd+0.001);
                     end;
                 end;
                 if check then reaper.Envelope_SortPoints(env)end;
@@ -2503,10 +2503,10 @@ local VersionMod = "v.2.7.2"
     
     
     
-    --- 272 ----------- CopyMove_EnvTr_PointsInRangeOfTime_SWS --------------------------
+    --- 273 ----------- ClearEnvelopeInTimeInterval --------------------------
     function Arc_Module.ClearEnvelopeInTimeInterval(env,time1,time2,interval);
-        local leftPoint  = reaper.GetEnvelopePointByTimeEx(ENV_NEW,-1,time1-0.00001);
-        local RightPoint = reaper.GetEnvelopePointByTimeEx(ENV_NEW,-1,time2+0.00001);
+        local leftPoint  = reaper.GetEnvelopePointByTimeEx(env,-1,time1-0.00001);
+        local RightPoint = reaper.GetEnvelopePointByTimeEx(env,-1,time2+0.00001);
         local timeEnd,check;
         for i = RightPoint,leftPoint,-1 do;
             local timeR = ({reaper.GetEnvelopePoint(env,i-0)})[2];
@@ -2518,7 +2518,7 @@ local VersionMod = "v.2.7.2"
                     check = true;
                 end;
                 reaper.SetEnvelopePoint(env,i-1,timeEnd,0,0,0,0,true);
-                reaper.DeleteEnvelopePointRange(env,timeEnd-0.01,timeR+0.01);
+                reaper.DeleteEnvelopePointRange(env,timeEnd-0.001,timeEnd+0.001);
             end;
         end;
         if check then reaper.Envelope_SortPoints(env)end;
