@@ -1,9 +1,9 @@
-local VersionMod = "v.2.7.2"
+local VersionMod = "v.2.7.3"
 --[[
    * Category:    Function
    * Description: Arc_Function_lua
    * Author:      Archie
-   * Version:     2.7.2
+   * Version:     2.7.3
    * AboutScript: Functions for use with some scripts Archie
    * О скрипте:   Функции для использования с некоторыми скриптами Archie
    * Provides:    [nomain].
@@ -65,9 +65,9 @@ local VersionMod = "v.2.7.2"
    *      v.265   + boolean, boolean = GetStartupScript(id,nameFun);
    *      v.271   + DeleteEnvelopeRangeEx(env,time1,time2,Undo);
    *      v.269   + Convert_Env_ValueInValueAndInPercent_SWS(envelope,valPoint,PerVal);
-   *      v.272   + CopyMove_EnvTr_PointsInRangeOfTime_SWS(ENV,ENV_NEW,time1,time2,timeNew1,Move,Undo);
-   *      v.272   + CopyMoveItem_WithEnvelope_SWS(Item,New_track,NewPosition,Move,EnvPointMove,noAct,Undo);
-   *      v.272   + ClearEnvelopeInTimeInterval(env,time1,time2,interval);
+   *      v.273   + CopyMove_EnvTr_PointsInRangeOfTime_SWS(ENV,ENV_NEW,time1,time2,timeNew1,Move,Undo);
+   *      v.273   + CopyMoveItem_WithEnvelope_SWS(Item,New_track,NewPosition,Move,EnvPointMove,noAct,Undo);
+   *      v.273   + ClearEnvelopeInTimeInterval(env,time1,time2,interval);
    *  LUA_Lib
    *      v.247   + If_Equals_Or(EqualsToThat,...);
    *      v.248   + If_Equals_OrEx(EqualsToThat,...);
