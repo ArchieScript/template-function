@@ -1,9 +1,9 @@
-local VersionMod = "v.2.7.1"
+local VersionMod = "v.2.7.2"
 --[[
    * Category:    Function
    * Description: Arc_Function_lua
    * Author:      Archie
-   * Version:     2.7.1
+   * Version:     2.7.2
    * AboutScript: Functions for use with some scripts Archie
    * О скрипте:   Функции для использования с некоторыми скриптами Archie
    * Provides:    [nomain].
@@ -1896,7 +1896,7 @@ local VersionMod = "v.2.7.1"
     
     
     
-    --- 271 ----------- CopyMove_EnvTr_PointsInRangeOfTime_SWS --------------------------
+    --- 272 ----------- CopyMove_EnvTr_PointsInRangeOfTime_SWS --------------------------
     function Arc_Module.CopyMove_EnvTr_PointsInRangeOfTime_SWS(ENV,ENV_NEW,time1,time2,timeNew1,Move,Undo);
         local function Convert_Env_ValueInValueAndInPercent_SWS(envelope,valPoint,PerVal);
             reaper.BR_EnvFree(reaper.BR_EnvAlloc(envelope,true),true);
@@ -2071,6 +2071,28 @@ local VersionMod = "v.2.7.1"
         if not Goto_DimmyActive and DimmyTr then;Goto_DimmyActive = true goto Goto_Dimmy;
         elseif Goto_DimmyActive and DimmyTr then;reaper.DeleteTrack(reaper.GetTrack(0,0))end;
         ---
+        local function ClearEnvelopeInTimeInterval(env,time1,time2,interval);
+            local leftPoint  = reaper.GetEnvelopePointByTimeEx(ENV_NEW,-1,time1-0.00001);
+            local RightPoint = reaper.GetEnvelopePointByTimeEx(ENV_NEW,-1,time2+0.00001);
+            local timeEnd,check;
+            for i = RightPoint,leftPoint,-1 do;
+                local timeR = ({reaper.GetEnvelopePoint(env,i-0)})[2];
+                local timeC = ({reaper.GetEnvelopePoint(env,i-1)})[2];
+                local timeL = ({reaper.GetEnvelopePoint(env,i-2)})[2];
+                if (timeR - timeL) <= interval then;
+                    if not check then;
+                        timeEnd = ({reaper.GetEnvelopePoint(env,reaper.CountEnvelopePoints(env)-1)})[2]+10^2;
+                        check = true;
+                    end;
+                    reaper.SetEnvelopePoint(env,i-1,timeEnd,0,0,0,0,true);
+                    reaper.DeleteEnvelopePointRange(env,timeEnd-0.01,timeR+0.01);
+                end;
+            end;
+            if check then reaper.Envelope_SortPoints(env)end;
+        end;
+        ClearEnvelopeInTimeInterval(ENV_NEW,timeNew1-0.0001,timeNew1+0.0001,0.0001);
+        ClearEnvelopeInTimeInterval(ENV_NEW,timeNew2-0.0001,timeNew2+0.0001,0.0001);
+        ---
         if Undo == true or Undo == 1 then;
             reaper.Undo_EndBlock("CopyMoveEnvelopePointsInRangeOfTime",-1);
         end;
@@ -2092,7 +2114,7 @@ local VersionMod = "v.2.7.1"
     
     
     
-    --- 271 ------------------- CopyMoveItem_WithEnvelope_SWS ---------------------------
+    --- 272 ------------------- CopyMoveItem_WithEnvelope_SWS ---------------------------
     function Arc_Module.CopyMoveItem_WithEnvelope_SWS(Item,New_track,NewPosition,Move,EnvPointMove,noAct,newAct,newVis,Undo);
         -------------------------------------------------------------------------------------------
         local function CopyMove_EnvTr_PointsInRangeOfTime_SWS(ENV,ENV_NEW,time1,time2,timeNew1,Move,Undo);
@@ -2268,6 +2290,28 @@ local VersionMod = "v.2.7.1"
             GotoMOVEActive = nil;
             if not Goto_DimmyActive and DimmyTr then;Goto_DimmyActive = true goto Goto_Dimmy;
             elseif Goto_DimmyActive and DimmyTr then;reaper.DeleteTrack(reaper.GetTrack(0,0))end;
+            ---
+            local function ClearEnvelopeInTimeInterval(env,time1,time2,interval);
+                local leftPoint  = reaper.GetEnvelopePointByTimeEx(ENV_NEW,-1,time1-0.00001);
+                local RightPoint = reaper.GetEnvelopePointByTimeEx(ENV_NEW,-1,time2+0.00001);
+                local timeEnd,check;
+                for i = RightPoint,leftPoint,-1 do;
+                    local timeR = ({reaper.GetEnvelopePoint(env,i-0)})[2];
+                    local timeC = ({reaper.GetEnvelopePoint(env,i-1)})[2];
+                    local timeL = ({reaper.GetEnvelopePoint(env,i-2)})[2];
+                    if (timeR - timeL) <= interval then;
+                        if not check then;
+                            timeEnd = ({reaper.GetEnvelopePoint(env,reaper.CountEnvelopePoints(env)-1)})[2]+10^2;
+                            check = true;
+                        end;
+                        reaper.SetEnvelopePoint(env,i-1,timeEnd,0,0,0,0,true);
+                        reaper.DeleteEnvelopePointRange(env,timeEnd-0.01,timeR+0.01);
+                    end;
+                end;
+                if check then reaper.Envelope_SortPoints(env)end;
+            end;
+            ClearEnvelopeInTimeInterval(ENV_NEW,timeNew1-0.0001,timeNew1+0.0001,0.0001);
+            ClearEnvelopeInTimeInterval(ENV_NEW,timeNew2-0.0001,timeNew2+0.0001,0.0001);
             ---
             if Undo == true or Undo == 1 then;
                 reaper.Undo_EndBlock("CopyMoveEnvelopePointsInRangeOfTime",-1);
@@ -2454,6 +2498,34 @@ local VersionMod = "v.2.7.1"
     -- При успехе вернет true в противном случае false
     -- Маштабирование огибающей учтено (Scaling Mode)
     -- SWS из-за "Convert_Env_ValueInValueAndInPercent_SWS"
+    --====End===============End===============End===============End===============End====
+    
+    
+    
+    --- 272 ----------- CopyMove_EnvTr_PointsInRangeOfTime_SWS --------------------------
+    function Arc_Module.ClearEnvelopeInTimeInterval(env,time1,time2,interval);
+        local leftPoint  = reaper.GetEnvelopePointByTimeEx(ENV_NEW,-1,time1-0.00001);
+        local RightPoint = reaper.GetEnvelopePointByTimeEx(ENV_NEW,-1,time2+0.00001);
+        local timeEnd,check;
+        for i = RightPoint,leftPoint,-1 do;
+            local timeR = ({reaper.GetEnvelopePoint(env,i-0)})[2];
+            local timeC = ({reaper.GetEnvelopePoint(env,i-1)})[2];
+            local timeL = ({reaper.GetEnvelopePoint(env,i-2)})[2];
+            if (timeR - timeL) <= interval then;
+                if not check then;
+                    timeEnd = ({reaper.GetEnvelopePoint(env,reaper.CountEnvelopePoints(env)-1)})[2]+10^2;
+                    check = true;
+                end;
+                reaper.SetEnvelopePoint(env,i-1,timeEnd,0,0,0,0,true);
+                reaper.DeleteEnvelopePointRange(env,timeEnd-0.01,timeR+0.01);
+            end;
+        end;
+        if check then reaper.Envelope_SortPoints(env)end;
+    end;
+    -- env envelope Track
+    -- time1, time2: Интервал с какого по какое время чистить огибающую.
+    -- interval: интервал между 1 и 3 точкой, если время между 1 и 3 точкой меньше interval, то удалить точку 2.
+    -- https://avatars.mds.yandex.net/get-pdb/1936330/4f976537-e217-4618-8e23-486a0fa0f4ca/s1200
     --====End===============End===============End===============End===============End====
     
 
