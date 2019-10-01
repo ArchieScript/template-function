@@ -792,10 +792,12 @@ local VersionMod = "v.2.7.3"
 
 
 
-    function Arc_Module.Restore_Selected_Items_GuidSlot(Slot,clean);
+    function Arc_Module.Restore_Selected_Items_GuidSlot(Slot,clean,selPrev);
         t = _G["SaveSelItem_"..Slot];
         if t then;
-            reaper.SelectAllMediaItems(0,0);
+            if selPrev ~= true and selPrev ~= 1 then;
+                reaper.SelectAllMediaItems(0,0);
+            end;
             for i = 1, #t do;
                 local item = reaper.BR_GetMediaItemByGUID(0,t[i]);
                 if item then;
@@ -811,6 +813,7 @@ local VersionMod = "v.2.7.3"
     end;
     Arc_Module.Restore_Selected_Items_GuidSlot_SWS=Arc_Module.Restore_Selected_Items_GuidSlot;
     Restore_Selected_Items_GuidSlot_SWS=Arc_Module.Restore_Selected_Items_GuidSlot;
+    -- selPrev установить true или 1 что бы не снимать выделение с предыдущих элементов
     --====End===============End===============End===============End===============End====
 
 
