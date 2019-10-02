@@ -173,7 +173,7 @@
                 if gfx.mouse_cap == 0 then;
                     local Context = reaper.GetCursorContext2(true);
                     if Context == 2 then ENV = reaper.GetSelectedTrackEnvelope(0)else ENV = nil end;
-                    reaper.SetCursorContext(Context,nil);
+                    reaper.SetCursorContext(Context,ENV);
                     --t=(t or 0)+1;
                 end;
             end;
