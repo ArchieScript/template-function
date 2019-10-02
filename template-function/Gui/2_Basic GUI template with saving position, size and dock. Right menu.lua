@@ -3,7 +3,9 @@
 
 --  Базовый шаблон GUI с сохранением позиции, размера и дока. Правое меню.
 
-
+-- color: R_Text,G,B / R_Back,G,B / R_Gui,G,B 
+-- Text Bold Norm / Font Size для TextByCenterAndResize в "local function Start_GUI();" пример
+-- 
 
 
 
