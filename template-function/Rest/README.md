@@ -36,6 +36,12 @@
 >#
 >##### [ClearEnvelopeInTimeInterval](https://github.com/ArchieScript/template-function/blob/master/template-function/Rest/ClearEnvelopeInTimeInterval.lua) --Очистить Конверт Во Временном Интервале
 >#
+>##### [CopyMoveItem_WithEnvelope_SWS](https://github.com/ArchieScript/template-function/blob/master/template-function/Rest/CopyMoveItem_WithEnvelope_SWS.lua) -- Копировать Переместить Элемент С Конвертом  ( НЕ ПРОИЗВОДИТЕЛЬНО !!! )
+>#
+>##### []() --
+>#
+>##### []() --
+>#
 >##### []() --
 >#
 >##### []() --
