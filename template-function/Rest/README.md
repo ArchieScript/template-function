@@ -38,11 +38,11 @@
 >#
 >##### [CopyMoveItem_WithEnvelope_SWS](https://github.com/ArchieScript/template-function/blob/master/template-function/Rest/CopyMoveItem_WithEnvelope_SWS.lua) -- Копировать Переместить Элемент С Конвертом  ( НЕ ПРОИЗВОДИТЕЛЬНО !!! )
 >#
->##### []() --
+>##### [CopyMove_EnvTr_PointsInRangeOfTime_SWS](https://github.com/ArchieScript/template-function/blob/master/template-function/Rest/CopyMove_EnvTr_PointsInRangeOfTime_SWS.lua) -- Копировать / Переместить Диапазон Конверта(track) По Времени в конверте или с конверта на конверт. --( НЕ ПРОИЗВОДИТЕЛЬНО !!! )
 >#
->##### []() --
+>##### [Convert_Env_ValueInValueAndInPercent_SWS](https://github.com/ArchieScript/template-function/blob/master/template-function/Rest/Convert_Env_ValueInValueAndInPercent_SWS.lua) -- Конвертировать значения конверта в проценты из значения и в значение из процентов. (Эффективно для перемещения точек на другую огибающую с разными диапазонами значений)
 >#
->##### []() --
+>##### [DeleteEnvelopeRangeEx](https://github.com/ArchieScript/template-function/blob/master/template-function/Rest/DeleteEnvelopeRangeEx.lua) -- Удалить Диапазон Огибающей
 >#
 >##### []() --
 >#
