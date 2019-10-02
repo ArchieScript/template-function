@@ -34,6 +34,8 @@
 >#
 >##### [GlueSelectedItemsIntervalsLessThan(interval);](https://github.com/ArchieScript/template-function/blob/master/template-function/Rest/GlueSelectedItemsIntervalsLessThan.lua) -- Клей Выбранных предметов с интервалами менее или равному ...(interval);
 >#
+>##### [ClearEnvelopeInTimeInterval](https://github.com/ArchieScript/template-function/blob/master/template-function/Rest/ClearEnvelopeInTimeInterval.lua) --Очистить Конверт Во Временном Интервале
+>#
 >##### []() --
 >#
 >##### []() --
