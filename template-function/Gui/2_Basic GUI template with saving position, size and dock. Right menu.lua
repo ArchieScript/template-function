@@ -23,9 +23,9 @@
     local G_Text_Default = 150;
     local B_Text_Default = 150;
     
-    local R_Gui__Default = 250;
-    local G_Gui__Default = 250;
-    local B_Gui__Default = 250;
+    local R_Gui__Default = 90;
+    local G_Gui__Default = 90;
+    local B_Gui__Default = 90;
     ---------------------------
     
     
