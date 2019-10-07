@@ -29,6 +29,7 @@
 >#
 >##### [Create Folder](https://github.com/ArchieScript/template-function/blob/master/template-function/Lua/Create%20Folder.lua) &nbsp;&nbsp;&nbsp;&nbsp;-- Создать папку с помошью lua
 >#
+>##### [numbers](https://github.com/ArchieScript/template-function/blob/master/template-function/Lua/numbers.lua) &nbsp;&nbsp;&nbsp;&nbsp;--Манипуляции с числами
 >#  
 >#
 >#
