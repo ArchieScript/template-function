@@ -48,7 +48,7 @@
         if T then str3=string.format("%.0f",i).."/"..string.format("%.0f",fraction-(fraction/3)).."T"else str3=str1 end;
         if T then;
             if division>=0.6666 then str4=string.format("%.3f",(division/2)+division):gsub("[0.]-$","").."T"else str4=str3;end;
-            elseif division >= 1 then str4=str2 else str4=str1;
+          elseif division >= 1 then str4=str2 else str4=str1;
         end;
         return true,flag,division,swingmode,swingshift,T,str1,str2,str3,str4;
     end;
