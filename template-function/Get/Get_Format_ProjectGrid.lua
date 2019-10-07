@@ -33,18 +33,15 @@
     
     
     
+    ---/ Форматирует значение сетки в удобочитаемую форму; /--------------
     local function Get_Format_ProjectGridEx(divisionIn);
-        local function Modf(numb);
-            if type(numb)~="number" then error("#1 to 'Modf' (number expected, got string)",2)end;
-            local whole,fraction = string.match(numb,"^(%d+)%D-(%d-)$");
-            return math.modf(tonumber(whole.."."..fraction));
-        end;
+        local function IntegerNumber(x);return math.abs(x-math.floor(x+.5))<0.0000001;end;
         local flag,division,swingmode,swingshift = reaper.GetSetProjectGrid(0,0);
-        division = tonumber(divisionIn)or division;
+        local division = tonumber(divisionIn)or division;
         if not tonumber(division) then return false end;
         local i,T,str1,str2,str3,str4;
-        repeat i=(i or 0)+1 if i>50000 then return false end; until({Modf(i/division)})[2]==0;
-        local fraction = i / division;
+        repeat i=(i or 0)+1 if i>50000 then return false end; until IntegerNumber(i/division);
+        local fraction = math.floor(i/division+.5);
         str1 = (string.format("%.0f",i).."/"..string.format("%.0f",fraction)):gsub("/%s-1$","");
         if division >= 1 then str2 = string.format("%.3f",division):gsub("[0.]-$","") else str2 = str1 end;
         if (fraction % 3) == 0 then T = true else T = false end;
@@ -55,6 +52,7 @@
         end;
         return true,flag,division,swingmode,swingshift,T,str1,str2,str3,str4;
     end;
+    ----------------------------------------------------------------------
     
     
     local retval,flag,division,swingmode,swingshift,T,str1,str2,str3,str4 = Get_Format_ProjectGridEx(divisionIn);
