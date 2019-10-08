@@ -58,6 +58,8 @@
     local retval,flag,division,swingmode,swingshift,T,str1,str2,str3,str4 = Get_Format_ProjectGridEx(divisionIn);
     
     
+    -- (division/2)-- iz T
+    -- division-(division/3)-- v T
     
 
 
