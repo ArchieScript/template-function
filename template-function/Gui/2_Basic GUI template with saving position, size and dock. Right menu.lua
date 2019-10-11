@@ -120,7 +120,7 @@
     local section = ({reaper.get_action_context()})[2]:match(".+[/\\](.+)");
     local is_new_value,filename,sectionID,cmdID,mode,resolution,val = reaper.get_action_context();
     reaper.SetToggleCommandState(sectionID,cmdID,1);
-    reaper.DockWindowRefresh();
+    reaper.RefreshToolbar2(sectionID,cmdID);
     
     
     local PositionDock = tonumber(reaper.GetExtState(section,"PositionDock"))or 0;
@@ -217,7 +217,7 @@
             local Toggle = reaper.GetToggleCommandStateEx(sectionID,cmdID);
             if Toggle <= 0 then;
                 reaper.SetToggleCommandState(sectionID,cmdID,1);
-                reaper.DockWindowRefresh();
+                reaper.RefreshToolbar2(sectionID,cmdID);
             end;
             checked_Toggle = true;
         end;
@@ -449,7 +449,7 @@
     ---------
     function exit();
         reaper.SetToggleCommandState(sectionID,cmdID,0);
-        reaper.DockWindowRefresh();
+        reaper.RefreshToolbar2(sectionID,cmdID);
         local PosDock,PosX,PosY,PosW,PosH = gfx.dock(-1,-1,-1,-1,-1);
         reaper.SetExtState(section,"PositionDock",PosDock,true);
         reaper.SetExtState(section,"PositionWind",PosX.."&"..PosY,true);
