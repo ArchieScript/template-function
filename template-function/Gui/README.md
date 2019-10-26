@@ -30,7 +30,7 @@
 >#
 >##### [Basic GUI template with saving position, size and dock. Right menu.lua;](https://github.com/ArchieScript/template-function/blob/master/template-function/Gui/1_Basic%20GUI%20template%20with%20saving%20position%2C%20size%20and%20dock.%20Right%20menu.lua)-- Базовый шаблон GUI с сохранением позиции, размера и дока. Правое меню.
 >#
->#
+>##### [gradient(buf,vertically,x,y,w,h,white,black,alfa,col,brightness);](https://github.com/ArchieScript/template-function/blob/master/template-function/Gui/gradient.lua)-- нарисовать градиент
 >#  
 >#
 >#
