@@ -83,7 +83,7 @@
             gfx_slider(slider-(w_s/2), y, w_s, h-1);
         end;
         slV.drawnSlider = false;
-        return valSlider;
+        return tonumber(string.format("%.3f", valSlider));
     end;
     -----------------------------------------------------------------
     
