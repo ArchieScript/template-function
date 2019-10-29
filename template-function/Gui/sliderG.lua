@@ -92,7 +92,7 @@
     local function loop();
     
         RR = sliderV(0,5,  50, 15, gfx.w/2,30,25 ,27.5,5 ,RR or 0.5);
-    
+        -- RR = sliderG(0,5,  50, 15, gfx.w/2,30,25 ,20,20 ,RR or 0.5); -- Пример 4
     end
     --]]
     
@@ -226,7 +226,40 @@
     
     
     
+        --[[Пример 4
+    -------------------------------------
+    function grooveSlider(x,y,w,h,val);
+        gfx_r,gfx_g,gfx_b,gfx_a = gfx.r,gfx.g,gfx.b,gfx.a;
+        ----
+        gfx.gradrect(x,y,w,h,1,1,1,1, -1/w,-1/w,-1/w,0)
+        gfx.r,gfx.g,gfx.b = .7,.7,.7;                      
+        gfx.rect(x, y, w, h,0);
+        -----
+        gfx.r,gfx.g,gfx.b,gfx.a = gfx_r,gfx_g,gfx_b,gfx_a;
+    end;
     
+    
+    
+    local function gfx_slider(x,y,w,h);
+        gfx_r,gfx_g,gfx_b,gfx_a = gfx.r,gfx.g,gfx.b,gfx.a;
+        ----
+        gfx.r,gfx.g,gfx.b = .4,.4,.4
+        gfx.rect(x, y, w, h,1)
+        gfx.r,gfx.g,gfx.b = .7,.7,.7; 
+        gfx.rect(x, y, w, h,0)
+        
+        gfx.rect(x+(w/2-.5), y, 1, 5,1)
+        gfx.rect(x+(w/2-.5), y+h-5 , 1, 5,1)
+         
+        gfx.rect(x+(w/4), y+5, 1, h-10,1)
+        gfx.rect(x+(w/1.35), y+5, 1, h-10,1)
+        
+        gfx.rect(x+(w/2-.5), y+10 , 1, h-20,1)
+        -----
+        gfx.r,gfx.g,gfx.b,gfx.a = gfx_r,gfx_g,gfx_b,gfx_a;
+    end;
+    -------------------------------------
+    --]]
     
     
     
