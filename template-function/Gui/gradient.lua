@@ -19,12 +19,12 @@
     -- col         / не обязательный параметр,по умолчанию все цвета радуги
     --               Переназначение в виде {{0,0,0},{.5,.5,.5},{1,1,1}}
     -- brightness  / яркость -1..1
-    
+    -- frame       / рамка nil или установить в виде {1,1,1,1,1} / {толщина рамки,r,g,b,a}
     
     
     
     ---------------------------------
-    local function gradient(buf,vertically,x,y,w,h,white,black,alfa,col,brightness);
+    local function gradient(buf,vertically,x,y,w,h,white,black,alfa,col,brightness,frame);
         buf = tonumber(buf)or 948;if buf<0 then buf=0 end;if buf>1023 then buf=1023 end;
         local b = brightness;
         alfa = tonumber(alfa)or 1;
@@ -110,6 +110,13 @@
             x_s,y_s,w_s,h_s = 0,1,10*(#col-1),198;
         end;
         gfx.blit(buf,1,0, x_s,y_s,w_s,h_s, x,y,w,h, 0,0);
+        ----
+        if type(frame)~="table" then frame = {} end;
+        gfx.r,gfx.g,gfx.b,gfx.a = frame[2]or 0,frame[3]or 0,frame[4]or 0,frame[5]or 0;
+        for i = 1,(frame[1]or 1) do;
+            gfx.roundrect( x+(i-1) , y+(i-1), w-((i-1)*2) , h-((i-1)*2), 1);
+        end;
+        ---
         gfx.r,gfx.g,gfx.b,gfx.a = gfx_r,gfx_g,gfx_b,gfx_a;
     end;
     ---------------------------------
