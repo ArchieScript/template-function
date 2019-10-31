@@ -10,7 +10,7 @@
 
 
     -------------------------------------------------
-    local function CopyInput_FocusedFX_Pin(NameScript);--section
+    local function CopyInput_FocusedFX_Pin(NameScript,persist);--section
     
 	   local retval,tracknumber,itemnumber,fxnumber = reaper.GetFocusedFX();
 	   local track = reaper.GetTrack(0,tracknumber-1);
@@ -18,7 +18,7 @@
 	   
 	   local t = {};
 	   if retval > 0 then;
-		  reaper.DeleteExtState(NameScript,"CopyInputPlugin",false);
+		  reaper.DeleteExtState(NameScript,"CopyInputPlugin",persist);
 		  if itemnumber < 0 then;
 			 ----
 			 local _,inputPins,_ = reaper.TrackFX_GetIOSize(track,fxnumber);
@@ -39,7 +39,7 @@
 			 end; 
 		  end;
 		  t = table.concat(t);
-		  reaper.SetExtState(NameScript,"CopyInputPlugin",t,false);--NameScript
+		  reaper.SetExtState(NameScript,"CopyInputPlugin",t,persist);--NameScript
 	   else;
 		  return -1;
 	   end;
@@ -49,7 +49,7 @@
     
     
     -------------------------------------------------
-    local function PasteInput_FocusedFX_Pin(NameScript,clean);--section
+    local function PasteInput_FocusedFX_Pin(NameScript,clean,persist);--section
 	   local retval,tracknumber,itemnumber,fxnumber = reaper.GetFocusedFX();
 	   local track = reaper.GetTrack(0,tracknumber-1);
 	   if not track then return -1 end;
@@ -64,7 +64,7 @@
 				    reaper.TrackFX_SetPinMappings(track,fxnumber,0,InPlug,Channel_beat,0);
 				end;
 				if clean == true then;
-				    reaper.DeleteExtState(NameScript,"CopyInputPlugin",false);
+				    reaper.DeleteExtState(NameScript,"CopyInputPlugin",persist);
 				end;
 			 end;
 		  else;
@@ -81,7 +81,7 @@
 				    reaper.TakeFX_SetPinMappings(Take,fx_number,0,InPlug,Channel_beat,0);
 				end;
 				if clean == true then;
-				    reaper.DeleteExtState(NameScript,"CopyInputPlugin",false);
+				    reaper.DeleteExtState(NameScript,"CopyInputPlugin",persist);
 				end;
 			 end;
 			 ----  
@@ -95,7 +95,7 @@
     
     
     -------------------------------------------------
-    local function CopyOutput_FocusedFX_Pin(NameScript);--section
+    local function CopyOutput_FocusedFX_Pin(NameScript,persist);--section
     
 	   local retval,tracknumber,itemnumber,fxnumber = reaper.GetFocusedFX();
 	   local track = reaper.GetTrack(0,tracknumber-1);
@@ -103,7 +103,7 @@
 	   
 	   local t = {};
 	   if retval > 0 then;
-		  reaper.DeleteExtState(NameScript,"CopyOutputPlugin",false);
+		  reaper.DeleteExtState(NameScript,"CopyOutputPlugin",persist);
 		  if itemnumber < 0 then;
 			 ----
 			 local _,_,outputPins = reaper.TrackFX_GetIOSize(track,fxnumber);
@@ -124,7 +124,7 @@
 			 end; 
 		  end;
 		  t = table.concat(t);
-		  reaper.SetExtState(NameScript,"CopyOutputPlugin",t,false);--NameScript
+		  reaper.SetExtState(NameScript,"CopyOutputPlugin",t,persist);--NameScript
 	   else;
 		  return -1;
 	   end;
@@ -135,7 +135,7 @@
     
     
     -------------------------------------------------
-    local function PasteOutput_FocusedFX_Pin(NameScript,clean);--section
+    local function PasteOutput_FocusedFX_Pin(NameScript,clean,persist);--section
 	   local retval,tracknumber,itemnumber,fxnumber = reaper.GetFocusedFX();
 	   local track = reaper.GetTrack(0,tracknumber-1);
 	   if not track then return -1 end;
@@ -150,7 +150,7 @@
 				    reaper.TrackFX_SetPinMappings(track,fxnumber,1,OutPlug,Channel_beat,0);
 				end;
 				if clean == true then;
-				    reaper.DeleteExtState(NameScript,"CopyOutputPlugin",false);
+				    reaper.DeleteExtState(NameScript,"CopyOutputPlugin",persist);
 				end;
 			 end;
 		  else;
@@ -167,7 +167,7 @@
 				    reaper.TakeFX_SetPinMappings(Take,fx_number,1,OutPlug,Channel_beat,0);
 				end;
 				if clean == true then;
-				    reaper.DeleteExtState(NameScript,"CopyOutputPlugin",false);
+				    reaper.DeleteExtState(NameScript,"CopyOutputPlugin",persist);
 				end;
 			 end;
 			 ----  
