@@ -113,6 +113,7 @@
         ----
         if type(frame)~="table" then frame = {} end;
         gfx.r,gfx.g,gfx.b,gfx.a = frame[2]or 0,frame[3]or 0,frame[4]or 0,frame[5]or 0;
+        gfx.a = math.min(math.max(0,gfx.a),1);
         for i = 1,(frame[1]or 1) do;
             gfx.roundrect( x+(i-1) , y+(i-1), w-((i-1)*2) , h-((i-1)*2), 1);
         end;
