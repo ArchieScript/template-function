@@ -26,7 +26,8 @@
 >- Переместить элемент к ближайшему делению (сетки, курсору, выбору времени, к краю итема); 
 >- Вернет значения - на какое время был перемещён элемент,позицию ближайшего деления сетки, позицию  курсора, ближайшую позицию выбора -  времени, ближайшую позицию элемента, ближайшую позицию конца элемента
 >#
->##### [CopyInput_FocusedFX_Pin \n PasteInput_FocusedFX_Pin   / CopyOutput_FocusedFX_Pin / PasteOutput_FocusedFX_Pin](https://github.com/ArchieScript/template-function/blob/master/template-function/GetSet/Copy%20Paste%20Input%20Output%20Plugin.lua)-- скопировать, вставить Pin Connector 
+>##### [CopyInput_FocusedFX_Pin 
+PasteInput_FocusedFX_Pin   / CopyOutput_FocusedFX_Pin / PasteOutput_FocusedFX_Pin](https://github.com/ArchieScript/template-function/blob/master/template-function/GetSet/Copy%20Paste%20Input%20Output%20Plugin.lua)-- скопировать, вставить Pin Connector 
 >#
 >#
 >#
