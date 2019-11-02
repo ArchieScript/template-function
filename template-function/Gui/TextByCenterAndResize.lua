@@ -20,9 +20,9 @@
 
     ----------------------------------------------------------------------
     local function TextByCenterAndResize(string,x,y,w,h,ZoomInOn,flags,r,g,b,x_pix,y_pix,w_pix,h_pix);
+        local gfx_x,gfx_y = gfx.x,gfx.y;
         local gfx_w = gfx.w/100*w;
         local gfx_h = gfx.h/100*h;
-        
         if tonumber(w_pix)then gfx_w = math.abs(w_pix)end;
         if tonumber(h_pix)then gfx_h = math.abs(h_pix)end;
         
@@ -36,21 +36,19 @@
         gfx.setfont(1,"Arial",F_size,flags);--BOLD=98,ITALIC=105,UNDERLINE=117
         
         local lengthFont,heightFont = gfx.measurestr(string);
-        
         if x_pix then;
             gfx.x = x_pix + (gfx_w - lengthFont)/2; 
         else;
             gfx.x = gfx.w/100*x + (gfx_w - lengthFont)/2; 
         end;
-        
         if y_pix then;
             gfx.y = y_pix + (gfx_h- heightFont )/2;
         else;
            gfx.y = gfx.h/100*y + (gfx_h- heightFont )/2;
         end;
-         
         gfx.set(r/256,g/256,b/256,1);
-        gfx.drawstr(string); 
+        gfx.drawstr(string);
+        gfx.x,gfx.y = gfx_x,gfx_y;
     end;
     ----------------------------------------------------------------------
     
