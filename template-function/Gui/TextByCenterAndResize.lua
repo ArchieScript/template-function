@@ -36,15 +36,15 @@
         gfx.setfont(1,"Arial",F_size,flags);--BOLD=98,ITALIC=105,UNDERLINE=117
         
         local lengthFont,heightFont = gfx.measurestr(string);
-        if x_pix then;
-            gfx.x = x_pix + (gfx_w - lengthFont)/2; 
+        if tonumber(x_pix) then;
+            gfx.x = math.abs(x_pix) + (gfx_w - lengthFont)/2; 
         else;
             gfx.x = gfx.w/100*x + (gfx_w - lengthFont)/2; 
         end;
-        if y_pix then;
-            gfx.y = y_pix + (gfx_h- heightFont )/2;
+        if tonumber(y_pix) then;
+            gfx.y = math.abs(y_pix) + (gfx_h - heightFont )/2;
         else;
-           gfx.y = gfx.h/100*y + (gfx_h- heightFont )/2;
+           gfx.y = gfx.h/100*y + (gfx_h - heightFont )/2;
         end;
         gfx.set(r/256,g/256,b/256,1);
         gfx.drawstr(string);
