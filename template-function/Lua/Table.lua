@@ -49,3 +49,17 @@
 https://codeindex.ru/q/59645164-lua-udalit-dublikati-elementov-lua-table.html
 -------------------------------------------
 
+
+
+
+-------------------------------------------
+Copy Table / Создать копию таблицы
+http://lua-users.org/wiki/CopyTable
+-------------------------------------------
+
+
+
+
+
+
+
