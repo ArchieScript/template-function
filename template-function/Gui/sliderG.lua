@@ -5,265 +5,92 @@
 
 
 
-
-    --[[
-    block = Отчертить рамку для ориентации, а так всегда 0
-    CtrlSpeed = Замедление при ctrl. чем больше значения - тем больше замедление, обычно 5
-    x,y,w,h = размер рамки (фейдера)
-    w_s  = ширина ползунка
-    y_gro,h_gro = ширина колеи
-    valSlider = значение фейдера
-    --]]
+      
     
     
     
     
+    -- block = Отчертить рамку для ориентации, а так всегда 0
+    -- x,y,w,h = размер рамки (фейдера) (всего фейдера)
+    -- value = значение фейдера  (значение в зависимости от mode)
+    -- slowCtrl Замедление при ctrl. чем больше значения - тем больше замедление, обычно 2
+    -- mode =0 значение фейдера от 0 до 1; =1 значение фейдера от -1 до 1;
     
     
-    -----------------------------------------
-    function gfx_slider(x,y,w,h)
-        -- Рисуем ручку слайдера (Пример ниже)
-    end
-    
-    function grooveSlider(x,y,w,h)
-        -- Рисуем ползунок слайдера
-    end
-    
-    local slV;
-    function sliderG(block,CtrlSpeed,x,y,w,h,w_s,y_gro,h_gro,valSlider);
-        -- valSlider = 0-1
-        ------
-        slV=slV or {};
-        ------
-        if block == true or block == 1 then;
-            gfx.rect(x, y, w, h,0)--block
+    local sldF;
+    local function sliderG(block,x,y,w,h,value,slowCtrl,mode);
+        
+        local function slidG(x,y,w,h,val);
+            -----------
+            --Ресуем колею слайдера, если надо уже, то y+.. h-..
+            gfx.gradrect(x,y+5,w,h-10, 1,1,1,1);--пример
+            -----------
+            
+            --========================
+            --тут ничего не трогать
+            local yy = y;
+            local hh = h;
+            local ww = (w/100*10);
+            local xx = x+(w*val)-ww/2;
+            --========================
+            
+            --======================
+            --ресуем ползунок
+            ------ Пример квадрат -----
+             --gfx.gradrect(xx,yy   ,ww, hh, 0,0,0,1);
+            ------ Пример круг -----
+            gfx.r,gfx.g,gfx.b,gfx.a = 0,0,0,1;
+            gfx.circle(xx+6  ,yy+9,10,1);
+            --======================
         end;
-        -----
-        grooveSlider(x,y_gro,w,h_gro,(valSlider or 0));
-        -----
+        
+        ------
+        if block == true or block == 1 then;gfx.rect(x, y, w, h,0)end;--block
+        ------
+         
+        sldF=sldF or {};
+        sldF.value = value;
+        
+        if mode == 1 then; sldF.value = (sldF.value+1)/2; end;
+        
+        if sldF.pull and gfx.mouse_cap&5~=5 then sldF.resistor=false end;
+        if sldF.pull and gfx.mouse_cap&5==5 then sldF.resistor=true end;
+        if gfx.mouse_cap&1~=1 and gfx.mouse_cap&5~=5 then sldF.pull=false end;
+        
         local Mouse =
         gfx.mouse_x>=x and gfx.mouse_x<(x+w)and
         gfx.mouse_y>=y and gfx.mouse_y<(y+h);
-        -----
-        if slV.mouseCtrl and gfx.mouse_cap&5 ~= 5 then slV.resistor = nil  end;
-        if slV.mouseCtrl and gfx.mouse_cap&5 == 5 then slV.resistor = true end;
-        ----
-        if Mouse and gfx.mouse_cap == 0 then slV.resistor = true end;
-        ----
-        if gfx.mouse_cap&1 == 1 and gfx.mouse_cap&5 ~= 5 and slV.resistor then;
-            local slider = gfx.mouse_x;
-            if slider+(w_s/2) >= w+x then slider = w+x-(w_s/2) end;
-            if slider-(w_s/2) <=   x then slider =   x+(w_s/2) end;
-            gfx_slider(slider-(w_s/2), y, w_s, h-1);
-            slV.drawnSlider = true;
-            valSlider = (gfx.mouse_x - x) / w;
-            if valSlider > 1 then valSlider = 1 elseif valSlider < 0 then valSlider = 0 end;
-        elseif gfx.mouse_cap&1 == 1 and gfx.mouse_cap&5 == 5 and slV.resistor then;
-            if not slV.mouseCtrl then slV.mouseCtrl = (valSlider * w)+x end;
-            local slider = slV.mouseCtrl -((slV.mouseCtrl - gfx.mouse_x)/(1.5*(CtrlSpeed or 1)));
-            if slider+(w_s/2) >= w+x then slider = w+x-(w_s/2) end;
-            if slider-(w_s/2) <=   x then slider =   x+(w_s/2) end;
-            gfx_slider(slider-(w_s/2), y, w_s, h-1);
-            slV.drawnSlider = true;
-            valSlider = (slider - x) / w;
-            if valSlider > 1 then valSlider = 1 elseif valSlider < 0 then valSlider = 0 end;
+        
+        if Mouse and gfx.mouse_cap == 0 then sldF.resistor = true end;
+        
+        if gfx.mouse_cap&1 == 1 and gfx.mouse_cap&5 ~= 5 and sldF.resistor then;
+            sldF.value = (gfx.mouse_x-x)/w; 
+        elseif gfx.mouse_cap&1 == 1 and gfx.mouse_cap&5 == 5 and sldF.resistor then;
+            if not sldF.pull then sldF.pull = true;
+                sldF.gfx__mouse_x = gfx.mouse_x;
+                sldF.value = (gfx.mouse_x-x)/w;
+                sldF.value2 = sldF.value;   
+            else;
+               sldF.value=sldF.value2-(sldF.gfx__mouse_x-gfx.mouse_x)/(1000*(slowCtrl or 1));         
+            end;
         elseif gfx.mouse_cap == 0 and not Mouse then;
-            slV.resistor = false;
-        end;
-        ---
-        if gfx.mouse_cap == 0 --[[or gfx.mouse_cap&5 ~= 5 and not Mouse]] then;
-           slV.mouseCtrl = false;
-        end;
-        ----
-        if not slV.drawnSlider then;
-            valSlider = (valSlider or 0);
-            local slider = (valSlider * w)+x;
-            if slider+(w_s/2) >= w+x then slider = w+x-(w_s/2) end;
-            if slider-(w_s/2) <=   x then slider =   x+(w_s/2) end;
-            gfx_slider(slider-(w_s/2), y, w_s, h-1);
-        end;
-        slV.drawnSlider = false;
-        return tonumber(string.format("%.3f", valSlider));
+            sldF.resistor = false;
+            sldF.pull=false;
+        end
+           if sldF.value < 0 then sldF.value = 0 end;
+           if sldF.value > 1 then sldF.value = 1 end;
+        slidG(x,y,w,h,sldF.value);
+        
+        if mode == 1 then;sldF.value = (sldF.value-.5)*2; end;
+        return tonumber(string.format("%.3f", sldF.value));
     end;
-    -----------------------------------------------------------------
     
     
-    --[[
+    
+    -----------------
     local function loop();
-    
-        RR = sliderV(0,5,  50, 15, gfx.w/2,30,25 ,27.5,5 ,RR or 0.5);
-        -- RR = sliderG(0,5,  50, 15, gfx.w/2,30,25 ,20,20 ,RR or 0.5); -- Пример 4
-    end
-    --]]
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-        --[[Пример 1
-    -------------------------------------
-    function grooveSlider(x,y,w,h,val);
-        gfx_r,gfx_g,gfx_b,gfx_a = gfx.r,gfx.g,gfx.b,gfx.a;
-        ----
-        gfx.r,gfx.g,gfx.b = .3,.3,.3;
-        gfx.rect(x, y, w, h,1) 
-        -----
-        gfx.r,gfx.g,gfx.b,gfx.a = gfx_r,gfx_g,gfx_b,gfx_a;
+        val = sliderG(true,20,20,150,20,val or 0, 2, 1);
     end;
-    
-    local function gfx_slider(x,y,w,h);
-        gfx_r,gfx_g,gfx_b,gfx_a = gfx.r,gfx.g,gfx.b,gfx.a;
-        ----
-        gfx.r,gfx.g,gfx.b = .4,.4,.4
-        gfx.circle(x+(w/2),y+(w/2),(w/2),1);
-        
-        gfx.r,gfx.g,gfx.b = .59,.58,.30
-        gfx.circle(x+(w/2),y+(w/2),(w/5),0,.5);
-        gfx.circle(x+(w/2),y+(w/2),(w/2),0);
-        -----
-        gfx.r,gfx.g,gfx.b,gfx.a = gfx_r,gfx_g,gfx_b,gfx_a;
-    end
-    -------------------------------------
-    --]]
-    
-    
-    
-    --[[Пример 2
-    -------------------------------------
-    function grooveSlider(x,y,w,h,val);
-        gfx_r,gfx_g,gfx_b,gfx_a = gfx.r,gfx.g,gfx.b,gfx.a;
-        ----
-        gfx.r,gfx.g,gfx.b = .3,.3,.3;
-        gfx.rect(x, y, w, h,0);
-        
-        gfx.rect(x, y, w*val, h,1);
-        
-        
-        -----
-        gfx.r,gfx.g,gfx.b,gfx.a = gfx_r,gfx_g,gfx_b,gfx_a;
-    end;
-    
-    
-    
-    local function gfx_slider(x,y,w,h);
-        gfx_r,gfx_g,gfx_b,gfx_a = gfx.r,gfx.g,gfx.b,gfx.a;
-        ----
-        gfx.r,gfx.g,gfx.b = .4,.4,.4
-        gfx.circle(x+(w/2),y+(w/2),(w/2.5),1);
-        
-        gfx.r,gfx.g,gfx.b = .59,.58,.30
-        gfx.circle(x+(w/2),y+(w/2),(w/6),0);
-        gfx.circle(x+(w/2),y+(w/2),(w/2.5),0);
-        -----
-        gfx.r,gfx.g,gfx.b,gfx.a = gfx_r,gfx_g,gfx_b,gfx_a;
-    end;
-    -------------------------------------
-    --]]
-    
-    
-    
-    
-    --[[Пример 3
-    -------------------------------------
-    function grooveSlider(x,y,w,h,val);
-        gfx_r,gfx_g,gfx_b,gfx_a = gfx.r,gfx.g,gfx.b,gfx.a;
-        ----
-        gfx.r,gfx.g,gfx.b = .3,.3,.3;
-        gfx.rect(x, y, w, h,0);
-        
-        gfx.rect(x, y, w*val, h,1);
-        -----
-        gfx.r,gfx.g,gfx.b,gfx.a = gfx_r,gfx_g,gfx_b,gfx_a;
-    end;
-    
-    
-    
-    local function gfx_slider(x,y,w,h);
-        gfx_r,gfx_g,gfx_b,gfx_a = gfx.r,gfx.g,gfx.b,gfx.a;
-        ----
-        gfx.r,gfx.g,gfx.b = .4,.4,.4
-        gfx.rect(x, y, w, h,1)
-        
-        gfx.r,gfx.g,gfx.b = .59,.58,.30
-        gfx.rect(x+(w/2-.5), y, 1, 5,1)
-        -----
-        gfx.r,gfx.g,gfx.b,gfx.a = gfx_r,gfx_g,gfx_b,gfx_a;
-    end;
-    -------------------------------------
-    --]]
-    
-    
-    
-        --[[Пример 4
-    -------------------------------------
-    function grooveSlider(x,y,w,h,val);
-        gfx_r,gfx_g,gfx_b,gfx_a = gfx.r,gfx.g,gfx.b,gfx.a;
-        ----
-        gfx.gradrect(x,y,w,h,1,1,1,1, -1/w,-1/w,-1/w,0)
-        gfx.r,gfx.g,gfx.b = .7,.7,.7;                      
-        gfx.rect(x, y, w, h,0);
-        -----
-        gfx.r,gfx.g,gfx.b,gfx.a = gfx_r,gfx_g,gfx_b,gfx_a;
-    end;
-    
-    
-    
-    local function gfx_slider(x,y,w,h);
-        gfx_r,gfx_g,gfx_b,gfx_a = gfx.r,gfx.g,gfx.b,gfx.a;
-        ----
-        gfx.r,gfx.g,gfx.b = .4,.4,.4
-        gfx.rect(x, y, w, h,1)
-        gfx.r,gfx.g,gfx.b = .7,.7,.7; 
-        gfx.rect(x, y, w, h,0)
-        
-        gfx.rect(x+(w/2-.5), y, 1, 5,1)
-        gfx.rect(x+(w/2-.5), y+h-5 , 1, 5,1)
-         
-        gfx.rect(x+(w/4), y+5, 1, h-10,1)
-        gfx.rect(x+(w/1.35), y+5, 1, h-10,1)
-        
-        gfx.rect(x+(w/2-.5), y+10 , 1, h-20,1)
-        -----
-        gfx.r,gfx.g,gfx.b,gfx.a = gfx_r,gfx_g,gfx_b,gfx_a;
-    end;
-    -------------------------------------
-    --]]
-    
-    
-    
-    
     
     
     
