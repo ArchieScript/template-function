@@ -20,7 +20,8 @@
     
     local sldF;
     local function sliderV(block,x,y,w,h,value,slowCtrl,mode,hide);
-        
+        if h <= 5 then return value end;
+        if h <= 10 then hide = true end;
         local function slidV(x,y,w,h,val);
             -----------
             --Ресуем колею слайдера, если надо уже, то x+.. y-..
@@ -32,6 +33,7 @@
             local xx = x;
             local ww = w;
             local hh = (h/100*10);
+            if hh <= 10 then hh = 10 end;
             local yy = (h+y)-(h*val)-hh/2;
             --что бы полз.не заезжал за гран. на пол полз.--
             if yy < y then yy = y end;
