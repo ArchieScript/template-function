@@ -25,6 +25,8 @@
     
     ---------------------------------
     local function gradient(buf,vertically,x,y,w,h,white,black,alfa,col,brightness,frame);
+        if h <= 5 then h = 0 end;
+        if w <= 5 then w = 0 end;
         buf = tonumber(buf)or 948;if buf<0 then buf=0 end;if buf>1023 then buf=1023 end;
         local b = brightness;
         alfa = tonumber(alfa)or 1;
