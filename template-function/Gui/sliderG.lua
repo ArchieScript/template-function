@@ -15,10 +15,11 @@
     -- value = значение фейдера  (значение в зависимости от mode)
     -- slowCtrl Замедление при ctrl. чем больше значения - тем больше замедление, обычно 2
     -- mode =0 значение фейдера от 0 до 1; =1 значение фейдера от -1 до 1;
+    -- hide = true скрыть ползунок, а так всегда false.
     
     
     local sldF;
-    local function sliderG(block,x,y,w,h,value,slowCtrl,mode);
+    local function sliderG(block,x,y,w,h,value,slowCtrl,mode,hide);
         
         local function slidG(x,y,w,h,val);
             -----------
@@ -32,15 +33,21 @@
             local hh = h;
             local ww = (w/100*10);
             local xx = x+(w*val)-ww/2;
+            --что бы полз.не заезжал за гран. на пол полз.--
+            if xx < x then xx = x end;
+            if xx+ww > x+w then xx = x+w-ww end;
             --========================
             
             --======================
-            --ресуем ползунок
-            ------ Пример квадрат -----
-             --gfx.gradrect(xx,yy   ,ww, hh, 0,0,0,1);
-            ------ Пример круг -----
-            gfx.r,gfx.g,gfx.b,gfx.a = 0,0,0,1;
-            gfx.circle(xx+6  ,yy+9,10,1);
+            if hide ~= true then;
+                --ресуем ползунок
+                ------ Пример квадрат -----
+                gfx.gradrect(xx,yy,ww,hh, 0,0,0,1);
+                ------ Пример круг -----
+                gfx.r,gfx.g,gfx.b,gfx.a = 0,0,0,1;
+                --gfx.circle(xx+6  ,yy+7,10,1);--только с фикс размером
+                --gfx.roundrect(xx,yy   ,ww, hh,10,1 )--адаптив
+            end;
             --======================
         end;
         
