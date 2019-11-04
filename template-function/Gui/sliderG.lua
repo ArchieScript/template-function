@@ -20,7 +20,8 @@
     
     local sldF;
     local function sliderG(block,x,y,w,h,value,slowCtrl,mode,hide);
-        
+        if w <= 5 then return value end;
+        if w <= 10 then hide = true end;
         local function slidG(x,y,w,h,val);
             -----------
             --Ресуем колею слайдера, если надо уже, то y+.. h-..
@@ -32,6 +33,7 @@
             local yy = y;
             local hh = h;
             local ww = (w/100*10);
+            if ww <= 10 then ww = 10 end;
             local xx = x+(w*val)-ww/2;
             --что бы полз.не заезжал за гран. на пол полз.--
             if xx < x then xx = x end;
