@@ -42,10 +42,11 @@
             --ресуем ползунок
             if hide ~= true then;
                 ------ Пример квадрат -----
-                -- gfx.gradrect(xx,yy   ,ww, hh, 0,0,0,1);
+                 gfx.gradrect(xx,yy   ,ww, hh, 0,0,0,1);
                 ------ Пример круг -----
-                gfx.r,gfx.g,gfx.b,gfx.a = 0,0,0,1;
-                gfx.circle(xx+9  ,yy+7,10,1);
+                --gfx.r,gfx.g,gfx.b,gfx.a = 0,0,0,1;
+                --gfx.circle(xx+7  ,yy+7+5,10,1);--только с фикс размером
+                --gfx.roundrect(xx,yy   ,ww, hh,10,1 )--адаптив
             end;
             --======================
         end;
