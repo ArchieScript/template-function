@@ -32,6 +32,9 @@
             local ww = w;
             local hh = (h/100*10);
             local yy = (h+y)-(h*val)-hh/2;
+            --что бы полз.не заезжал за гран. на пол полз.--
+            if yy < y then yy = y end;
+            if yy+hh > y+h then yy = y+h-hh end;
             --======================
             
             --======================
