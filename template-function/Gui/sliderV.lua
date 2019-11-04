@@ -18,7 +18,7 @@
     
     
     local sldF;
-    local function sliderV(block,x,y,w,h,value,slowCtrl,mode);
+    local function sliderV(block,x,y,w,h,value,slowCtrl,mode,hide);
         
         local function slidV(x,y,w,h,val);
             -----------
@@ -39,11 +39,13 @@
             
             --======================
             --ресуем ползунок
-            ------ Пример квадрат -----
-            -- gfx.gradrect(xx,yy   ,ww, hh, 0,0,0,1);
-            ------ Пример круг -----
-            gfx.r,gfx.g,gfx.b,gfx.a = 0,0,0,1;
-            gfx.circle(xx+9  ,yy+7,10,1);
+            if hide ~= true then;
+                ------ Пример квадрат -----
+                -- gfx.gradrect(xx,yy   ,ww, hh, 0,0,0,1);
+                ------ Пример круг -----
+                gfx.r,gfx.g,gfx.b,gfx.a = 0,0,0,1;
+                gfx.circle(xx+9  ,yy+7,10,1);
+            end;
             --======================
         end;
         
