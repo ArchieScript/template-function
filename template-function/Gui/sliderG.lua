@@ -34,10 +34,10 @@
             local hh = h;
             local ww = (w/100*10);
             if ww <= 10 then ww = 10 end;
-            local xx = x+(w*val)-ww/2;
+            local xx = x+(w*val)-(ww/2);
             --что бы полз.не заезжал за гран. на пол полз.--
             if xx < x then xx = x end;
-            if xx+ww > x+w then xx = x+w-ww end;
+            if xx+ww > x+w then xx = x+w-ww+1 end;
             --========================
             
             --======================
