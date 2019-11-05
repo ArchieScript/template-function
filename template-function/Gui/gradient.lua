@@ -38,14 +38,6 @@
                     {1,0,0.5},{1,0,0.25},{1,0,0} };
         end;
         -----
-        for i = 1,#col do;
-            for c = 1,3 do;
-                col[i][c] = col[i][c]+b;
-                if col[i][c]>1 then col[i][c]=1 end;
-                if col[i][c]<0 then col[i][c]=0 end;
-            end;
-        end;
-        -----
         local gfx_r,gfx_g,gfx_b,gfx_a = gfx.r,gfx.g,gfx.b,gfx.a;
         gfx.dest = buf;
         gfx.setimgdim(buf,-1,-1);
@@ -68,18 +60,30 @@
                              ((col[i+1][3])-(col[i][3])) / 10,
                              0);
             end;
-            ----
+            -----
             if white == true then;
-                local r = 1+b;
-                if r < 0 then r = 0 elseif r > 1 then r = 1 end;
-                gfx.gradrect(0,0,(#col-1)*10,100, r,r,r,1, 0,0,0,0, 0,0,0,-1/100);
+                local rw = b;
+                if rw < 0 then rw = 0 elseif rw > 1 then rw = 1 end;
+                rw = ((rw-1)-(rw-1)*2)*100;
+                local rwa=((b-1)-(b-1)*2) if rwa > 1 then rwa = 1 elseif rwa < 0 then rwa = 0 end;
+                gfx.gradrect(0,0,(#col-1)*10,rw, 0,0,0,rwa, 0,0,0,0, 0,0,0,(0-rwa)/rw);
+            end;
+            if black == true then;
+                local rb = b;
+                if rb > 0 then rb = 0 elseif rb < -1 then rb = -1 end;
+                rb = (rb-rb*2)*100;
+                local rba=b+1 if rba > 1 then rba = 1 elseif rba < 0 then rba = 0 end;
+                gfx.gradrect(0,100+rb,(#col-1)*10,100, 1,1,1,0, 0,0,0,0, 0,0,0,rba/100);
             end;
             ----
-            if black == true then;
-                 local r = 0+b;
-                 if r < 0 then r = 0 elseif r > 1 then r = 1 end;
-                 gfx.gradrect(0,100,(#col-1)*10,100, r,r,r,0, 0,0,0,0, 0,0,0,1/100);
-            end;
+            local rwa = b;
+            if rwa < 0 then rwa = 0 elseif rwa > 1 then rwa = 1 end;
+            gfx.gradrect(0,0,(#col-1)*10,200,1,1,1,rwa); 
+            ----
+            local rba = b;
+            rba = b-b*2;
+            if rba < 0 then rba = 0 elseif rba > 1 then rba = 1 end;
+            gfx.gradrect(0,0,(#col-1)*10,200,0,0,0,rba);
             -----
         else;
             -----
@@ -92,17 +96,29 @@
             end;
             ----
             if white == true then;
-                local r = 0+b;
-                if r < 0 then r = 0 elseif r > 1 then r = 1 end;
-                gfx.gradrect(0,0,100,(#col-1)*10,r,r,r,1, 0,0,0,-1/100, 0,0,0,0);
+                local rw = b;
+                if rw > 0 then rw = 0 elseif rw < -1 then rw = -1 end;
+                rw = (rw-rw*2)*100;
+                local rwa=b+1 if rwa > 1 then rwa = 1 elseif rwa < 0 then rwa = 0 end;
+                gfx.gradrect(100+rw,0,100,(#col-1)*10, 1,1,1,0, 0,0,0,rwa/100, 0,0,0,0);
+            end;
+            if black == true then;
+                local rb = b;
+                if rb < 0 then rb = 0 elseif rb > 1 then rb = 1 end;
+                rb = ((rb-1)-(rb-1)*2)*100;
+                local rba=((b-1)-(b-1)*2) if rba > 1 then rba = 1 elseif rba < 0 then rba = 0 end;
+                gfx.gradrect(0,0,rb,(#col-1)*10, 0,0,0,rba, 0,0,0,(0-rba)/rb, 0,0,0,0);
             end;
             ----
-            if black == true then;
-                 local r = 1+b;
-                 if r < 0 then r = 0 elseif r > 1 then r = 1 end;
-                 gfx.gradrect(100,0,100,(#col-1)*10, r,r,r,0, 0,0,0,1/100, 0,0,0,0);
-            end;
-            -----
+            local rba = b;
+            rba = b-b*2;
+            if rba < 0 then rba = 0 elseif rba > 1 then rba = 1 end;
+            gfx.gradrect(0,0,200,(#col-1)*10,0,0,0,rba);
+            ----
+            local rwa = b;
+            if rwa < 0 then rwa = 0 elseif rwa > 1 then rwa = 1 end;
+            gfx.gradrect(0,0,200,(#col-1)*10,1,1,1,rwa);
+            ----
         end;
         gfx.dest = -1;
         gfx.a = alfa;
