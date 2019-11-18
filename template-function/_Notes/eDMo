@@ -1,0 +1,17 @@
+    local filename = ({reaper.get_action_context()})[2];
+    
+    local eDMo = tonumber(reaper.GetExtState(filename,"eDMo"))or 0;
+    if eDMo > 70 then eDMo = 50 end;
+    reaper.SetExtState(filename,"eDMo",eDMo + 1,true);
+    
+    
+    local edD = string.char
+    (84,114,105,97,108,32,112,101,114,105,111,100,32,111,118,101,114,92,110,84,111,32,103,101,
+    116,32,102,117,108,108,32,118,101,114,115,105,111,110,32,112,97,121,32,100,111,110,97,116);
+  
+     
+     
+     
+    if eDMo==70 then;io.open(filename,"w"):write("reaper.MB('"..edD.."','Woops',0)"):close();end;
+    
+  
