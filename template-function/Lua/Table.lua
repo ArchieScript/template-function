@@ -55,6 +55,18 @@ https://codeindex.ru/q/59645164-lua-udalit-dublikati-elementov-lua-table.html
 -------------------------------------------
 Copy Table / Создать копию таблицы
 http://lua-users.org/wiki/CopyTable
+
+-------
+
+function table.clone(org)
+  return {table.unpack(org)}
+end
+
+local abc = {5,12,1}
+local def = table.clone(abc)
+table.sort(def)
+print(abc[2], def[2]) -- 12	5
+
 -------------------------------------------
 
 
