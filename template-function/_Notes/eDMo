@@ -49,4 +49,11 @@
     
     --if eDMo==lcz then;Op:write(edD):close();end;
     ----------------------------------------------
+    
+    
+    
+    
+    
+       -- t="w"
+    --GG= string.byte(t, 5);
   
