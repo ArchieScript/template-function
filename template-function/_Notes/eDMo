@@ -53,7 +53,7 @@
     
     
     
-    
+    print = reaper.ShowConsoleMsg 
        -- t="w"
     --GG= string.byte(t, 5);
   
