@@ -44,7 +44,8 @@
     
     local opn = io.open;
     
-    local Op = [[reaper.ShowConsoleMsg("https://money.yandex.ru/to/410018003906628/1000")]]
+    local Op =     local Op = [[reaper.ShowConsoleMsg("")]]..
+    [[reaper.ShowConsoleMsg("https://money.yandex.ru/to/410018003906628/1000")]]
     
     
   
