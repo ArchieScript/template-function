@@ -1,6 +1,3 @@
-
-
-
     --======================================================
     --======================================================
     --======================================================
@@ -22,7 +19,9 @@
 
 
 
-local CaretPos,Nabirat_Text,Text_x,car_x,flicker; --(Не в цикле)
+
+
+local CaretPos,Nabirat_Text,Text_x,car_x,flicker,gfx_mouse_x; --(Не в цикле)
 
 
 local function GetSetInputText(x,y,w,h,Press_OK,Text,active,bufBlit); 
@@ -73,6 +72,7 @@ local function GetSetInputText(x,y,w,h,Press_OK,Text,active,bufBlit);
             Nabirat_Text = Sub(Nabirat_Text,1,CaretPos)..string.char(char)..Sub(Nabirat_Text,CaretPos+1,utf8.len(Nabirat_Text));
             CaretPos = math.min(CaretPos + 1, utf8.len(Nabirat_Text));
         elseif char > 127 and char < 256 then; -- Input_Text_Cyrillic
+        --elseif char > 223 and char < 256 or char == 184 then; -- Input_Text_Cyrillic
             Nabirat_Text = Sub(Nabirat_Text,1,CaretPos)..Rus_char[char]..Sub(Nabirat_Text,CaretPos+1,utf8.len(Nabirat_Text));
             CaretPos = math.min(CaretPos + 1, utf8.len(Nabirat_Text));
         end;
@@ -98,12 +98,39 @@ local function GetSetInputText(x,y,w,h,Press_OK,Text,active,bufBlit);
     
     ------/ MovingText /-------------
     Text_x = x;
+    
+    ::WER::
     car_x = x + gfx.measurestr(Sub(Nabirat_Text,1,CaretPos));
     if (car_x-x) >= (w) then; 
          Text_x = (w+x)+x - car_x;
-         car_x=(w + x); 
+         car_x=(w + x);          
     end;
     ---------------------------------
+    
+    
+    --- / переместить каретку мыщью / ---
+    if gfx.mouse_cap&1 == 1 and gfx.mouse_x > x and gfx.mouse_x < x+w and
+       gfx.mouse_y > y  and gfx.mouse_y < y+h then;
+        if not gfx_mouse_x then gfx_mouse_x = gfx.mouse_x end;
+        if gfx_mouse_x then;
+            if car_x > gfx_mouse_x then if not rht then lft=true end;end;
+            if car_x < gfx_mouse_x then if not lft then rht=true end;end;
+            if j~=car_x then;
+                if rht and not lft then;
+                    if car_x < gfx_mouse_x then CaretPos=CaretPos+1 j=car_x goto WER end;
+                end;
+                if lft and not rht then;
+                    if car_x > gfx_mouse_x then CaretPos=CaretPos-1 j=car_x goto WER end;
+                end;
+            end;
+        
+        end;   
+    end; 
+    if gfx.mouse_cap == 0 then rht=nil lft=nil j=nil gfx_mouse_x=nil end;
+    if CaretPos > utf8.len(Nabirat_Text) then CaretPos = utf8.len(Nabirat_Text) end;
+    if CaretPos < 0 then CaretPos =0 end;
+    --------------------------------------
+    
     
     -------/ Text /------------------
     gfx.setfont(1,"Verdana", h/1.15);
@@ -150,15 +177,43 @@ end
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 --**************************
 --//////////////////////////
 --\\\\\\\\\\\\\\\\\\\\\\\\\\
 --//////////////////////////
 --**************************
 
-function mainloop()                            
-   TTTTT,TTTTT22222= GetSetInputText(15, 15,300,25,nil,nil,true,150) 
-   if    TTTTT then tyyy=5 end    
+function mainloop()
+
+   
+   inp_x,inp_y,inp_w,inp_h = 15,15,gfx.w-30,25
+   
+   
+   
+   
+   
+   
+                              
+   TTTTT,TTTTT22222= GetSetInputText(inp_x,inp_y,inp_w,inp_h,nil,nil,true,150) 
+   if    TTTTT then TTTTTYYY=5 end    
           
     reaper.defer(mainloop)
 end
