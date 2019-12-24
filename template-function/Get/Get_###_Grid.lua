@@ -5,44 +5,29 @@
 -- Реагирует на привязку сетки (вкл/выкл)
 -- Ищет только видимую сетку
 
-
-    local function GetPreviousGrid(time);
+    local function GetPrevNextGridArrange(time,nextPrev);
+        local ToggleSnap = reaper.GetToggleCommandStateEx(0,1157);
+        local ToggleEnab = reaper.GetToggleCommandStateEx(0,40145);
+        if ToggleSnap == 0 or ToggleEnab == 0 then;  
+            return time;
+        end;
+        local val;
         for i = 1,math.huge do;
-            local val = reaper.SnapToGrid(0,time);
-            if val <= time then return val end;
-            time = time-0.001;
+            val = reaper.SnapToGrid(0,time);
+            if nextPrev < 0 then;
+                if val<=--[[<]]time then;goto ret;end;time=time-0.0001;
+            else;
+                if val>--[[>=]]time then;goto ret;end;time=time+0.0001;
+            end;
         end;
+        ::ret::;
+        return val;
     end;
-    
-    
-    
-    
-    local function GetNextGrid(time);
-        for i = 1,100 do --math.huge do;
-            local val = reaper.SnapToGrid(0,time);
-            if val >= time then return val end;
-            time = time+0.001;
-        end;
-    end;
+
 -----------------------------------------------------
 
 
 
--- Не реагирует на привязку сетки (вкл/выкл)
--- Ищет только видимую сетку
--- Arrange
-
-    local function GetPreviousGridArrange(time);
-        local ToggleSnap = reaper.GetToggleCommandStateEx(0,1157);
-        if ToggleSnap == 0 then;reaper.Main_OnCommand(1157,0);end;
-        for i = 1,math.huge do;
-            local val = reaper.SnapToGrid(0,time);
-            if val <= time then
-                if ToggleSnap == 0 then;reaper.Main_OnCommand(1157,0);end;return val;
-            end;
-            time = time-0.001;
-        end;
-    end;
 
 -----------------------------------------------------------
 
