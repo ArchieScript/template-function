@@ -33,7 +33,7 @@
 >#
 >##### [Sub(s,i,j)](https://github.com/ArchieScript/template-function/blob/master/template-function/Get/Sub.lua) -- Возвращает подстроку строки S, которая начинается с символа с инд i и заканчивается симв.с инд j(раб.с кирилицей)   
 >#
->##### [GetSubdirectoriesUpToLevelFive(Path)](https://github.com/ArchieScript/template-function/blob/master/template-function/Get/GetSubdirectoriesUpToLevelFive.lua) -- Получить таблицу с подкаталогами До Пятого Уровня 
+>##### [EnumerateAllDirectoriesAndSubdirectories(Path)](https://github.com/ArchieScript/template-function/blob/master/template-function/Get/EnumerateAllDirectoriesAndSubdirectories.lua) -- Получить таблицу с каталогами и всеми подкаталогами 
 >#
 >##### [GetSampleNumberPosValue(take,SkipNumberOfSamplesPerChannel,FeelVolumeOfItem)](https://github.com/ArchieScript/template-function/blob/master/template-function/Get/GetSampleNumberPosValue.lua) -- Переберает Все семплы в тэйке, Вернет кол-во сэмплов во всех каналах, кол-во сэмплов в одном канале, номер сэмпла со всех каналов, номер сэмпла с одного канала, минимальное значение сэмпла, максимальное значение сэмпла, время сэмпла
 >#
