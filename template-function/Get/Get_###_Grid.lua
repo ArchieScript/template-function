@@ -62,7 +62,55 @@
 
 
 
+--**********************************************
 
+
+
+    local function GetPrevGrid(pos);
+        reaper.Main_OnCommand(40755,0); -- Snapping: Save snap state
+        reaper.Main_OnCommand(40754,0); -- Snapping: Enable snap
+        if pos > 0 then; 
+            local grid = pos;
+            local i = 0;
+            local posX = pos;
+            while (grid >= pos) do;
+                pos = pos - 0.0001;
+                if pos >= 0.0001 then;
+                    grid = reaper.SnapToGrid(0,pos);
+                else;
+                    grid = 0;
+                end;
+                i=i+1;
+                if i>(2e+5)then;
+                   reaper.Main_OnCommand(40756,0); -- Snapping: Restore snap state
+                   return posX;
+                end;
+            end;
+            return grid; 
+        end;
+        reaper.Main_OnCommand(40756, 0) -- Snapping: Restore snap state  
+    end;
+    
+    -------------------
+    
+    local function GetNextGrid(pos);
+        reaper.Main_OnCommand(40755,0); -- Snapping: Save snap state
+        reaper.Main_OnCommand(40754,0); -- Snapping: Enable snap
+        local i = 0;
+        local posX = pos;
+        local grid = pos;
+        while (grid <= pos) do;
+            pos = pos + 0.0001;
+            grid = reaper.SnapToGrid(0,pos);
+            i=i+1;
+            if i>(2e+5)then;
+               reaper.Main_OnCommand(40756,0); -- Snapping: Restore snap state
+               return posX;
+            end;
+        end;
+        reaper.Main_OnCommand(40756,0); -- Snapping: Restore snap state
+        return grid;
+    end;
 
 
 
