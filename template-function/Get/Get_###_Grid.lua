@@ -86,9 +86,10 @@
                    return posX;
                 end;
             end;
-            return grid; 
+            reaper.Main_OnCommand(40756, 0) -- Snapping: Restore snap state  
+            return grid;
         end;
-        reaper.Main_OnCommand(40756, 0) -- Snapping: Restore snap state  
+        return 0
     end;
     
     -------------------
