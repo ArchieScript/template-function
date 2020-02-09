@@ -44,6 +44,10 @@
 >#
 >##### [DeleteEnvelopeRangeEx](https://github.com/ArchieScript/template-function/blob/master/template-function/Rest/DeleteEnvelopeRangeEx.lua) -- Удалить Диапазон Огибающей
 >#
+>##### [DeleteAllFxAllTakeItem(itChunk);](https://github.com/ArchieScript/template-function/blob/master/template-function/Rest/DeleteAllFxAllTakeItem.lua) --Удалить все fx во всех тейках в итеме
+>#
+>##### []() --
+>#
 >##### []() --
 >#
 >#
