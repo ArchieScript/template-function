@@ -46,7 +46,7 @@
 >#
 >##### [DeleteAllFxAllTakeItem(itChunk);](https://github.com/ArchieScript/template-function/blob/master/template-function/Rest/DeleteAllFxAllTakeItem.lua) --Удалить все fx во всех тейках в итеме
 >#
->##### []() --
+>##### [sectotime](https://github.com/ArchieScript/template-function/blob/master/template-function/Rest/sectotime.lua) --преобразования секунд, прошедших в дни, часы, минуты, секунды
 >#
 >##### []() --
 >#
