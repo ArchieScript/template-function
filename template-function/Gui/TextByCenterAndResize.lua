@@ -116,6 +116,7 @@
         local lengthFont,heightFont = gfx.measurestr(string);
         gfx.x = gfx.w/100*x + (gfx_w - lengthFont)/2; 
         gfx.y = gfx.h/100*y + (gfx_h- heightFont )/2;
+        --gfx.drawstr(string);
     end; 
 ----------------------------------------------------------------------
 
