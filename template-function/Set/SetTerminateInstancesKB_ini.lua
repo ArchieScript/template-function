@@ -5,7 +5,7 @@
 
 
 
-
+    Требуется перезагрузка рипера
 
 
     -- Set Get - terminate All Instances Or Start New One KB_ini
