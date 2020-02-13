@@ -1813,8 +1813,8 @@ local VersionMod = "v.2.7.5"
     
     
     
-    --- 275 ----------------- GetStartupScript(id,nameFun) ------------------------------
-    local function GetSetTerminateAllInstancesOrStartNewOneKB_ini(set,newState,ScrPath,ScrName);
+    --- 275 -----------------------------------------------------------------------------
+    function Arc_Module.GetSetTerminateAllInstancesOrStartNewOneKB_ini(set,newState,ScrPath,ScrName);
         -- newState = 4-Reset/260-Terminate/516-New;
         local ResPath = reaper.GetResourcePath();
         newState = tonumber(newState);
