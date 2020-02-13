@@ -1871,7 +1871,7 @@ local VersionMod = "v.2.7.5"
     -- Если нашел запись скрипта в файле, и значения не равны с newState, то перепишет новое значения и вернет старое значение,true.
     --------------------------------------------------------------------------------------------------------------------------------
     -- ScrName = "Archie_Edit cursor;  MMM.lua"
-    -- ScrPath = [[C:/Users/Archie/Desktop/Reaper-Vremenno/Scripts/Archie-ReaScripts/MAIN/Edit cursor
+    -- ScrPath = 'C:/Users/Archie/Desktop/Reaper-Vremenno/Scripts/Archie-ReaScripts/MAIN/Edit cursor'
     --reaper.defer(function() GetSetTerminateAllInstancesOrStartNewOneKB_ini(1,516,ScrPath,ScrName)end);
     --GetSetTerminateAllInstancesOrStartNewOneKB_ini(1,516,ScrPath,ScrName)
     --GetSetTerminateAllInstancesOrStartNewOneKB_ini(0,'',ScrPath,ScrName)
