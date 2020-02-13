@@ -1,9 +1,9 @@
-local VersionMod = "v.2.7.4"
+local VersionMod = "v.2.7.5"
 --[[
    * Category:    Function
    * Description: Arc_Function_lua
    * Author:      Archie
-   * Version:     2.7.4
+   * Version:     2.7.5
    * AboutScript: Functions for use with some scripts Archie
    * О скрипте:   Функции для использования с некоторыми скриптами Archie
    * Provides:    [nomain].
@@ -63,6 +63,7 @@ local VersionMod = "v.2.7.4"
    *      v.259   + boolean, numb = SetHeightTrack_Env_TCP(Track,Height,minHeigth,resetHeigthEnv,PercentageDefault);
    *      v.265   + SetStartupScript(nameAction,id,nameFun,Clean);
    *      v.265   + boolean, boolean = GetStartupScript(id,nameFun);
+   *      v.275   + GetSetTerminateAllInstancesOrStartNewOneKB_ini(set,newState,ScrPath,ScrName);
    *  LUA_Lib
    *      v.247   + If_Equals_Or(EqualsToThat,...);
    *      v.248   + If_Equals_OrEx(EqualsToThat,...);
