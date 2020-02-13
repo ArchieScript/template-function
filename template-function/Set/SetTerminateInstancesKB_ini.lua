@@ -29,6 +29,8 @@ http://avatars.mds.yandex.net/get-pdb/2918639/df855893-d406-4bd4-9497-913665b86c
     local function GetSetTerminateAllInstancesOrStartNewOneKB_ini(set,newState,ScrPath,ScrName);
         -- newState = 4-Reset/260-Terminate/516-New;
         local ResPath = reaper.GetResourcePath();
+        newState = tonumber(newState);
+        if not newState or (newState~=260 and newState~=516) then newState = 4 end;
         local file = io.open(ResPath.."/reaper-kb.ini","r");
         if file then;
             local ScrNameX = ScrName:gsub("[%p]","%%%0");
