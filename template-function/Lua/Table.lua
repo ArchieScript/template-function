@@ -47,6 +47,21 @@
 ------------------------------------------
 --Lua: удалить дубликаты элементов - lua-table
 https://codeindex.ru/q/59645164-lua-udalit-dublikati-elementov-lua-table.html
+
+--delete Duplicates Value In Table
+--удалить повторяющиеся значения в таблице
+
+
+    local function deleteDuplicatesValueInTable(tbl);
+        local X, res = {},{};
+        for _,v in ipairs(tbl) do;
+            if (not X[v]) then;
+                res[#res+1] = v;
+                X[v] = true;
+            end;
+        end;
+        return res
+    end;
 -------------------------------------------
 
 
