@@ -21,7 +21,7 @@
     local function GetList(key);
         key=tostring(key)
         if not key or key:gsub(' ','') == '' then return '' end;
-        return(GetStrFile():match('%-%-%[%=%[%s-'..key..'%s-%=%s-%[%s-%[(.-)%]%=%]')or'');
+        return(GetStrFile():match('%-%-%[%=%[%s-'..key..'%s-%=%s-%[%s-%[(.-)%]%=%]')or''):gsub('\n','');
     end;
     ---
     local function SetList(key,value);
@@ -62,7 +62,7 @@
             return false;
         end;
     end;
-    --=== | Ext State | )==========================================
+    --=== | Ext State | ===========================================
     --=============================================================
     
 
