@@ -32,7 +32,7 @@
         local list = (StrFile:match('%-%-%[%=%[%s-'..key..'%s-%=%s-%{%s-%[%s-%[.-%]%s-%]%s-%}%s-%]%s-%=%s-%]'));
         if list then;
             if value:gsub(' ','') == '' then;
-                StrNew = StrFile:gsub(list:gsub('%p','%%%0'),'',1);
+                StrNew = StrFile:gsub(list:gsub('%p','%%%0')..'%s*\n*','',1);
             else;
                 StrNew = StrFile:gsub(list:gsub('%p','%%%0'),'--[=['..key..'={[['..value..']]}]=]',1);
             end;
