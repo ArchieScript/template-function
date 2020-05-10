@@ -12,8 +12,10 @@
 
 
 
+    --------------------------------------------------------------
     local function EnumerateAllDirectoriesAndSubdirectories(path);
         local T = {};
+        path = path:gsub('\\','/');
         for i = 0,math.huge do;
             local Subdirectories = reaper.EnumerateSubdirectories(path,i);
             if Subdirectories then;
@@ -37,17 +39,37 @@
                     end;
                 else;
                     break;
-                end;   
+                end;
             end;
         end;
         if #T ~= X then goto REPEAT end;
+        table.insert(T,1,path);
         return T;
     end;
+    --------------------------------------------------------------
     
     
-    
-    pathTest = reaper.GetResourcePath()..'/FXChains';
+    pathTest = reaper.GetResourcePath()..'/TrackTemplates';
     Test = EnumerateAllDirectoriesAndSubdirectories(pathTest);
+    
+    
+    
+    FF={}
+    for i = 1,#Test do;
+        for i2 = 1,math.huge do;
+            Files = reaper.EnumerateFiles(Test[i],i2-1);
+            if Files then
+                FF[#FF+1] = Files;
+            else
+                break;
+            end
+        end;
+    end;
+          
+          
+          
+          
+          
     
     --file = reaper.EnumerateFiles(#Test[i],i2-1);
     
