@@ -16,7 +16,7 @@
     local function iniFileWrite(section,key,value,iniFile,lua,clean);
         if lua==true then lua='--'else lua=''end;
         key = key:gsub('^%s-%;*',''):gsub('\n',''):gsub('%=','');
-        value = value:gsub('\n','');
+        value = tostring(value):gsub('\n','');
         section = section:gsub('\n','');
         local file = io.open(iniFile,'r');
         if not file then;
