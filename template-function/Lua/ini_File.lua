@@ -61,7 +61,11 @@
     end;
     -------------------------------------------------------------------
     
+    
     --=================================================================
+    --=================================================================
+    --=================================================================
+    
     
     -------------------------------------------------------------------
     --boolean 'lua' - Смотреть function iniFileWrite, Необязательный параметр
@@ -89,6 +93,50 @@
             end;
         end;
         return '';
+    end;
+    -------------------------------------------------------------------
+    
+    
+    --=================================================================
+    --=================================================================
+    --=================================================================
+    
+    
+    -------------------------------------------------------------------
+    --Удалить всю секцию, со всеми ключами
+    --boolean 'lua' - Смотреть function iniFileWrite, Необязательный параметр
+    -------------------------------------------------------------------
+    local function iniFileRemoveSection(section,iniFile,lua);
+        if lua==true then lua='--'else lua=''end;
+        section = section:gsub('\n','');
+        local file = io.open(iniFile,'r');
+        if not file then return false end;
+        local t = {};
+        for line in file:lines()do;
+            table.insert(t,line);
+        end;
+        file:close();
+        local remT = {};
+        for i = 1, #t do;
+            if t[i]:match('^%s-'..lua..'%[%s-'..section..'%s-%]')then;
+                remT[#remT+1]=i;
+                for i2 = i+1,#t do;
+                    if t[i2]:match('^%s-'..lua..'%[')then break end;
+                    remT[#remT+1]=i2;
+                end;
+                break;
+            end;
+        end;
+        for i = #remT,1,-1 do;
+            table.remove(t,remT[i]);
+        end;
+        if #remT > 0 then;
+            file = io.open(iniFile,'w');
+            wrt = file:write(table.concat(t,'\n'));
+            file:close();
+            return type(wrt)=='userdata';
+        end;
+        return false;
     end;
     -------------------------------------------------------------------
     
