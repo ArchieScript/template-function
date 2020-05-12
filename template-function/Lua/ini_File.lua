@@ -177,6 +177,7 @@
                     if t[i2]:match('^%s-'..lua..'%[')then break end;
                     local key,val = t[i2]:match('(.+)=(.*)');
                     if key and val then;
+                        key =  key:gsub( ('^%s-'..lua:gsub('%p','%%%0')),'');
                         if j ==  tonumber(idx) then return true,key,val end;
                         j = j + 1;
                     end;
