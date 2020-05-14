@@ -9,6 +9,7 @@ local VersionMod = "v.2.7.7"
    * Provides:    [nomain].
    * Function:    http://arc-website.github.io/Library_Function/Arc_Function_lua/index.html
    * -----------------------
+
    * Changelog:   
    * 
    *  REAPER_Lib
@@ -174,9 +175,9 @@ local VersionMod = "v.2.7.7"
    -- Переименовать Fx в треке
    -- Вернет true если переименовал, в противном случае false
    --====End===============End===============End===============End===============End====
-
-
-
+    
+    
+    
    --- 268 ------------------------ TrackFX_GetFXNameEx --------------------------------
    function Arc_Module.TrackFX_GetFXNameEx(Track,idx_fx);
        local strT,found,Name,slot = {};
@@ -190,7 +191,7 @@ local VersionMod = "v.2.7.7"
                found = nil;
                local nStr = {};
                for S in strT[i]:gmatch("%S+")do;
-                   if not X then nStr[#nStr+1] = S else nStr[#nStr] = nStr[#nStr].." "..end;
+                   if not X then nStr[#nStr+1] = S else nStr[#nStr] = nStr[#nStr].." "..S end;
                    if S:match('"') and not S:match('""')and not S:match('".-"') then;
                        if not X then;X = true;else;X = nil;end;
                    end;
@@ -221,7 +222,7 @@ local VersionMod = "v.2.7.7"
    -- Вернет Имя по умолчанию и Имя переименованное
    -- NameDefault,Name =  TrackFX_GetFXNameEx(Track,0);
    --====End===============End===============End===============End===============End====
-
+    
 
 
     --- 229 ------------ RemoveAllSendTr ------------------------------------------------
@@ -714,7 +715,7 @@ local VersionMod = "v.2.7.7"
 
                 --- GetTime ------------------------------------------------------------------------
                 TimeSample[#TimeSample+1] = SamplePointNumb/samplerate/PlayRate_Original + item_pos;
-
+                                
                 --- End Of Element, To Complete Cycle ---------------------------------------------
                if TimeSample[#TimeSample] > Item_len_Original + item_pos then breakX = 1 break end;
                ------------------------------------------------------------------------------------
@@ -1054,7 +1055,7 @@ local VersionMod = "v.2.7.7"
                     reaper.TakeFX_SetEnabled(Take,i-1,0);
                 end;
                 -------------------------------------------------------------------------
-
+                
                 ----#7---Take properties Reset-------------------------------------------
                 local Pich = reaper.GetMediaItemTakeInfo_Value(Take,"D_PITCH");
                 reaper.SetMediaItemTakeInfo_Value(Take,"D_PITCH",0);
@@ -1068,33 +1069,33 @@ local VersionMod = "v.2.7.7"
                 reaper.SetMediaItemTakeInfo_Value(Take,"I_CHANMODE",0);
                 PichMode = reaper.GetMediaItemTakeInfo_Value(Take,"I_PITCHMODE");
                 reaper.SetMediaItemTakeInfo_Value(Take,"I_PITCHMODE",-1);
-
+                
                 ----#8---Item Fx Tail Reset----------------------------------------------
                 local itemfxtail = reaper.SNM_GetIntConfigVar("itemfxtail",0);
                 reaper.SNM_SetIntConfigVar("itemfxtail",0);
                 -------------------------------------------------------------------------
-
+                
                 ----#9---Render items to new take-------GetActiveTake--------------------
                 Arc_Module.Action(41999);
                 local Take_X = reaper.GetActiveTake(item);
                 -------------------------------------------------------------------------
-
+                
                 ----#8---Item Fx Tail Restore--------------------------------------------
                 reaper.SNM_SetIntConfigVar("itemfxtail",itemfxtail);
                 -------------------------------------------------------------------------
-
+                
                 ----#10---Delete Take All Stretch Markers--------------------------------
                 local NumStrMar = reaper.GetTakeNumStretchMarkers(Take);
                 reaper.DeleteTakeStretchMarkers(Take, 0, NumStrMar);
                 -------------------------------------------------------------------------
-
+                
                 ----#11---Reset play rate / Reset Offset---------------------------------
                 reaper.SetMediaItemTakeInfo_Value(Take,"D_STARTOFFS",0);
                 reaper.SetMediaItemTakeInfo_Value(Take,"D_PLAYRATE",1);
                 local retval,section,start,length,fade,reverse = reaper.BR_GetMediaSourceProperties(Take_X);
                 reaper.BR_SetMediaSourceProperties(Take,section,start,length,fade,reverse);
                 -------------------------------------------------------------------------
-
+                
                 ----#5---Enable and Recover Envelope-------------------------------------
                 if EnvelopePresent then;
                     for i = 1,CountTakeEnv do;
@@ -1116,13 +1117,13 @@ local VersionMod = "v.2.7.7"
                     end;
                 end;
                 -------------------------------------------------------------------------
-
+                
                 ----#12---Change the file------------------------------------------------
                 local Take_X_Source = reaper.GetMediaItemTake_Source(Take_X);
                 local Filenamebuf = reaper.GetMediaSourceFileName(Take_X_Source,"");
                 reaper.BR_SetTakeSourceFromFile(Take,Filenamebuf,true);
                 -------------------------------------------------------------------------
-
+                
                 ----#7---Take properties Recover-----------------------------------------
                 reaper.SetMediaItemTakeInfo_Value(Take,"D_PITCH",Pich);
                 reaper.SetMediaItemTakeInfo_Value(Take,"B_PPITCH",PreserPitch);
@@ -1157,7 +1158,7 @@ local VersionMod = "v.2.7.7"
                 reaper.Undo_EndBlock2(0,"RemoveStretchMarkersSavingTreatedWave",-1);
                 reaper.PreventUIRefresh(-195638945);
                 -------------------------------------------------------------------------
-
+                
             ----#1-----------------------------------------------------------------------
             end;
         end;
@@ -1517,9 +1518,9 @@ local VersionMod = "v.2.7.7"
     -- Получить имя скрипта или кастом экшена по ID
     -- В случае неудачи вернет -1
     --====End===============End===============End===============End===============End====
-
-
-
+    
+    
+    
     --- 253 -----------------------------------------------------------------------------
     function Arc_Module.GetTrackAutoRecArm(Track);
         local retval, str = reaper.GetTrackStateChunk(Track,"",false);
@@ -1529,9 +1530,9 @@ local VersionMod = "v.2.7.7"
     GetTrackAutoRecArm = Arc_Module.GetTrackAutoRecArm;
     -- Получить значение автозаписи
     --====End===============End===============End===============End===============End====
-
-
-
+    
+    
+    
     --- 253 -----------------------------------------------------------------------------
     function Arc_Module.SetTrackAutoRecArm(Track,val);
         if tonumber(val)and val >= 1 or val == true then val = 1 else val = 0 end;
@@ -1546,9 +1547,9 @@ local VersionMod = "v.2.7.7"
     SetTrackAutoRecArm = Arc_Module.SetTrackAutoRecArm;
     -- Установите автозапись / 0-1 / true-false;
     --====End===============End===============End===============End===============End====
-
-
-
+    
+    
+    
     --- 259 -----------------------------------------------------------------------------
     function Arc_Module.SetHeightTrack_Env_TCP(Track,Height,minHeigth,resetHeigthEnv,PercentageDefault); 
         if not tonumber(minHeigth) then minHeigth = 24 end;
@@ -1626,9 +1627,9 @@ local VersionMod = "v.2.7.7"
     --    val = reaper.GetMediaTrackInfo_Value(Track,"I_WNDH");--Вернет 166
     -- Вот она погрешность в 5 пикселей
     --====End===============End===============End===============End===============End====
-
-
-
+    
+    
+    
     --- 265 ----------- SetStartupScript() ------------------------------------------------
      function Arc_Module.SetStartupScript(nameAction,id,nameFun,Clean);
         -----
@@ -1770,9 +1771,9 @@ local VersionMod = "v.2.7.7"
     -- if ID == -1 or type(ID) ~= "string" then Arc.no_undo()return end;
     -- Arc.StartupScript(scrName,ID,"ArchieScript");
     --====End===============End===============End===============End===============End====
-
-
-
+    
+    
+    
     --- 265 ----------------- GetStartupScript(id,nameFun) ------------------------------
     function Arc_Module.GetStartupScript(id,nameFun);
         -----
@@ -1813,9 +1814,9 @@ local VersionMod = "v.2.7.7"
     -- Ищет только то, что было установленно при помощи "SetStartupScript" 
     -- check_Id, check_Fun = GetStartupScript(id,nameFun);
     --====End===============End===============End===============End===============End====
-
-
-
+    
+    
+    
     --- 275 -----------------------------------------------------------------------------
     function Arc_Module.GetSetTerminateAllInstancesOrStartNewOneKB_ini(set,newState,ScrPath,ScrName);
         -- newState = 4-Reset/260-Terminate/516-New;
@@ -1882,7 +1883,7 @@ local VersionMod = "v.2.7.7"
     --Требуется перезагрузка рипера
     --====End===============End===============End===============End===============End====
 
-
+    
 
 
 
@@ -1908,7 +1909,7 @@ local VersionMod = "v.2.7.7"
 
 
 
-
+    
 
     --- 247 ----------- If_Equals_Or(EqualsToThat,...); ------------------------------------
     function Arc_Module.If_Equals_Or(EqualsToThat,...);
@@ -2033,14 +2034,10 @@ local VersionMod = "v.2.7.7"
     invert_number = Arc_Module.invert_number;
     -- инвертировать число
     --====End===============End===============End===============End===============End====
-
-
-
-
-
-
-    --277------iniFileWrite-------------------------------------------------------------
-    function Arc_Module.iniFileWriteLua(section,key,value,iniFile,lua,clean);
+    
+    
+    --277----- iniFileWrite -------------------------------------------------------------
+    function Arc_Module.iniFileWrite(section,key,value,iniFile,lua,clean);
         if lua==true then lua='--'else lua=''end;
         key = key:gsub('^%s-%;*',''):gsub('\n',''):gsub('%=','');
         value = tostring(value):gsub('\n','');
@@ -2092,18 +2089,17 @@ local VersionMod = "v.2.7.7"
     --Если установлен,будет добавлять комментарий 'два тире', полезно для записи в луа файл.
     --boolean 'clean', true=Очистка пустых строк, Необязательный параметр.
     --вернет true если данные былы записанны в файл, иначе false (запись не производится, если это не не обходимо)
-    --[section]key=value
     --====End===============End===============End===============End===============End====
-
-
-
-    --277------iniFileRead---------------------------------------------------------------
-    function Arc_Module.iniFileReadLua(section,key,iniFile,lua);
-        if lua==true then lua='--'else lua=end;
-        key = key:gsub('^%s-%;*,'):gsub('\n,'):gsub('%=',');
+    
+    
+    
+    --277-------iniFileRead--------------------------------------------------------------
+    function Arc_Module.iniFileRead(section,key,iniFile,lua);
+        if lua==true then lua='--'else lua=''end;
+        key = key:gsub('^%s-%;*',''):gsub('\n',''):gsub('%=','');
         section = section:gsub('\n','');
         local file = io.open(iniFile,'r');
-        if not file then return ' end;
+        if not file then return '' end;
         local t = {};
         for line in file:lines()do;
             table.insert(t,line);
@@ -2112,7 +2108,7 @@ local VersionMod = "v.2.7.7"
         for i = 1, #t do;
             if t[i]:match('^%s-'..lua..'%[%s-'..section..'%s-%]')then;
                 for i2 = i+1,#t do;
-                    if t[i2]:match('^%s-'..lua..'%[')then;returnend;
+                    if t[i2]:match('^%s-'..lua..'%[')then;return''end;
                     if t[i2]:match('^%s-'..lua..key..'%s-%=.*')then;
                         return t[i2]:match('^%s-'..lua..key..'%s-%=(.*)');
                     end;
@@ -2120,17 +2116,17 @@ local VersionMod = "v.2.7.7"
                 break;
             end;
         end;
-        return ';
+        return '';
     end;
     --boolean 'lua' - Смотреть function iniFileWrite, Необязательный параметр
     --Вернет value или ''
     --====End===============End===============End===============End===============End====
-
-
-
-    --277------iniFileRemoveSection------------------------------------------------------
-    function Arc_Module.iniFileRemoveSectionLua(section,iniFile,lua);
-        if lua==true then lua='--'else lua=end;
+    
+    
+    
+    --277---------iniFileRemoveSection----------------------------------------------------
+    function Arc_Module.iniFileRemoveSection(section,iniFile,lua);
+        if lua==true then lua='--'else lua=''end;
         section = section:gsub('\n','');
         local file = io.open(iniFile,'r');
         if not file then return false end;
@@ -2157,7 +2153,7 @@ local VersionMod = "v.2.7.7"
             file = io.open(iniFile,'w');
             wrt = file:write(table.concat(t,'\n'));
             file:close();
-             type(wrt)=='userdata';
+            return type(wrt)=='userdata';
         end;
         return false;
     end;
@@ -2165,15 +2161,16 @@ local VersionMod = "v.2.7.7"
     --boolean 'lua' - Смотреть function iniFileWrite, Необязательный параметр
     --вернет трие при успешном удалении, иначе false
     --====End===============End===============End===============End===============End====
-
-
-    --277------iniFileEnumLua------------------------------------------------------------
-    function Arc_Module.iniFileEnumLua(section,idx,iniFile,lua);
+    
+    
+    
+    --277-------iniFileEnum--------------------------------------------------------------
+    function Arc_Module.iniFileEnum(section,idx,iniFile,lua);
         if not tonumber(idx)then error('param 2(idx) - expected number',2)end;
-        if lua==true then lua='--'else lua=end;
+        if lua==true then lua='--'else lua=''end;
         section = section:gsub('\n','');
         local file = io.open(iniFile,'r');
-        if not file then return false,',' end;
+        if not file then return false,'','' end;
         local t = {};
         for line in file:lines()do;
             table.insert(t,line);
@@ -2194,7 +2191,7 @@ local VersionMod = "v.2.7.7"
                 break;
             end;
         end;
-        return false,;
+        return false,'','';
     end;
     --Перечислите данные, хранящиеся в ini для конкретного имени 'section'
     --Возвращает false, когда больше нет данных
@@ -2202,12 +2199,12 @@ local VersionMod = "v.2.7.7"
     --boolean 'lua' - Смотреть function iniFileWrite, Необязательный параметр
     --retval, key, val = iniFileEnum(section,idx,iniFile,lua);
     --====End===============End===============End===============End===============End====
-
-
-
-
-
-
+    
+    
+    
+    
+    
+    
 
 
     --================
