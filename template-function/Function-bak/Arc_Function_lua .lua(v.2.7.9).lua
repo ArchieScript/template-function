@@ -1818,7 +1818,7 @@ local VersionMod = "v.2.7.9"
     
     
     
-    --- 279 -----------------------------------------------------------------------------
+    --- 279 --------EnumStartupScript----------------------------------------------------
         function Arc_Module.EnumStartupScript(idx,nameFun);
         -----
         if type(idx)~="number" then;
