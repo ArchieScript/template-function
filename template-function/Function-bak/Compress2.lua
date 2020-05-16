@@ -217,7 +217,7 @@
      local t ={};
      for var in string.gmatch(text,".")do;
          x=x+1;
-         if x >= 500 and var == ' ' then; -- 500 -----------------------
+         if x >= 300 and var == ' ' then; -- 300 -----------------------
              if one==0 and two==0 and not boxActiv then;
                  x=0;
                  var = '\n';
