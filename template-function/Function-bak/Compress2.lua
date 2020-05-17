@@ -7,6 +7,7 @@
     --===========================================================
     local function DeleteAll_Comments(text);
         ----
+        text = text..'\n';
         local t,t2,t3,one,two,cmt,x,Rem = {},{},{},0,0,0,1,nil;
         local boxOpens,boxClose,RemStr = 0,0,nil;
         local SingleLine,boxActiv = nil,nil;
