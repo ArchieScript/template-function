@@ -157,7 +157,7 @@
     local text = file:read('a');
     file:close();
     -----
-    text = DeleteAll_Comments(text);
+    text = DeleteAllCommentsLuaFile(text);
     -----
     file = io.open(filename..'_.lua','w');
     file:write(text)
