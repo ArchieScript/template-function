@@ -33,7 +33,7 @@
 ># 
 >##### [ini_File.lua](https://github.com/ArchieScript/template-function/blob/master/template-function/Lua/ini_File.lua) &nbsp;&nbsp;&nbsp;&nbsp;-- Прочитать записать ини файл
 >#
->##### [DeleteAll_Comments.lua](https://github.com/ArchieScript/template-function/blob/master/template-function/Lua/DeleteAllCommentsLuaFile.lua) &nbsp;&nbsp;&nbsp;&nbsp;-- Функция для удаления всех комментариев в файле.lua
+>##### [DeleteAllCommentsLuaFile.lua](https://github.com/ArchieScript/template-function/blob/master/template-function/Lua/DeleteAllCommentsLuaFile.lua) &nbsp;&nbsp;&nbsp;&nbsp;-- Функция для удаления всех комментариев в файле.lua
 >#
 >#
 >#
