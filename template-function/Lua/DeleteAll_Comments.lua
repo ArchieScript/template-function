@@ -11,15 +11,14 @@
 
 
     --===========================================================
-    local function DeleteAll_Comments(text);
+    local function DeleteAllCommentsLuaFile(text);
         ----
-        text = text..'\n';
         local t,t2,t3,one,two,cmt,x,Rem = {},{},{},0,0,0,1,nil;
-        local boxOpens,boxClose,RemStr = 0,0,nil;
-        local SingleLine,boxActiv = nil,nil;
+        local boxOpens,boxClose,RemStr,xt = 0,0,nil,nil;
+        local SingleLine,boxActiv,Inside = nil,nil,0;
         local LineCom,LineComM,LineComRemove = 0,nil,nil;
         ----
-        for val in text:gmatch(".-\n")do;
+        for val in (text..'\n'):gmatch(".-\n")do;
             t3[#t3+1]=val:gsub('\n$',(' '):rep(2)..'\n');
         end;
         text = table.concat(t3);
@@ -37,7 +36,6 @@
                 if Cls ~= t[i] then x = 1 end;
                 t[i] = "";
             end;
-            --------------------
             --------------------
             if LineComRemove then;
                 if t[i] ~= '\n' then;
@@ -71,8 +69,11 @@
                 end;
             end; 
             if not LineComRemove then;
-            --------------------------------------------------
                 --------------------------------------------------
+                if(t[i]=="'"or t[i]=='"')and Inside>0 and(Inside%2)==1 then xt=t[i]t[i]=''end;
+                if(t[i]~="'"or t[i]~='"')and t[i]~='\\'and Inside>0 then Inside = 0 end;
+                if(one >= 1 or two >= 1) and t[i]=='\\' then Inside = Inside+1 end;
+                ---
                 if t[i] == "'" and two == 0 and not boxActiv then;
                     if one > 0 then one = 0 else one = 1 end;
                 end;
@@ -136,6 +137,7 @@
                 end;
             -------
             end;--LineComRemove
+            if xt then t[i]=xt xt=nil end;
         end;--End for #t
         text = table.concat(t);
         ----
@@ -148,20 +150,19 @@
     end;
     --===================================
     
-    filename = [[C:\\...]]
-    
-    local file = io.open(filename,'r');
+    --filename = [[C:\\...]]
+     
+    local file = io.open(filename..'.lua','r');
     if not file then return end;
     local text = file:read('a');
     file:close();
     -----
     text = DeleteAll_Comments(text);
     -----
-    file = io.open(filename,'w');
+    file = io.open(filename..'_.lua','w');
     file:write(text)
     file:close();
     --===================================
-    
     
     
     
