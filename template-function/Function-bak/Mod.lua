@@ -8,7 +8,7 @@
     --==== FUNCTION MODULE FUNCTION ======================= FUNCTION MODULE FUNCTION ============== FUNCTION MODULE FUNCTION ======
     local P,F,L,A=reaper.GetResourcePath()..'/Scripts/Archie-ReaScripts/Functions','/Arc_Function_lua.lua'; L,A=pcall(dofile,P..F);
     if not L then reaper.RecursiveCreateDirectory(P,0);reaper.MB('Missing file / Отсутствует файл!\n\n'..P..F,"Error",0);return;end;
-    if not A.VersionArc_Function_lua("2.8.0",P,"")then A.no_undo() return end;Arc=A; -- ===========================================
+    if not A.VersionArc_Function_lua("2.8.0",P,"")then A.no_undo() return end;local Arc=A; -- =====================================
     --==== FUNCTION MODULE FUNCTION ====▲=▲=▲============== FUNCTION MODULE FUNCTION ============== FUNCTION MODULE FUNCTION ======
 
 
