@@ -1,5 +1,5 @@
 
-
+-- что бы не оставались пустые тайки
 
 
     -- 1 Options: Show empty take lanes (align takes by recording pass)
@@ -19,3 +19,19 @@
     if Opt_TakeLaneBehavior1 == 1 then A.Action(41346)end;
     if Opt_TakeLaneBehavior2 == 1 then A.Action(41355)end;
     if Opt_TakeLaneBehavior3 == 1 then A.Action(40249)end;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
