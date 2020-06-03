@@ -52,3 +52,11 @@ end;
 local midiEditor = reaper.MIDIEditor_GetActive();
 local take = reaper.MIDIEditor_GetTake(midiEditor);
 GGG1,TTT = SnapToGridMIDI(take,reaper.GetCursorPosition());
+
+
+
+
+
+
+
+
