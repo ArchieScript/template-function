@@ -43,6 +43,14 @@
 >#
 >##### [GetPreviousGrid(time) / GetNextGrid(time);](https://github.com/ArchieScript/template-function/blob/master/template-function/Get/Get_%23%23%23_Grid.lua) -- Получить ближайшее предыдущее/следующее видимое деление сетки
 >#
+>##### [SnapToGridMIDI(take,timeProj);](https://github.com/ArchieScript/template-function/blob/master/template-function/Get/SnapToGridMIDI.lua) --  -- Получить ближайшее деление сетки в миди редакторе
+>#
+>##### []() --  
+>#
+>##### []() --  
+>#
+>##### []() --  
+>#
 >##### []() --  
 >#
 >##### []() --  
