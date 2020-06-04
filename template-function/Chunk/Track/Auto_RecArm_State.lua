@@ -52,7 +52,33 @@
     
     
     
-    
+        --=========================================
+    local function Set_Auto_RecArm_State(track,state);
+        local REC,t,idx = nil,{},0;
+        local _,TrackChunk = reaper.GetTrackStateChunk(track,'',false);
+        for var in string.gmatch(TrackChunk..'\n',".-\n") do;
+            if var:match('^%s-AUTO_RECARM')then;
+                local arg1,arg2 = var:match('^%s-(AUTO_RECARM%s+)(%d*).-$');
+                if arg1 and arg2 then;
+                    var = var:gsub(arg1..arg2,arg1..state);
+                end;
+            else;
+                if REC and state == 1 then;
+                    var = 'AUTO_RECARM '..state..'\n'..var;
+                end;
+            end;
+            if REC then REC = nil end;
+            if var:match('^%s-REC%s+%d+')then;
+                REC = true;
+            end;
+            idx = idx + 1;
+            t[idx] = var
+        end;
+        if table.concat(t)~=TrackChunk..'\n' then;
+            reaper.SetTrackStateChunk(track,table.concat(t),false);
+        end;
+    end;
+    --=========================================
     
     
     
