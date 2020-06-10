@@ -87,7 +87,7 @@ local VersionMod = "v.2.8.1"
 
     ----------- / VersionArc_Function_lua(version,file); / -----------------------------------
     function Arc_Module.VersionArc_Function_lua(version,file,URL);
-        if URL and #URL < 3 then URL = nil end;
+        if URL and #URL:gsub('%s','') < 1 then URL = nil end;
         local URL = (URL or 'https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/'..
               'ArchieScript/Archie_ReaScripts/blob/master/Functions/Arc_Function_lua.lua');
         -------
