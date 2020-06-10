@@ -112,6 +112,7 @@ local VersionMod = "v.2.8.1"
         return true;
     end;
     VersionArc_Function_lua = Arc_Module.VersionArc_Function_lua;
+    Arc_Module.VersArcFun = Arc_Module.VersionArc_Function_lua;
     VersArcFun = Arc_Module.VersionArc_Function_lua;
     --====End===============End===============End===============End===============End====
 
