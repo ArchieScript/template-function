@@ -2134,7 +2134,7 @@ local VersionMod = "v.2.8.2"
         end;
         local write = table.concat(t,'\n');
         if write ~= table.concat(t2,'\n')then;
-            if clean==true then write=write:gsub('\n\n','\n'):gsub('\n\n','\n')end;
+            if clean==true then write=write:gsub('\n%s-\n','\n'):gsub('\n%s-\n','\n')end;
             file = io.open(iniFile,'w');
             local wrt = file:write(write);
             file:close();
