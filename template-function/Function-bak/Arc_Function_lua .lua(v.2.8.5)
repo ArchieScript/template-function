@@ -69,7 +69,7 @@ local VersionMod = "v.2.8.5"
    *      v.277   + iniFileReadLua(section,key,iniFile,lua);
    *      v.277   + iniFileRemoveSectionLua(section,iniFile,lua);
    *      v.277   + iniFileEnumLua(section,idx,iniFile,lua);
-   *      v.285   + 
+   *      v.285   + tbl = iniFileReadSection(section,iniFile,lua);
    *      v.280   + boolean = ChangesInProject()
    *  LUA_Lib
    *      v.247   + If_Equals_Or(EqualsToThat,...);
