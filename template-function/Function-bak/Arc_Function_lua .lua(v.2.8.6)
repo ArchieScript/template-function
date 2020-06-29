@@ -2186,10 +2186,10 @@ local VersionMod = "v.2.8.6"
     
     
     
-        
+    
     
     --- 286 -------- Save_Selected_Items_Slot() -----------------------------------------
-    function Arc_Module.Save_Selected_Items_Slot2(Slot);
+    function Arc_Module.Save_Selected_Items_Slot(Slot);
         local CountSelItem = reaper.CountSelectedMediaItems(0);
         if CountSelItem == 0 then return false end;
         local t = {};
