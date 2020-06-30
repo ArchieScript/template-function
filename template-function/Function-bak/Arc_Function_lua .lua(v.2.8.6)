@@ -73,6 +73,8 @@ local VersionMod = "v.2.8.6"
    *      v.280   + boolean = ChangesInProject()
    *      v.286   + boolean = Save_Selected_Items_Slot2(Slot);
    *      v.286   + Restore_Selected_Item_Slot(Slot,clean,noSelPrevIt,UpdateArrange);
+   *      v.286   + boolean = Save_Selected_Track_Slot(Slot);
+   *      v.286   + Restore_Selected_Track_Slot(Slot,clean,noSelPrevIt);
    *  LUA_Lib
    *      v.247   + If_Equals_Or(EqualsToThat,...);
    *      v.248   + If_Equals_OrEx(EqualsToThat,...);
@@ -2012,10 +2014,60 @@ local VersionMod = "v.2.8.6"
     -- selPrev установить true или 1 что бы не снимать выделение с предыдущих элементов
     --====End===============End===============End===============End===============End====
     
-
     
-
-
+    
+    
+    
+    
+    --- 286 -------- Save_Selected_Track_Slot() -----------------------------------------
+    function Arc_Module.Save_Selected_Track_Slot(Slot);
+        local CountSelTrack = reaper.CountSelectedTracks(0);
+        if CountSelTrack == 0 then return false end;
+        local t = {};
+        for i = 1, CountSelTrack do;
+            t[i] = reaper.GetSelectedTrack(0,i-1);
+        end;
+        ----
+        local X = '';
+        local Slot2 = tostring(Slot)..'0x000000';
+        for i=1,#Slot2 do;X=X..Slot2:byte(i);end;
+        X = X:sub(1,8);
+        ----
+        _G['SaveSelTrack_obj_'..X..'_'..(Slot or '')] = t;
+        ----
+        return #t>0;
+    end;
+    -------------------------------------------------------------------------
+    
+    
+    
+    --- 286 -------- Restore_Selected_Track_Slot() -----------------------------------------
+    function Arc_Module.Restore_Selected_Track_Slot(Slot,clean,noSelPrevIt);
+        ----
+        local X = '';
+        local Slot2 = tostring(Slot)..'0x000000';
+        for i=1,#Slot2 do;X=X..Slot2:byte(i);end;
+        X = X:sub(1,8);
+        ----
+        local t = _G['SaveSelTrack_obj_'..X..'_'..(Slot or '')];
+        ----
+        if t then;
+            if noSelPrevIt ~= true and noSelPrevIt ~= 1 then;
+                local tr = reaper.GetTrack(0,0);
+                reaper.SetOnlyTrackSelected(tr);
+                reaper.SetMediaTrackInfo_Value(tr,'I_SELECTED',0);
+            end;
+            for i = 1, #t do;
+                pcall(reaper.SetMediaTrackInfo_Value,t[i],'I_SELECTED',1);
+            end;
+            if clean == true or clean == 1 then;
+                _G['SaveSelTrack_obj_'..X..'_'..(Slot or '')] = nil;
+                t = nil;
+            end;
+        end; 
+    end;
+    -- selPrev установить true или 1 что бы не снимать выделение с предыдущих элементов
+    --====End===============End===============End===============End===============End====
 
 
 
