@@ -1,0 +1,183 @@
+    --40209 --Item: Apply track/take FX to items
+    
+    
+    
+    --[[
+    --=========================================
+    local function MODULE(file);
+        local E,A=pcall(dofile,file);if not(E)then;reaper.ShowConsoleMsg("\n\nError - "..debug.getinfo(1,'S').source:match('.*[/\\](.+)')..'\nMISSING FILE / ОТСУТСТВУЕТ ФАЙЛ!\n'..file:gsub('\\','/'))return;end;
+        if not A.VersArcFun("2.8.5",file,'')then;A=nil;return;end;return A;
+    end; local Arc = MODULE((reaper.GetResourcePath()..'/Scripts/Archie-ReaScripts/Functions/Arc_Function_lua.lua'):gsub('\\','/'));
+    if not Arc then return end;
+    --=========================================
+    
+    
+    
+    local CountSelTrack = reaper.CountSelectedTracks(0);
+    if CountSelTrack == 0 then no_undo()return end;
+    
+    
+    ------------------------------------------------------------
+    local ConfigUndo = reaper.SNM_GetIntConfigVar('undomask',0);
+    local buf = ConfigUndo;
+    if buf&1  == 0 then; buf = buf|(buf|1); end;--item
+    if buf&16 == 0 then; buf = buf|(buf|16);end;--track
+    if buf and ConfigUndo ~= buf then;
+        reaper.SNM_SetIntConfigVar('undomask',buf);
+    else;
+        ConfigUndo = nil;
+    end;
+    ------------------------------------------------------------
+    
+    
+
+    reaper.Undo_BeginBlock();
+    reaper.Undo_EndBlock(reaper.Undo_CanUndo2(0)or'',-1);
+    
+    
+    reaper.Undo_BeginBlock();
+    --reaper.PreventUIRefresh(1);
+    
+    
+    Arc.Save_Selected_Items_Slot(1);
+    Arc.Save_Selected_Track_Slot(1);
+    reaper.SelectAllMediaItems(0,0);
+    
+    
+    t = {};
+    t_tr = {};
+    for i = 1,CountSelTrack do;
+        local track = reaper.GetSelectedTrack(0,i-1);
+        local CountTrItem = reaper.CountTrackMediaItems(track);
+        for it = 1,CountTrItem do;
+            local item = reaper.GetTrackMediaItem(track,it-1);
+            local take = reaper.GetActiveTake(item);
+            if take then;
+                reaper.SetMediaItemInfo_Value(item,'B_UISEL',1);
+                t[#t+1] = {};
+                t[#t].item = item;
+                t[#t].take = take;
+                t_tr[tostring(track)] = track;
+            end;
+        end;
+    end;
+    
+    
+    local CountSelItem = reaper.CountSelectedMediaItems(0);
+    
+    if CountSelItem == 0 then;
+        reaper.Undo_EndBlock('&&& No Item &&&',-1);
+        reaper.Undo_DoUndo2(0);
+        --reaper.PreventUIRefresh(-1);
+        if ConfigUndo then reaper.SNM_SetIntConfigVar('undomask',ConfigUndo)end;
+        no_undo()return;
+    end;
+     
+    
+    
+    Arc.Action(40297)--Unselect all tracks
+    for k,v in pairs(t_tr) do;
+        reaper.SetMediaTrackInfo_Value(v,'I_SELECTED',1);
+    end;
+    
+    
+    Arc.Action(40209)--Item: Apply track/take FX to items
+    
+    
+    local STOP_Script;
+    for i = 1,#t do;
+        local take = reaper.GetActiveTake(t[i].item);
+        if take == t[i].take then;
+            STOP_Script = true break;
+        end;
+    end;
+    
+    if STOP_Script == true then;
+        reaper.Undo_EndBlock('&&& Cancel Freeze &&&',-1);
+        reaper.Undo_DoUndo2(0);
+        --reaper.PreventUIRefresh(-1);
+        if ConfigUndo then reaper.SNM_SetIntConfigVar('undomask',ConfigUndo)end;
+        no_undo() return;
+    end;
+    
+    
+    
+    
+    local CountSelTrack = reaper.CountSelectedTracks(0);
+    
+    
+    tbl = {};
+    
+    for i = 1,CountSelTrack do;
+        local track = reaper.GetSelectedTrack(0,i-1);
+        local GUID = reaper.GetTrackGUID(track);
+        
+        local CountTrItem = reaper.CountTrackMediaItems(track);
+        local strTkG = '';
+        for it = 1,CountTrItem do;
+            local item = reaper.GetTrackMediaItem(track,it-1);
+            local take = reaper.GetActiveTake(item);
+            if take then;
+                local _,GUID_Take = reaper.GetSetMediaItemTakeInfo_String(take,'GUID','',0);
+                strTkG = strTkG..GUID_Take;
+            end;
+        end;
+        ---
+        local CountFx = reaper.TrackFX_GetCount(track);
+        local strFxG = '';
+        for ifx = 1,CountFx do;
+            local Enabledfx = reaper.TrackFX_GetEnabled(track,ifx-1)and 1 or 0;
+            --local Enabledfx = reaper.TrackFX_GetEnabled(track,ifx-1)and 1 or 0;
+            local GUID_FX = reaper.TrackFX_GetFXGUID(track,ifx-1);
+            strFxG = strFxG..GUID_FX..Enabledfx;
+            if Enabledfx == 1 then;
+                reaper.TrackFX_SetEnabled(track,ifx-1,0);
+                --reaper.TrackFX_SetOffline(track,ifx-1,1);
+            end;
+        end;
+        ---
+        tbl[#tbl+1] = {};
+        tbl[#tbl].track = GUID;
+        
+        --tbl[#tbl].Take = strTkG;
+        --tbl[#tbl].Fx = strFxG;
+    end;
+    
+    
+    
+    
+    
+    
+    
+
+
+   
+   
+
+   
+   
+   reaper.UpdateArrange()
+   
+   
+   
+   
+   
+   -- if ConfigUndo then reaper.SNM_SetIntConfigVar('undomask',ConfigUndo)end;
+   
+   
+   
+   
+   
+   
+   
+   
+   
+ 
+   
+   
+   
+   
+   
+   
+   
+   
