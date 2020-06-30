@@ -1996,7 +1996,11 @@ local VersionMod = "v.2.8.6"
         ----
         if t then;
             if noSelPrevIt ~= true and noSelPrevIt ~= 1 then;
-                reaper.SelectAllMediaItems(0,0);
+                --reaper.SelectAllMediaItems(0,0);
+                for i = reaper.CountSelectedMediaItems(0)-1,0,-1 do;
+                    local item = reaper.GetSelectedMediaItem(0,i);
+                    reaper.SetMediaItemInfo_Value(item,'B_UISEL',0);
+                end;
             end;
             for i = 1, #t do;
                 pcall(reaper.SetMediaItemSelected,t[i],1);
