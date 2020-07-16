@@ -1978,7 +1978,7 @@ local VersionMod = "v.2.8.7"
         ----
         _G['SaveSelItem_obj_'..X..'_'..(Slot or '')] = t;
         ----
-        return #t>0,t;
+        return #t>0,{table.unpack(t)};
     end;
     -------------------------------------------------------------------------
     
@@ -2039,7 +2039,7 @@ local VersionMod = "v.2.8.7"
         ----
         _G['SaveSelTrack_obj_'..X..'_'..(Slot or '')] = t;
         ----
-        return #t>0,t;
+        return #t>0,{table.unpack(t)};
     end;
     -------------------------------------------------------------------------
     
