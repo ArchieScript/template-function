@@ -9,7 +9,7 @@
 
     local function GetSelectedActionsFromActionList();
         local hWnd_action = reaper.JS_Window_Find("Actions",true);
-        if not hWnd_action then --[[reaper.MB("Please open Actions list!",'woops',0)]]return end;
+        if not hWnd_action then --[[reaper.MB("Please open Actions list!",'woops',0)]]return {} end;
         local restore_column_state = false;
         local hWnd_LV = reaper.JS_Window_FindChildByID(hWnd_action,1323);
         local combo = reaper.JS_Window_FindChildByID(hWnd_action,1317);
@@ -22,12 +22,12 @@
         local sel_count,sel_indexes = reaper.JS_ListView_ListAllSelItems(hWnd_LV);
         if sel_count == 0 then;
             --reaper.MB("Please select one or more actions.","woops",0);
-            return;
+            return {};
         end;
         ----
         if lv_column_count < 4 or third_item == "" or third_item:find("[\\/:]")then;
             --show Command ID column
-            reaper.JS_WindowMessage_Send(hWnd_action,"WM_COMMAND",41170,0,0,0);
+            --reaper.JS_WindowMessage_Send(hWnd_action,"WM_COMMAND",41170,0,0,0);
             restore_column_state = true;
         end;
         local sel_act = {};
