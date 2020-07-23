@@ -27,7 +27,7 @@
         ----
         if lv_column_count < 4 or third_item == "" or third_item:find("[\\/:]")then;
             --show Command ID column
-            --reaper.JS_WindowMessage_Send(hWnd_action,"WM_COMMAND",41170,0,0,0);
+            reaper.JS_WindowMessage_Send(hWnd_action,"WM_COMMAND",41170,0,0,0);
             restore_column_state = true;
         end;
         local sel_act = {};
@@ -44,7 +44,7 @@
         if restore_column_state then;
             --reaper.JS_WindowMessage_Send(hWnd_action,"WM_COMMAND",41170,0,0,0);
         end;
-        return sel_act,sectionID,sectionName;
+        return sel_act or {},sectionID,sectionName;
     end;
     
     
