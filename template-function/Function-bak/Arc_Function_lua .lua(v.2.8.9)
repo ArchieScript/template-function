@@ -2095,7 +2095,7 @@ local VersionMod = "v.2.8.9"
     
         --289-------windowU------------------------------------------------------------------
     function Arc_Module.windowU(Sec,generate,msg);
-        if type(generate)=='string'then;
+        if type(generate)=='string' and generate:match('%{.-%}') then;
             ----------------
             local GG1X = generate;
             for i = 1,10 do;
@@ -2107,11 +2107,15 @@ local VersionMod = "v.2.8.9"
                 GG1X=x2;
             end;
             GG1X = GG1X:sub(0,100):reverse();
-            reaper.ShowConsoleMsg('\n'..tostring(GG1X));
+            if msg then;
+                reaper.ShowConsoleMsg('\n'..tostring(GG1X));
+            end;
             return GG1X;
             ----------------
         end;
         --------------------
+        if type(Sec)~='string'then error('#1 string expected',2)end;
+        if #Sec <= 3 then error('#1 string expected > 3 symbol',2)end;
         Sec = 'LCARC_'..Sec;
         local scriptFile = ({reaper.get_action_context()})[2]:gsub("\\",'/');
         local file = io.open(scriptFile,'r');
