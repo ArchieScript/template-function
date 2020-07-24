@@ -2164,15 +2164,11 @@ local VersionMod = "v.2.8.9"
         end;
     end;
     --====End===============End===============End===============End===============End====
-
-
-
-
-
-
-
     
-
+    
+    
+    
+    
     --- 247 ----------- If_Equals_Or(EqualsToThat,...); ------------------------------------
     function Arc_Module.If_Equals_Or(EqualsToThat,...);
         for _,v in pairs {...} do;
@@ -2531,13 +2527,6 @@ local VersionMod = "v.2.8.9"
     
     
     
-    
-    
-    
-    
-
-    
-
     
     
     
