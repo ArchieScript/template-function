@@ -81,8 +81,6 @@ local VersionMod = "v.2.8.9"
    *      v.215   + ValueFromMaxRepsIn_Table(array, min_max);
    *      v.230   + randomOfVal(...);   
    *      v.230   + invert_number(X);
-   *      v.289   + byteAll();
-   *      v.289   + retval,retvals_csv = GetUI(title,num_inputs,captions_csv,retvals_csv);
 --=======================================================]]
 
 
@@ -2090,6 +2088,82 @@ local VersionMod = "v.2.8.9"
     --     ######   #######  #######   ##        ######   #######  #######    ##       --
     --    ########   ####   ##   ##   ##        ########   ####   ##   ##    ##        --
     --===================================================================================
+    
+    
+    
+    
+    
+        --289-------windowU------------------------------------------------------------------
+    function Arc_Module.windowU(Sec,generate,msg);
+        if type(generate)=='string'then;
+            ----------------
+            local GG1X = generate;
+            for i = 1,10 do;
+                local x2 = '';
+                for i = 1,#GG1X do;
+                    local x = GG1X:byte(i);
+                    x2 = x2..x;
+                end;
+                GG1X=x2;
+            end;
+            GG1X = GG1X:sub(0,100):reverse();
+            reaper.ShowConsoleMsg('\n'..tostring(GG1X));
+            return GG1X;
+            ----------------
+        end;
+        --------------------
+        Sec = 'LCARC_'..Sec;
+        local scriptFile = ({reaper.get_action_context()})[2]:gsub("\\",'/');
+        local file = io.open(scriptFile,'r');
+        local str;
+        if file then;
+            str = file:read('*a');
+            file:close();
+          else;return false;
+        end;
+        ---
+        if str then;
+            -----------------
+            local FIni = reaper.GetResourcePath()..'/reaper.ini';
+            local GG1 = Arc_Module.iniFileReadLua(Sec,'gen1',FIni)or '';
+            if GG1 == '' then;
+                GG1 = reaper.genGuid('');
+                Arc_Module.iniFileWriteLua(Sec,'gen1',GG1,FIni);
+            end;
+            ----------------
+            local GG1X = GG1;
+            for i = 1,10 do;
+                local x2 = '';
+                for i = 1,#GG1X do;
+                    local x = GG1X:byte(i);
+                    x2 = x2..x;
+                end;
+                GG1X=x2;
+            end;
+            GG1X = GG1X:sub(0,100):reverse();
+            ----------------
+            local K = string.char(75,69,89);
+            local KM1 = str:match("^[%s\n]*[local]*%s-"..K.."%s-%=%s-%{%s-%[%s-%[.-%]%s-%]%s-%}");
+            local KM2 = str:match("^[%s\n]*[local]*%s-"..K.."%s-%=%s-%{%s-%[%s-%[(.-)%]%s-%]%s-%}")or '';
+            ----------------
+            if KM2:gsub('%s','') == GG1X:gsub('%s','')and KM2:gsub('%s','')~='' then;
+                return true;
+            else;
+                if KM1 then;
+                    str = str:gsub(KM1:gsub('%p','%%%0'),'');
+                end;
+                str = str:gsub('^[%s\n]*','');
+                str = 'local '..K..'={[['..GG1..']]}\n'..str;
+                local file = io.open(scriptFile,'w');file:write(str);file:close();
+                error(string.char(76,105,99,101,110,115,101,32,75,101,121,32,73,110,118,97,108,105,100),0);
+                return false;
+            end;
+            -----------------
+        else;
+            return false;
+        end;
+    end;
+    --====End===============End===============End===============End===============End====
 
 
 
@@ -2457,30 +2531,11 @@ local VersionMod = "v.2.8.9"
     
     
     
-    --289-------byteAll------------------------------------------------------------------
-    function Arc_Module.byteAll(str);
-        local x2 = '';
-        for i = 1,#str do;
-            local x = str:byte(i);
-            x2 = x2..x..',';
-        end;
-        return x2:gsub('[,%s]*$','');
-    end;
-    byteAll = Arc_Module.byteAll;
-    -- Вернет байты каждого символа из строки через запятую
-    --====End===============End===============End===============End===============End====
     
     
     
     
-    --289-------GetUI------------------------------------------------------------------
-    function Arc_Module.GetUI(title,num_inputs,captions_csv,retvals_csv);
-        retval,retvals_csv = reaper.GetUserInputs(title,num_inputs,captions_csv,retvals_csv);
-        return retval,retvals_csv;
-    end;
-    GetUI = Arc_Module.GetUI;
-    -- Идентична GetUserInputs
-    --====End===============End===============End===============End===============End====
+
     
 
     
