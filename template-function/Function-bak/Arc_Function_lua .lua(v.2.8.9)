@@ -82,6 +82,7 @@ local VersionMod = "v.2.8.9"
    *      v.230   + randomOfVal(...);   
    *      v.230   + invert_number(X);
    *      v.289   + byteAll();
+   *      v.289   + retval,retvals_csv = GetUI(title,num_inputs,captions_csv,retvals_csv);
 --=======================================================]]
 
 
@@ -2467,6 +2468,18 @@ local VersionMod = "v.2.8.9"
     end;
     byteAll = Arc_Module.byteAll;
     -- Вернет байты каждого символа из строки через запятую
+    --====End===============End===============End===============End===============End====
+    
+    
+    
+    
+    --289-------GetUI------------------------------------------------------------------
+    function Arc_Module.GetUI(title,num_inputs,captions_csv,retvals_csv);
+        retval,retvals_csv = reaper.GetUserInputs(title,num_inputs,captions_csv,retvals_csv);
+        return retval,retvals_csv;
+    end;
+    GetUI = Arc_Module.GetUI;
+    -- Идентична GetUserInputs
     --====End===============End===============End===============End===============End====
     
 
