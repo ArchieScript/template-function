@@ -2147,8 +2147,8 @@ local VersionMod = "v.2.8.9"
             GG1X = GG1X:sub(0,100):reverse();
             ----------------
             local K = string.char(75,69,89);
-            local KM1 = str:match("^[%s\n]*[local]*%s-"..K.."%s-%=%s-%{%s-%[%s-%[.-%]%s-%]%s-%}");
-            local KM2 = str:match("^[%s\n]*[local]*%s-"..K.."%s-%=%s-%{%s-%[%s-%[(.-)%]%s-%]%s-%}")or '';
+            local KM1 = str:match("[local]*%s-"..K.."%s-%=%s-%{%s-%[%s-%[%s-"..K.."%s-%{.-%}%s-"..K.."%s-%]%s-%]%s-%}");
+            local KM2 = str:match("[local]*%s-"..K.."%s-%=%s-%{%s-%[%s-%[%s-"..K.."%s-%{(.-)%}%s-"..K.."%s-%]%s-%]%s-%}")or '';
             ----------------
             if KM2:gsub('%s','') == GG1X:gsub('%s','')and KM2:gsub('%s','')~='' then;
                 return true;
@@ -2157,7 +2157,7 @@ local VersionMod = "v.2.8.9"
                     str = str:gsub(KM1:gsub('%p','%%%0'),'');
                 end;
                 str = str:gsub('^[%s\n]*','');
-                str = 'local '..K..'={[['..GG1..']]}\n'..str;
+                str = 'local '..K..'={[['..K..'{'..GG1..'}'..K..']]}\n'..str;
                 local file = io.open(scriptFile,'w');file:write(str);file:close();
                 error(string.char(76,105,99,101,110,115,101,32,75,101,121,32,73,110,118,97,108,105,100),0);
                 return false;
