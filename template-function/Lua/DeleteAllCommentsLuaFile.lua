@@ -13,6 +13,20 @@
     --===========================================================
     local function DeleteAllCommentsLuaFile(text);
         ----
+        ----
+        local t ={};
+        for var in string.gmatch(text,".-\n")do;
+            if var:match("^%s-%-%-")then;
+                if not var:match("^%s-%-%-%[%[")and 
+                   not var:match("^%s-%-%-%]%]")then;
+                    var = '';
+                end;
+            end;
+            t[#t+1] = var;
+        end;
+        text = table.concat(t);
+        ----------------------
+        -----
         local t,t2,t3,one,two,cmt,x,Rem = {},{},{},0,0,0,1,nil;
         local boxOpens,boxClose,RemStr,xt = 0,0,nil,nil;
         local SingleLine,boxActiv,Inside = nil,nil,0;
