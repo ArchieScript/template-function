@@ -1,5 +1,5 @@
--- Compress2  /  Arc_Function_lua
--- Version: 1.0
+-- Compress2_AVPM  /  Arc_Function_lua
+-- Version: 2.0
 -- Provides: [nomain].
 ----------------------
     path =  [[C:\Users\Archie\Desktop/]]
@@ -9,19 +9,7 @@
     
     --===========================================================
     local function DeleteAllCommentsLuaFile(text);
-        ----
-        local t ={};
-        for var in string.gmatch(text,".-\n")do;
-            if var:match("^%s-%-%-")then;
-                if not var:match("^%s-%-%-%[%[")and 
-                   not var:match("^%s-%-%-%]%]")then;
-                    var = '';
-                end;
-            end;
-            t[#t+1] = var;
-        end;
-        text = table.concat(t);
-        ----------------------
+        -----
         -----
         local t,t2,t3,one,two,cmt,x,Rem = {},{},{},0,0,0,1,nil;
         local boxOpens,boxClose,RemStr,xt = 0,0,nil,nil;
@@ -37,7 +25,7 @@
             t[#t+1] = val;
         end;
         ----
-        for i = 1,#t do;
+        for i = 1,#t do;--------------------------------------
             --------------------
             if Rem then;
                 local Cls = RemStr:match('.',x);
@@ -84,11 +72,11 @@
                 if(t[i]~="'"or t[i]~='"')and t[i]~='\\'and Inside>0 then Inside = 0 end;
                 if(one >= 1 or two >= 1) and t[i]=='\\' then Inside = Inside+1 end;
                 ---
-                if t[i] == "'" and two == 0 and not boxActiv then;
+                if t[i] == "'" and two == 0 and not boxActiv and LineCom < 2 then;--v.2_and LineCom<2
                     if one > 0 then one = 0 else one = 1 end;
                 end;
                 ---
-                if t[i] == '"' and one == 0 and not boxActiv then;
+                if t[i] == '"' and one == 0 and not boxActiv and LineCom < 2 then;--v.2_and LineCom<2
                     if two > 0 then two = 0 else two = 1 end;
                 end;
                 ---
@@ -188,6 +176,7 @@
     
     --- / Delete Comments All / ----
     text = DeleteAllCommentsLuaFile(text);
+    --text = DeleteAllCommentsLuaFile(text);
     --------------------------------
     
    
