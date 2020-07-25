@@ -2088,88 +2088,7 @@ local VersionMod = "v.2.8.9"
     --     ######   #######  #######   ##        ######   #######  #######    ##       --
     --    ########   ####   ##   ##   ##        ########   ####   ##   ##    ##        --
     --===================================================================================
-    
-    
-    
-    
-    
-        --289-------windowU------------------------------------------------------------------
-    function Arc_Module.windowU(Sec,generate,msg);
-        if type(generate)=='string' and generate:match('%{.-%}') then;
-            ----------------
-            local GG1X = generate;
-            for i = 1,10 do;
-                local x2 = '';
-                for i = 1,#GG1X do;
-                    local x = GG1X:byte(i);
-                    x2 = x2..x;
-                end;
-                GG1X=x2;
-            end;
-            GG1X = GG1X:sub(0,100):reverse();
-            if msg then;
-                reaper.ShowConsoleMsg('\n'..tostring(GG1X));
-            end;
-            return GG1X;
-            ----------------
-        end;
-        --------------------
-        if type(Sec)~='string'then error('#1 string expected',2)end;
-        if #Sec <= 3 then error('#1 string expected > 3 symbol',2)end;
-        Sec = 'LCARC_'..Sec;
-        local scriptFile = ({reaper.get_action_context()})[2]:gsub("\\",'/');
-        local file = io.open(scriptFile,'r');
-        local str;
-        if file then;
-            str = file:read('*a');
-            file:close();
-          else;return false;
-        end;
-        ---
-        if str then;
-            -----------------
-            local FIni = reaper.GetResourcePath()..'/reaper.ini';
-            local GG1 = Arc_Module.iniFileReadLua(Sec,'gen1',FIni)or '';
-            if GG1 == '' then;
-                GG1 = reaper.genGuid('');
-                Arc_Module.iniFileWriteLua(Sec,'gen1',GG1,FIni);
-            end;
-            ----------------
-            local GG1X = GG1;
-            for i = 1,10 do;
-                local x2 = '';
-                for i = 1,#GG1X do;
-                    local x = GG1X:byte(i);
-                    x2 = x2..x;
-                end;
-                GG1X=x2;
-            end;
-            GG1X = GG1X:sub(0,100):reverse();
-            ----------------
-            local K = string.char(75,69,89);
-            local KM1 = str:match("[local]*%s-"..K.."%s-%=%s-%{%s-%[%s-%[%s-"..K.."%s-%{.-%}%s-"..K.."%s-%]%s-%]%s-%}");
-            local KM2 = str:match("[local]*%s-"..K.."%s-%=%s-%{%s-%[%s-%[%s-"..K.."%s-%{(.-)%}%s-"..K.."%s-%]%s-%]%s-%}")or '';
-            ----------------
-            if KM2:gsub('%s','') == GG1X:gsub('%s','')and KM2:gsub('%s','')~='' then;
-                return true;
-            else;
-                if KM1 then;
-                    str = str:gsub(KM1:gsub('%p','%%%0'),'');
-                end;
-                str = str:gsub('^[%s\n]*','');
-                str = 'local '..K..'={[['..K..'{'..GG1..'}'..K..']]}\n'..str;
-                local file = io.open(scriptFile,'w');file:write(str);file:close();
-                error(string.char(76,105,99,101,110,115,101,32,75,101,121,32,73,110,118,97,108,105,100),0);
-                return false;
-            end;
-            -----------------
-        else;
-            return false;
-        end;
-    end;
-    windowU = Arc_Module.windowU
-    --====End===============End===============End===============End===============End====
-    
+        
     
     
     
@@ -2528,6 +2447,92 @@ local VersionMod = "v.2.8.9"
     iniFileReadSectionLua = Arc_Module.iniFileReadSection;
     --boolean 'lua' - Смотреть function iniFileWrite, Необязательный параметр
     --Вернет в виде таблицы все ключи и их значения из указанной секции
+    --====End===============End===============End===============End===============End====
+    
+    
+    
+    
+    --289-------windowU------------------------------------------------------------------
+    function Arc_Module.windowU(key,generate,msg);
+        local function er(str,lev);
+            return load(string.char(101,114,114,111,114).."('"..str.."',"..(lev or 0)..")")();
+        end;
+        -----
+        if type(generate)=='string' and generate:match('%{.-%}') then;
+            ----------------
+            local GG1X = generate;
+            for i = 1,10 do;
+                local x2 = '';
+                for i = 1,#GG1X do;
+                    local x = GG1X:byte(i);
+                    x2 = x2..x;
+                end;
+                GG1X=x2;
+            end;
+            GG1X = GG1X:sub(0,100):reverse();
+            if msg then;
+                reaper.ShowConsoleMsg('\n'..tostring(GG1X));
+            end;
+            return GG1X;
+            ----------------
+        end;
+        --------------------
+        if type(key)~='string'then er('#1 string expected',2)end;
+        if #key <= 3 then er('#1 string expected > 3 symbol',2)end;
+        key = 'LC_'..key;
+        --------------------
+        local scriptFile = ({reaper.get_action_context()})[2]:gsub("\\",'/');
+        local file = io.open(scriptFile,'r');
+        local str;
+        if file then;
+            str = file:read('*a');
+            file:close();
+          else;return false;
+        end;
+        ---
+        if str then;
+            -----------------
+            local FIni = reaper.GetResourcePath()..'/reaper.ini';
+            local GG1 = Arc_Module.iniFileReadLua('LCARC',key,FIni)or '';
+            if GG1 == '' then;
+                GG1 = reaper.genGuid('');
+                Arc_Module.iniFileWriteLua('LCARC',key,GG1,FIni);
+            end;
+            ----------------
+            local GG1X = GG1;
+            for i = 1,10 do;
+                local x2 = '';
+                for i = 1,#GG1X do;
+                    local x = GG1X:byte(i);
+                    x2 = x2..x;
+                end;
+                GG1X=x2;
+            end;
+            GG1X = GG1X:sub(0,100):reverse();
+            ----------------
+            local K = string.char(75,69,89);
+            local KM1 = str:match("[local]*%s-"..K.."%s-%=%s-%{%s-%[%s-%[%s-"..K.."%s-%{.-%}%s-"..K.."%s-%]%s-%]%s-%}");
+            local KM2 = str:match("[local]*%s-"..K.."%s-%=%s-%{%s-%[%s-%[%s-"..K.."%s-%{(.-)%}%s-"..K.."%s-%]%s-%]%s-%}")or '';
+            ----------------
+            if KM2:gsub('%s','') == GG1X:gsub('%s','')and KM2:gsub('%s','')~='' then;
+                return true;
+            else;
+                if KM1 then;
+                    str = str:gsub(KM1:gsub('%p','%%%0'),'');
+                end;
+                str = str:gsub('^[%s\n]*','');
+                str = 'local '..K..'={[['..K..'{'..GG1..'}'..K..']]}\n'..str;
+                local file = io.open(scriptFile,'w');file:write(str);file:close();
+                local LKI = string.char(76,105,99,101,110,115,101,32,75,101,121,32,73,110,118,97,108,105,100);
+                load(string.char(101,114,114,111,114).."('"..LKI.."',0)")();
+                return false;
+            end;
+            -----------------
+        else;
+            return false;
+        end;
+    end;
+    windowU = Arc_Module.windowU
     --====End===============End===============End===============End===============End====
     
     
