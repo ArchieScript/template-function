@@ -2427,7 +2427,7 @@ local VersionMod = "v.2.8.9"
                 
                 for i2 = i+1,#t do;
                     if t[i2]:match('^%s-'..lua..'%[')then;return tbl end;
-                    local key,val = t[i2]:match('(.+)=(.+)');
+                    local key,val = t[i2]:match('(.-)=(.*)$');
                     if key and val then;
                         key = key:gsub( ('^%s-'..lua:gsub('%p','%%%0')),'');
                         if not key:match('^%s-;')then;
