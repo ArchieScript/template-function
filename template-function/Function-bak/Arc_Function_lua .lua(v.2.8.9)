@@ -2542,6 +2542,21 @@ local VersionMod = "v.2.8.9"
         if lua==true then lua='--'else lua=''end;
         section = section:gsub('\n','');
         if type(tbl)~='table'then return false end;
+        -----
+        -----
+        local t = {};
+        local i = 0;
+        while i < #tbl do;
+            i = i + 1;
+            if t[tostring(tbl[i].key)]then;
+                table.remove(tbl,i);
+                i = i - 1;
+            else;
+                t[tostring(tbl[i].key)]=true;
+            end;
+        end;
+        -----
+        -----
         local file = io.open(iniFile,'r');
         if not file then;
             file = io.open(iniFile,'w');
@@ -2614,6 +2629,7 @@ local VersionMod = "v.2.8.9"
     -- таблица должна иметь структуру как в из функции (iniFileReadSection)
     -- tbl = {{key=1,val=1},{key=2,val=2},{key=3,val=3}}
     --====End===============End===============End===============End===============End====
+    
     
     
     
