@@ -1,7 +1,7 @@
    
+   -- НЕ РАБОТАЕТ
    
-   
-   
+   https://forum.cockos.com/showthread.php?t=240385
    
    
    local function GetSetSectionFromActionList(section,set);
