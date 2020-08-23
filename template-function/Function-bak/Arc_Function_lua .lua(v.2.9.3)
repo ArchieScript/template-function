@@ -1,4 +1,5 @@
-local VersionMod = "v.2.9.2"
+local VersionMod = "v.2.9.3";
+local RemDonAll = true;
 --[[
    * Category:    Function
    * Description: Arc_Function_lua
@@ -2677,7 +2678,7 @@ local VersionMod = "v.2.9.2"
             reaper.SetExtState('ArchieDonateAll','All',1,false);
         end;
     end;
-    RemindAboutDonat();
+    if RemDonAll == true then RemindAboutDonat()end;
     --================================================================================
     --================================================================================
     --***************************************
