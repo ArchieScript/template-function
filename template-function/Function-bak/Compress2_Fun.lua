@@ -176,6 +176,7 @@
     
     --- / Удалить Первую Строку / --------------
     text = text:gsub("local VersionMod.-\n","");
+    text = text:gsub("local RemDonAll.-\n","");
     --------------------------------------------
 
     
@@ -256,4 +257,3 @@
     file:write(header..text);
     file:close();
     --------------------------------
-    
