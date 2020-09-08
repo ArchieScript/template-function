@@ -1,5 +1,4 @@
 local VersionMod = "v.3.0.1";
-local RemDonAll = true;
 --[[
    * Category:    Function
    * Description: Arc_Function_lua
@@ -85,6 +84,7 @@ local RemDonAll = true;
 --=======================================================]]
 
 
+local RemDonAll = true;
     --========================
     local Arc_Module = {};--==
     --========================
