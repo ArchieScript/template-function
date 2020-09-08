@@ -176,7 +176,7 @@
     
     --- / Удалить Первую Строку / --------------
     text = text:gsub("local VersionMod.-\n","");
-    text = text:gsub("local RemDonAll.-\n","");
+    --text = text:gsub("local RemDonAll.-\n","");
     --------------------------------------------
 
     
