@@ -1,10 +1,10 @@
-local VersionMod = "v.3.0.0";
+local VersionMod = "v.3.0.1";
 local RemDonAll = true;
 --[[
    * Category:    Function
    * Description: Arc_Function_lua
    * Author:      Archie
-   * Version:     3.0.0
+   * Version:     3.0.1
    * AboutScript: Functions for use with some scripts Archie
    * О скрипте:   Функции для использования с некоторыми скриптами Archie
    * Provides:    [nomain].
@@ -2710,7 +2710,7 @@ local RemDonAll = true;
         ----
         reaper.SetExtState('ArcDntAll2_tm2','All2_tm2',os.time(),false);
     end;
-    if RemDonAll == true then reaper.defer(function()RemindAboutDonat(100)end)end;
+    if RemDonAll == true then reaper.defer(function()RemindAboutDonat(250)end)end;
     --====End===============End===============End===============End===============End====
     
     
