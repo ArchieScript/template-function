@@ -1,0 +1,20 @@
+    -------------------------------------------------------
+    local function clear_locals();
+        for i=1,math.huge do;local getloc=debug.getlocal(2,i)if not getloc then break end;debug.setlocal(2,i,nil)end;
+    end;
+    local function save_globals();
+        old_G={}for k,v in pairs(_G)do old_G[k]=v end;
+    end; save_globals();
+     function clear_globals();
+        for k, v in pairs(_G) do if not old_G[k] then _G[k]=nil end end;
+    end;
+    -------------------------------------------------------
+    
+    
+    
+    
+    --КОД
+    
+    
+    clear_globals();clear_locals();
+    
